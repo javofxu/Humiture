@@ -48,4 +48,5 @@ dependencies {
     implementation 'com.github.forvv231:EasyNavigation:1.0.2'
     implementation 'com.github.javofxu:CustomEditText:v2.0'
     implementation 'com.yarolegovich:discrete-scrollview:1.0.3'
+    implementation 'com.github.lecho:hellocharts-android:v1.5.8'
 }
