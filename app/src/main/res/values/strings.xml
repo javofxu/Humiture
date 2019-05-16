@@ -11,4 +11,17 @@
     <string name="register_pwd">密码</string>
     <string name="register_pwd_again">请确认密码</string>
     <string name="register_rgs">注册</string>
+    
+    <!--首页-->
+    <string name="index_data">环境数据</string>
+    <string name="index_trend">趋势图</string>
+    <string name="index_more">更多</string>
+    <string name="index_temp">温度</string>
+    <string name="index_hum">湿度</string>
+    <string name="index_pm">PM2.5</string>
+    <string name="index_tv">TVOC</string>
+    <string name="index_formaldehyde">甲醛</string>
+    <string name="index_colony">菌落</string>
+    <string name="index_eco">ECO2</string>
+    <string name="index_harmful">有害气体</string>
 </resources>
