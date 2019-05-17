@@ -3,7 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-
     <color name="white">#FFFFFF</color>
     <color name="line">#C6C8C9</color>
     <color name="black">#000000</color>
@@ -20,4 +19,7 @@
     <color name="index_colony">#9abb00</color>
     <color name="index_eco">#00cbff</color>
     <color name="index_harmful">#c132e0</color>
+    <!--统计首页-->
+    <color name="stat_choose_time">#ffd4d4d4</color>
+    <color name="state_radarview">#ff00c0e0</color>
 </resources>
