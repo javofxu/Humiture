@@ -21,6 +21,10 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
 }
 
 allprojects {
@@ -46,7 +50,10 @@ dependencies {
 
     implementation 'com.github.javofxu:FrameWork:1.0.2'
     implementation 'com.github.forvv231:EasyNavigation:1.0.2'
-
     implementation 'com.github.javofxu:CustomEditText:v2.0'
-
+    implementation 'com.yarolegovich:discrete-scrollview:1.0.3'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.addappcn:android-pickers:1.0.3'
+    //动态刷新
+    implementation 'com.baoyz.pullrefreshlayout:library:1.2.0'
 }

@@ -10,7 +10,6 @@ import com.example.humiture.ui.fragment.IndexFragment;
 import com.example.humiture.ui.fragment.MineFragment;
 import com.example.humiture.ui.fragment.OperateFragment;
 import com.example.humiture.ui.fragment.StatisticFragment;
-import com.example.humiture.utils.ToastUtils;
 import com.next.easynavigation.view.EasyNavigationBar;
 
 import java.util.ArrayList;
@@ -18,6 +17,11 @@ import java.util.List;
 
 import butterknife.BindView;
 
+
+/**
+ * Created by 许格.
+ * Date on 2019/5/14.
+ */
 public class MainActivity extends BaseActivity {
 
     @BindView(R2.id.navigationBar)
@@ -66,7 +70,7 @@ public class MainActivity extends BaseActivity {
                 .navigationBackground(Color.parseColor("#FFFFFF"))
                         .onTabClickListener((view, i) -> {
                             if (i==2){
-                                ToastUtils.showToast("暂未开发！");
+                                skipAnotherActivity(LoginActivity.class);
                                 return true;
                             }
                             return false;

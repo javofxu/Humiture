@@ -4,11 +4,29 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!--登录-->
-    <string name="login_name">请输入用户账户</string>
+    <string name="login_name">请输入用户账号</string>
     <string name="login_pwd">请输入密码</string>
     <!--注册-->
     <string name="register_name">用户名</string>
     <string name="register_pwd">密码</string>
     <string name="register_pwd_again">请确认密码</string>
     <string name="register_rgs">注册</string>
+    
+    <!--首页-->
+    <string name="index_data">环境数据</string>
+    <string name="index_trend">趋势图</string>
+    <string name="index_more">更多</string>
+    <string name="index_temp">温度</string>
+    <string name="index_hum">湿度</string>
+    <string name="index_pm">PM2.5</string>
+    <string name="index_tv">TVOC</string>
+    <string name="index_formaldehyde">甲醛</string>
+    <string name="index_colony">菌落</string>
+    <string name="index_eco">ECO2</string>
+    <string name="index_harmful">有害气体</string>
+    <string name="index_warehouse">库房选择</string>
+    
+    <!--通用-->
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
 </resources>
