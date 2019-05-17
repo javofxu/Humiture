@@ -16,7 +16,7 @@ public interface IndexContract {
     }
 
     interface mView extends BaseView{
-
+        void showWareHouse(String warehouse);
     }
 
     interface present{
@@ -27,6 +27,6 @@ public interface IndexContract {
          */
         void drawPoint(LinearLayout layout, int pagerNumber, int position);
 
-        void warehouse();
+        void warehouse(String[] mList);
     }
 }

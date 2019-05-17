@@ -5,85 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/index_title"
     tools:context=".ui.fragment.IndexFragment">
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@color/index_title"/>
+        android:layout_height="@dimen/base"/>
+
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50"
-        android:background="@color/index_title">
-        <TextView
-            android:id="@+id/index_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/text_18"
-            android:textColor="@color/white"
-            android:text="一库房"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/index_title"
-            app:srcCompat="@drawable/index_title_down"/>
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/base">
+        android:layout_height="match_parent"
+        app:refreshType="water_drop">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_50"
+            android:background="@color/index_title">
+            <TextView
+                android:id="@+id/index_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/text_18"
+                android:textColor="@color/white"
+                android:text="一库房"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/index_alarm"/>
-            <TextView
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:layout_gravity="right"
-                android:layout_margin="1dp"
-                android:background="@drawable/index_alarm_red"/>
-        </FrameLayout>
-    </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/line"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_40"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/margin_15"
-        android:textStyle="bold"
-        style="@style/textStyle_18sp"
-        android:text="@string/index_data"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:orientation="vertical"
-        android:gravity="center">
-        <com.yarolegovich.discretescrollview.DiscreteScrollView
-            android:id="@+id/picker"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/index_title"
+                app:srcCompat="@drawable/index_title_down"/>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/base">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/index_alarm"/>
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="right"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/index_alarm_red"/>
+            </FrameLayout>
+        </RelativeLayout>
+        <View
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"/>
-        <LinearLayout
-            android:id="@+id/index_point"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="1dp"
+            android:background="@color/line"/>
 
-        </LinearLayout>
-    </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_40"
@@ -91,19 +71,53 @@
             android:paddingLeft="@dimen/margin_15"
             android:textStyle="bold"
             style="@style/textStyle_18sp"
-            android:text="@string/index_trend"/>
-        <TextView
-            android:id="@+id/index_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/margin_15"
-            android:textSize="@dimen/text_12"
-            android:text="@string/index_more"/>
-    </RelativeLayout>
-    <lecho.lib.hellocharts.view.LineChartView
-        android:id="@+id/index_chart"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+            android:text="@string/index_data"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="vertical"
+            android:gravity="center">
+            <com.yarolegovich.discretescrollview.DiscreteScrollView
+                android:id="@+id/picker"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"/>
+            <LinearLayout
+                android:id="@+id/index_point"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/margin_15"
+                android:textStyle="bold"
+                style="@style/textStyle_18sp"
+                android:text="@string/index_trend"/>
+            <TextView
+                android:id="@+id/index_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_15"
+                android:textSize="@dimen/text_12"
+                android:text="@string/index_more"/>
+        </RelativeLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/index_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        </LinearLayout>
+    </com.baoyz.widget.PullRefreshLayout>
 </LinearLayout>

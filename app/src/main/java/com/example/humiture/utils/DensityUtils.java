@@ -159,8 +159,8 @@ public class DensityUtils {
         Window window = dlg.getWindow();
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.gravity = Gravity.CENTER;
-        lp.width = (int) (getScreenHeight(ctx)* 0.5);
-        lp.height = (int) (getScreenWidth(ctx) * 0.8);
+        lp.width = (int) (getScreenWidth(ctx)* 0.8);
+        lp.height = (int) (getScreenHeight(ctx) * 0.3);
         dlg.getWindow().setAttributes(lp);
     }
 }

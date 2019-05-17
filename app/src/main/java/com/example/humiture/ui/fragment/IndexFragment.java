@@ -1,22 +1,23 @@
 package com.example.humiture.ui.fragment;
 
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.base.BaseFragment;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.mvp.contract.IndexContract;
 import com.example.humiture.mvp.presenter.IndexPresent;
 import com.example.humiture.ui.view.adapter.LoopShowAdapter;
 import com.example.humiture.utils.ItemDecorationUtils;
+import com.github.mikephil.charting.charts.LineChart;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import java.util.HashMap;
 
 import butterknife.BindView;
-import lecho.lib.hellocharts.view.LineChartView;
 
 /**
  * Created by 许格.
@@ -24,20 +25,23 @@ import lecho.lib.hellocharts.view.LineChartView;
  * A simple {@link Fragment} subclass.
  * 首页
  */
-public class IndexFragment extends BaseFragment<IndexPresent> {
+public class IndexFragment extends BaseFragment<IndexPresent> implements IndexContract.mView{
 
     @BindView(R2.id.picker)
     DiscreteScrollView picker;
     @BindView(R2.id.index_point)
     LinearLayout point;
     @BindView(R2.id.index_chart)
-    LineChartView chartView;
+    LineChart chartView;
     @BindView(R2.id.index_title)
     TextView title;
+    @BindView(R2.id.swipeRefreshLayout)
+    PullRefreshLayout layout;
 
     private LoopShowAdapter adapter;
     private int pagerNumber;
     private HashMap<String, Integer> map;
+    private String[] warehouse = new String[]{"一库房", "二库房", "三库房"};
 
     @Override
     protected int getLayoutId() {
@@ -68,12 +72,14 @@ public class IndexFragment extends BaseFragment<IndexPresent> {
     @Override
     protected void initData() {
         super.initData();
-        title.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPresent.warehouse();
-            }
+        title.setOnClickListener(v -> mPresent.warehouse(warehouse));
+        layout.setOnRefreshListener(()-> {
+            layout.postDelayed(() -> layout.setRefreshing(false),1000);
         });
     }
 
+    @Override
+    public void showWareHouse(String warehouse) {
+        title.setText(warehouse);
+    }
 }

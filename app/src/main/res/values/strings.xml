@@ -24,4 +24,9 @@
     <string name="index_colony">菌落</string>
     <string name="index_eco">ECO2</string>
     <string name="index_harmful">有害气体</string>
+    <string name="index_warehouse">库房选择</string>
+    
+    <!--通用-->
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
 </resources>
