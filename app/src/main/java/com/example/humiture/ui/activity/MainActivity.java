@@ -43,7 +43,6 @@ public class MainActivity extends BaseActivity {
         super.processBeforeInitView();
         fragments.add(new IndexFragment());
         fragments.add(new OperateFragment());
-        fragments.add(new OperateFragment());
         fragments.add(new StatisticFragment());
         fragments.add(new MineFragment());
     }

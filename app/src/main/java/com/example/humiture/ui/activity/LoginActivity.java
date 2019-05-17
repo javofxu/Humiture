@@ -20,7 +20,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-        tv_register = findViewById(R.id.tv_register);
+        tv_register = (TextView) findViewById(R.id.tv_register);
         tv_register.setOnClickListener(v -> skipAnotherActivity(RegisterActivity.class));
     }
 
