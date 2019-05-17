@@ -47,11 +47,22 @@ dependencies {
      */
     implementation 'com.jakewharton:butterknife:9.0.0-rc1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
-
+    /**
+     * 框架
+     */
     implementation 'com.github.javofxu:FrameWork:1.0.2'
+    /**
+     * 导航
+     */
     implementation 'com.github.forvv231:EasyNavigation:1.0.2'
+    /**
+     * 自定义输入框
+     */
     implementation 'com.github.javofxu:CustomEditText:v2.0'
     implementation 'com.yarolegovich:discrete-scrollview:1.0.3'
+    /**
+     * 折线图和饼图
+     */
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.github.addappcn:android-pickers:1.0.3'
     //动态刷新
