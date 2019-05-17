@@ -11,6 +11,10 @@ import com.example.humiture.R;
 import com.example.humiture.mvp.contract.IndexContract;
 import com.example.humiture.ui.view.dialog.WarehouseDialog;
 import com.example.humiture.utils.DensityUtils;
+import com.example.humiture.utils.LineChartUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.addapp.pickers.common.LineConfig;
 import cn.addapp.pickers.picker.SinglePicker;
@@ -53,12 +57,11 @@ public class IndexPresent extends RxPresenter<IndexContract.mView> implements In
     }
 
     @Override
-    public void warehouse(String[] mList) {
-        picker = new SinglePicker<>((Activity) mContext,mList);
+    public void designation(List<String> name, int number) {
+        picker = new SinglePicker<>((Activity) mContext,name);
         picker.setCanLoop(false);//不禁用循环
         picker.setTopBackgroundColor(0xFFEEEEEE);
         picker.setTopHeight(40);
-        picker.setTitleText("请选择库房");
         picker.setTitleTextColor(0xFF000000);
         picker.setTitleTextSize(16);
         picker.setCancelTextColor(0xFF999999);
@@ -74,8 +77,25 @@ public class IndexPresent extends RxPresenter<IndexContract.mView> implements In
         picker.setLineConfig(config);
         picker.setItemWidth(DensityUtils.getScreenWidth(mContext)*5/10);
         picker.setBackgroundColor(0xFFFFFFFF);
-        picker.setSelectedIndex(3);
-        picker.setOnItemPickListener((index, item) -> mView.showWareHouse(item));
+        picker.setSelectedIndex(number);
+        if (number == 8){
+            picker.setTitleText("请选择数据类型");
+        }else {
+            picker.setTitleText("请选择库房");
+        }
+        picker.setOnItemPickListener((index, item) -> {
+            if (number == 8){
+                mView.showDataType(index, item);
+            }else {
+                mView.showWareHouse(item);
+            }
+        });
         picker.show();
+    }
+
+    @Override
+    public void showLineChart(LineChartUtils manager, ArrayList<Float> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int typeColor) {
+        manager.showLineChart(xValues, toadyValues, yesterdayValues, typeColor);
+        manager.setYAxis(60, 10, 6);
     }
 }

@@ -20,4 +20,6 @@
     <color name="index_colony">#9abb00</color>
     <color name="index_eco">#00cbff</color>
     <color name="index_harmful">#c132e0</color>
+
+    <color name="yesterday_line">#FFA911</color>
 </resources>
