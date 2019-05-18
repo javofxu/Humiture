@@ -9,9 +9,8 @@ import android.widget.LinearLayout;
 import com.example.base.rx.RxPresenter;
 import com.example.humiture.R;
 import com.example.humiture.mvp.contract.IndexContract;
-import com.example.humiture.ui.view.dialog.WarehouseDialog;
 import com.example.humiture.utils.DensityUtils;
-import com.example.humiture.utils.LineChartUtils;
+import com.example.humiture.utils.LineChartManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,8 +93,8 @@ public class IndexPresent extends RxPresenter<IndexContract.mView> implements In
     }
 
     @Override
-    public void showLineChart(LineChartUtils manager, ArrayList<Float> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int typeColor) {
-        manager.showLineChart(xValues, toadyValues, yesterdayValues, typeColor);
+    public void showLineChart(LineChartManager manager, ArrayList<Float> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int typeColor) {
+        manager.showLineChart(xValues, toadyValues, yesterdayValues, typeColor,false);
         manager.setYAxis(60, 10, 6);
     }
 }

@@ -1,9 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/index_title"
     tools:context=".ui.activity.EnvironmentActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base"/>
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_50"
+        android:background="@color/index_title">
+        <TextView
+            android:id="@+id/en_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/text_18"
+            android:textColor="@color/white"
+            android:text="2019-05-18"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/en_time"
+            app:srcCompat="@drawable/index_title_down"/>
+        <ImageView
+            android:id="@+id/en_back"
+            android:layout_width="@dimen/margin_35"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_chevron_left"/>
+    </RelativeLayout>
+
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/en_pull"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refreshType="water_drop">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.design.widget.TabLayout
+                android:id="@+id/en_tab"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_35"
+                app:tabBackground="@color/index_title"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorHeight="2dp"
+                app:tabGravity="center"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextAppearance="@style/tabLayout"
+                app:tabTextColor="@color/white">
+            </android.support.design.widget.TabLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/en_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+            </android.support.v4.view.ViewPager>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_15">
+                <com.gauravk.bubblenavigation.BubbleNavigationLinearView
+                    android:id="@+id/top_navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/base"
+                    android:layout_marginRight="@dimen/base"
+                    android:background="@drawable/dialog_warehouse_bg"
+                    android:elevation="4dp"
+                    android:padding="12dp"
+                    app:bnc_mode="spread"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.gauravk.bubblenavigation.BubbleToggleView
+                        android:id="@+id/c_item_today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bt_active="true"
+                        app:bt_colorActive="@color/today_active"
+                        app:bt_colorInactive="@color/today"
+                        app:bt_icon="@mipmap/trend_today"
+                        app:bt_shape="@drawable/trend_today"
+                        app:bt_title="@string/data_today"
+                        app:bt_padding="@dimen/margin_10"
+                        app:bt_titlePadding="@dimen/margin_05" />
+
+                    <com.gauravk.bubblenavigation.BubbleToggleView
+                        android:id="@+id/c_item_yesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bt_active="true"
+                        app:bt_colorActive="@color/yesterday_active"
+                        app:bt_colorInactive="@color/yesterday"
+                        app:bt_icon="@mipmap/trend_yesterday"
+                        app:bt_shape="@drawable/trend_yesterday"
+                        app:bt_title="@string/data_yesterday"
+                        app:bt_padding="@dimen/margin_10"
+                        app:bt_titlePadding="@dimen/margin_05" />
+
+                </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/margin_50"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+                </LinearLayout>
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/en_data_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/top_navigation"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </com.baoyz.widget.PullRefreshLayout>
+</LinearLayout>

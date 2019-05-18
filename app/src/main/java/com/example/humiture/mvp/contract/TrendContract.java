@@ -1,7 +1,5 @@
 package com.example.humiture.mvp.contract;
 
-import android.widget.LinearLayout;
-
 import com.example.base.BaseView;
 import com.example.humiture.utils.LineChartManager;
 
@@ -13,40 +11,17 @@ import java.util.List;
  * Date on 2019/5/16.
  * dec:
  */
-public interface IndexContract {
+public interface TrendContract {
 
     interface model{
 
     }
 
     interface mView extends BaseView{
-        /**
-         * 库房显示
-         * @param warehouse 库房名称
-         */
-        void showWareHouse(String warehouse);
 
-        /**
-         * 数据类型显示
-         * @param title 如温度/湿度
-         */
-        void showDataType(int index, String title);
     }
 
     interface present{
-        /**
-         * 动态添加指示器
-         * @param layout
-         * @param position
-         */
-        void drawPoint(LinearLayout layout, int pagerNumber, int position);
-
-        /**
-         * 库房选择
-         * @param name 库房列表
-         */
-        void designation(List<String> name, int number);
-
         /**
          * 动态显示曲线
          * @param manager 初始化曲线

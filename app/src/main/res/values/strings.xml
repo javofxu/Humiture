@@ -29,4 +29,6 @@
     <!--通用-->
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
+    <string name="data_yesterday">昨日数据</string>
+    <string name="data_today">今日数据</string>
 </resources>

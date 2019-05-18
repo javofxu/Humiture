@@ -1,6 +1,5 @@
 package com.example.humiture.ui.fragment;
 
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -13,15 +12,11 @@ import com.example.humiture.R2;
 import com.example.humiture.mvp.contract.IndexContract;
 import com.example.humiture.mvp.presenter.IndexPresent;
 import com.example.humiture.ui.activity.EnvironmentActivity;
-import com.example.humiture.ui.activity.LoginActivity;
 import com.example.humiture.ui.view.adapter.LoopShowAdapter;
 import com.example.humiture.utils.ItemDecorationUtils;
-import com.example.humiture.utils.LineChartUtils;
+import com.example.humiture.utils.LineChartManager;
 import com.example.humiture.utils.helper.DataTypeHelper;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import java.util.ArrayList;
@@ -53,7 +48,7 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     TextView chart_title;
 
     private LoopShowAdapter adapter;
-    private LineChartUtils chartUtils;
+    private LineChartManager mChartManager;
     private int pagerNumber;
 
     private HashMap<String, Integer> map;
@@ -75,7 +70,7 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     @Override
     protected void initView() {
         super.initView();
-        chartUtils = new LineChartUtils(mContext, chartView);
+        mChartManager = new LineChartManager(mContext, chartView);
         pagerNumber = 4;
         map = new HashMap<>();
         map.put(ItemDecorationUtils.LEFT_DECORATION,20);//右间距
@@ -105,7 +100,7 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
             today.add((float) (Math.random() * 50));
             yesterday.add((float) (Math.random() * 50));
         }
-        mPresent.showLineChart(chartUtils,xValues,today,yesterday,R.color.index_colony);
+        mPresent.showLineChart(mChartManager,xValues,today,yesterday,R.color.index_colony);
     }
 
     void showChart(int color){
@@ -121,7 +116,7 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
             today.add((float) (Math.random() * 50));
             yesterday.add((float) (Math.random() * 50));
         }
-        mPresent.showLineChart(chartUtils, xValues, today, yesterday, color);
+        mPresent.showLineChart(mChartManager, xValues, today, yesterday, color);
     }
 
     @OnClick({R2.id.index_title, R2.id.index_chart_chose, R2.id.index_more})

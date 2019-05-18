@@ -23,14 +23,14 @@ import java.util.List;
  * Date on 2019/5/17.
  * dec:
  */
-public class LineChartUtils {
+public class LineChartManager {
         private Context mContext;
         private LineChart lineChart;
         private YAxis leftAxis;   //左边Y轴
         private YAxis rightAxis;  //右边Y轴
         private XAxis xAxis;      //X轴
 
-        public LineChartUtils(Context context,LineChart mLineChart) {
+        public LineChartManager(Context context, LineChart mLineChart) {
             this.mContext = context;
             this.lineChart = mLineChart;
             leftAxis = lineChart.getAxisLeft();
@@ -42,7 +42,7 @@ public class LineChartUtils {
         /**
          * 初始化LineChart
          */
-        private void initLineChart() {
+        private void initLineChart(boolean iswhite) {
             lineChart.setDrawGridBackground(false);
             //显示边界
             lineChart.setDrawBorders(false);
@@ -72,12 +72,19 @@ public class LineChartUtils {
             leftAxis.setAxisMinimum(0f);
             rightAxis.setAxisMinimum(0f);
             xAxis.setDrawGridLines(false);
-            xAxis.setDrawAxisLine(false);
             leftAxis.setDrawAxisLine(false);
             rightAxis.setDrawAxisLine(false);
-            leftAxis.enableGridDashedLine(20f,20f,0f);
+            leftAxis.enableGridDashedLine(10f,10f,0f);
+            if (iswhite) setColor(legend);
         }
 
+        private void setColor(Legend legend){
+            xAxis.setTextColor(0xFFFFFFFF);
+            leftAxis.setTextColor(0xFFFFFFFF);
+            leftAxis.setGridColor(0xFFFFFFFF);
+            legend.setTextColor(0xFFFFFFFF);
+
+        }
         /**
          * 初始化曲线 每一个LineDataSet代表一条线
          * @param lineDataSet
@@ -113,7 +120,7 @@ public class LineChartUtils {
          * @param color
          */
         public void showLineChart(List<Float> xAxisValues, List<Float> yAxisValues, String label, int color) {
-            initLineChart();
+            initLineChart(false);
             ArrayList<Entry> entries = new ArrayList<>();
             for (int i = 0; i < xAxisValues.size(); i++) {
                 entries.add(new Entry(xAxisValues.get(i), yAxisValues.get(i)));
@@ -131,14 +138,13 @@ public class LineChartUtils {
 
         /**
          * 展示线性图(多条)
-         *
          * @param xAxisValues
          * @param toadyValues
          * @param yesterdayValues 多条曲线Y轴数据集合的集合
          * @param colours
          */
-        public void showLineChart(List<Float> xAxisValues, List<Float> toadyValues, List<Float> yesterdayValues,int colours) {
-            initLineChart();
+        public void showLineChart(List<Float> xAxisValues, List<Float> toadyValues, List<Float> yesterdayValues,int colours,boolean isWhite) {
+            initLineChart(isWhite);
             //设置Y轴数据
             List<List<Float>> yValues = new ArrayList<>();
             yValues.add(toadyValues);
@@ -162,7 +168,6 @@ public class LineChartUtils {
                     entries.add(new Entry(xAxisValues.get(j), yValues.get(i).get(j)));
                 }
                 LineDataSet lineDataSet = new LineDataSet(entries, names.get(i));
-
                 initLineDataSet(lineDataSet, colors.get(i), false);
                 dataSets.add(lineDataSet);
             }
