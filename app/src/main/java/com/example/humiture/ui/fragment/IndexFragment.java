@@ -12,6 +12,7 @@ import com.example.humiture.R2;
 import com.example.humiture.mvp.contract.IndexContract;
 import com.example.humiture.mvp.presenter.IndexPresent;
 import com.example.humiture.ui.activity.EnvironmentActivity;
+import com.example.humiture.ui.activity.NewsActivity;
 import com.example.humiture.ui.view.adapter.LoopShowAdapter;
 import com.example.humiture.utils.ItemDecorationUtils;
 import com.example.humiture.utils.LineChartManager;
@@ -43,7 +44,7 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     @BindView(R2.id.index_title)
     TextView title;
     @BindView(R2.id.swipeRefreshLayout)
-    PullRefreshLayout layout;
+    PullRefreshLayout mLayout;
     @BindView(R2.id.index_chart_title)
     TextView chart_title;
 
@@ -86,7 +87,7 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     @Override
     protected void initData() {
         super.initData();
-        layout.setOnRefreshListener(()-> layout.postDelayed(() -> layout.setRefreshing(false),1000));
+        mLayout.setOnRefreshListener(()-> mLayout.postDelayed(() -> mLayout.setRefreshing(false),1000));
         //设置X轴数据
         xValues = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
@@ -119,17 +120,20 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
         mPresent.showLineChart(mChartManager, xValues, today, yesterday, color);
     }
 
-    @OnClick({R2.id.index_title, R2.id.index_chart_chose, R2.id.index_more})
+    @OnClick({R2.id.index_title, R2.id.index_chart_chose, R2.id.index_more ,R2.id.index_news})
     void onClock(View v){
         switch (v.getId()){
             case R.id.index_title:
-                mPresent.designation(DataTypeHelper.getWarehouse(),DataTypeHelper.getWarehouse().size());
+                mPresent.designation(DataTypeHelper.getWarehouse(),2);
                 break;
             case R.id.index_chart_chose:
-                mPresent.designation(DataTypeHelper.getDataNames(),DataTypeHelper.getDataNames().size());
+                mPresent.designation(DataTypeHelper.getDataNames(),1);
                 break;
             case R.id.index_more:
                 skipAnotherActivity(EnvironmentActivity.class);
+                break;
+            case R.id.index_news:
+                skipAnotherActivity(NewsActivity.class);
                 break;
         }
     }

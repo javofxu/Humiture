@@ -44,8 +44,9 @@ public interface IndexContract {
         /**
          * 库房选择
          * @param name 库房列表
+         * @param type 1：数据类型选择 2：库房选择（因用同一个控件，用type来初始化）
          */
-        void designation(List<String> name, int number);
+        void designation(List<String> name, int type);
 
         /**
          * 动态显示曲线

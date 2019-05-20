@@ -26,9 +26,30 @@
     <string name="index_harmful">有害气体</string>
     <string name="index_warehouse">库房选择</string>
 
+    <!--操作-->
+    <string name="operate_temp">当前温度</string>
+    <string name="operate_hum">当前湿度</string>
+    <string name="operate_jun">当前菌落</string>
+    <string name="operate_state">正在加热</string>
+    <string name="operate_title">空调</string>
+    <string name="operate_number">设备序号</string>
+    <string name="operate_equipment">设备操控</string>
+    <string name="operate_hm">手动</string>
+    <string name="operate_sm">自动</string>
+    <string name="operate_refrigeration">制冷</string>
+    <string name="operate_heating">制热</string>
+    <string name="operate_ventilate">通风</string>
+    <string name="operate_stop">停止</string>
+
     <!--通用-->
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
     <string name="data_yesterday">昨日数据</string>
     <string name="data_today">今日数据</string>
+    <string name="dw_temp">℃</string>
+    <string name="dw_hum">%RH</string>
+    <string name="no_data">暂无数据</string>
+
+    <!--消息-->
+    <string name="news_title">我的消息</string>
 </resources>

@@ -13,33 +13,6 @@
         android:layout_height="@dimen/base"/>
 
     <!-- TODO: Update blank fragment layout -->
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_50"
-        android:background="@color/index_title">
-        <TextView
-            android:id="@+id/en_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/text_18"
-            android:textColor="@color/white"
-            android:text="2019-05-18"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/en_time"
-            app:srcCompat="@drawable/index_title_down"/>
-        <ImageView
-            android:id="@+id/en_back"
-            android:layout_width="@dimen/margin_35"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            app:srcCompat="@drawable/ic_chevron_left"/>
-    </RelativeLayout>
-
     <com.baoyz.widget.PullRefreshLayout
         android:id="@+id/en_pull"
         android:layout_width="match_parent"
@@ -49,6 +22,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_50"
+                android:background="@color/index_title">
+                <TextView
+                    android:id="@+id/en_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/text_18"
+                    android:textColor="@color/white"
+                    android:text="2019-05-18"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/en_time"
+                    app:srcCompat="@drawable/index_title_down"/>
+                <ImageView
+                    android:id="@+id/en_back"
+                    android:layout_width="@dimen/margin_35"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_chevron_left"/>
+            </RelativeLayout>
+
             <android.support.design.widget.TabLayout
                 android:id="@+id/en_tab"
                 android:layout_width="match_parent"
@@ -77,8 +76,8 @@
                     android:id="@+id/top_navigation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/base"
-                    android:layout_marginRight="@dimen/base"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
                     android:background="@drawable/dialog_warehouse_bg"
                     android:elevation="4dp"
                     android:padding="12dp"

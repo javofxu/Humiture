@@ -56,7 +56,7 @@ public class IndexPresent extends RxPresenter<IndexContract.mView> implements In
     }
 
     @Override
-    public void designation(List<String> name, int number) {
+    public void designation(List<String> name, int type) {
         picker = new SinglePicker<>((Activity) mContext,name);
         picker.setCanLoop(false);//不禁用循环
         picker.setTopBackgroundColor(0xFFEEEEEE);
@@ -76,14 +76,14 @@ public class IndexPresent extends RxPresenter<IndexContract.mView> implements In
         picker.setLineConfig(config);
         picker.setItemWidth(DensityUtils.getScreenWidth(mContext)*5/10);
         picker.setBackgroundColor(0xFFFFFFFF);
-        picker.setSelectedIndex(number);
-        if (number == 8){
+        picker.setSelectedIndex(name.size());
+        if (type == 1){
             picker.setTitleText("请选择数据类型");
-        }else {
+        }else if (type == 2){
             picker.setTitleText("请选择库房");
         }
         picker.setOnItemPickListener((index, item) -> {
-            if (number == 8){
+            if (name.size() == 8){
                 mView.showDataType(index, item);
             }else {
                 mView.showWareHouse(item);

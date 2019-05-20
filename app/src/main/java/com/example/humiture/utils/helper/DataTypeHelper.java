@@ -11,7 +11,10 @@ import java.util.List;
  * dec:保存数据类型的颜色和名字
  */
 public class DataTypeHelper {
-
+    /**
+     * 获取环境数据颜色
+     * @return
+     */
     public static List<Integer> getColors(){
         List<Integer> color = new ArrayList<>();
         color.add(R.color.index_tem);
@@ -25,6 +28,10 @@ public class DataTypeHelper {
         return color;
     }
 
+    /**
+     * 获取环境数据名称
+     * @return
+     */
     public static List<String> getDataNames(){
         List<String> name = new ArrayList<>();
         name.add("温度");
@@ -38,11 +45,30 @@ public class DataTypeHelper {
         return name;
     }
 
+    /**
+     * 获取库房列表
+     * @return
+     */
     public static List<String> getWarehouse(){
         List<String> warehouse = new ArrayList<>();
         warehouse.add("一库房");
         warehouse.add("二库房");
         warehouse.add("三库房");
         return warehouse;
+    }
+
+    /**
+     * 获取操作列表背景
+     * @return
+     */
+    public static List<Integer> getBackground(){
+        List<Integer> background = new ArrayList<>();
+        background.add(R.mipmap.oper_no1);
+        background.add(R.mipmap.oper_no6);
+        background.add(R.mipmap.oper_no4);
+        background.add(R.mipmap.oper_no5);
+        background.add(R.mipmap.oper_no2);
+        background.add(R.mipmap.oper_no7);
+        return background;
     }
 }
