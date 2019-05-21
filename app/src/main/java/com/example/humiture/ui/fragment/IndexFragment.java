@@ -1,6 +1,7 @@
 package com.example.humiture.ui.fragment;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -9,6 +10,8 @@ import com.baoyz.widget.PullRefreshLayout;
 import com.example.base.BaseFragment;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.data.RealTimeData;
+import com.example.humiture.data.TrendData;
 import com.example.humiture.mvp.contract.IndexContract;
 import com.example.humiture.mvp.presenter.IndexPresent;
 import com.example.humiture.ui.activity.EnvironmentActivity;
@@ -16,6 +19,7 @@ import com.example.humiture.ui.activity.NewsActivity;
 import com.example.humiture.ui.view.adapter.LoopShowAdapter;
 import com.example.humiture.utils.ItemDecorationUtils;
 import com.example.humiture.utils.LineChartManager;
+import com.example.humiture.utils.TimeUtils;
 import com.example.humiture.utils.helper.DataTypeHelper;
 import com.github.mikephil.charting.charts.LineChart;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
@@ -36,11 +40,11 @@ import butterknife.OnClick;
 public class IndexFragment extends BaseFragment<IndexPresent> implements IndexContract.mView{
 
     @BindView(R2.id.picker)
-    DiscreteScrollView picker;
+    DiscreteScrollView mScrollView;
     @BindView(R2.id.index_point)
     LinearLayout point;
     @BindView(R2.id.index_chart)
-    LineChart chartView;
+    LineChart mChartView;
     @BindView(R2.id.index_title)
     TextView title;
     @BindView(R2.id.swipeRefreshLayout)
@@ -53,9 +57,13 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     private int pagerNumber;
 
     private HashMap<String, Integer> map;
-    private ArrayList<Float> xValues;
-    private List<Float> today;
-    private List<Float> yesterday;
+    private ArrayList<Integer> xValues;
+    private List<Float> mToday;
+    private List<Float> mYesterday;
+    private int mStoreId;
+    private int mTypeColor;
+    private List<String> mWareHouseList;
+    private List<Integer> mStoreIdList;
 
     @Override
     protected int getLayoutId() {
@@ -71,60 +79,40 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     @Override
     protected void initView() {
         super.initView();
-        mChartManager = new LineChartManager(mContext, chartView);
+        mChartView.setNoDataText("暂无数据");
+        mChartManager = new LineChartManager(mContext, mChartView);
         pagerNumber = 4;
         map = new HashMap<>();
         map.put(ItemDecorationUtils.LEFT_DECORATION,20);//右间距
         map.put(ItemDecorationUtils.RIGHT_DECORATION,20);//右间距
         adapter = new LoopShowAdapter(mContext,pagerNumber);
-        picker.addItemDecoration(new ItemDecorationUtils(map));
-        picker.setAdapter(adapter);
-        picker.setCurrentItemChangeListener((viewHolder, adapterPosition) -> {
-            mPresent.drawPoint(point,pagerNumber,adapterPosition);
-        });
+        mScrollView.addItemDecoration(new ItemDecorationUtils(map));
+        mScrollView.setAdapter(adapter);
     }
 
     @Override
     protected void initData() {
         super.initData();
-        mLayout.setOnRefreshListener(()-> mLayout.postDelayed(() -> mLayout.setRefreshing(false),1000));
-        //设置X轴数据
-        xValues = new ArrayList<>();
-        for (int i = 0; i < 12; i++) {
-            xValues.add((float) i);
-        }
-        //设置Y轴数据
-        today = new ArrayList<>();
-        yesterday = new ArrayList<>();
-        //一条曲线模拟数据
-        for (int j = 0; j < 12; j++) {
-            today.add((float) (Math.random() * 50));
-            yesterday.add((float) (Math.random() * 50));
-        }
-        mPresent.showLineChart(mChartManager,xValues,today,yesterday,R.color.index_colony);
+        mPresent.getWareHouse();
+        mPresent.timingData(30000, mStoreId);
     }
 
-    void showChart(int color){
-        xValues = new ArrayList<>();
-        for (int i = 0; i < 12; i++) {
-            xValues.add((float) i);
-        }
-        //设置Y轴数据
-        today = new ArrayList<>();
-        yesterday = new ArrayList<>();
-        //一条曲线模拟数据
-        for (int j = 0; j < 12; j++) {
-            today.add((float) (Math.random() * 50));
-            yesterday.add((float) (Math.random() * 50));
-        }
-        mPresent.showLineChart(mChartManager, xValues, today, yesterday, color);
+    @Override
+    protected void initListener() {
+        super.initListener();
+        mLayout.setOnRefreshListener(()-> {
+            mPresent.getRealTimeData(mStoreId);
+            mLayout.postDelayed(() -> mLayout.setRefreshing(false),1000);
+        });
+        mScrollView.setCurrentItemChangeListener((viewHolder, adapterPosition) ->
+                mPresent.drawPoint(point,pagerNumber,adapterPosition));
     }
 
     @OnClick({R2.id.index_title, R2.id.index_chart_chose, R2.id.index_more ,R2.id.index_news})
     void onClock(View v){
         switch (v.getId()){
             case R.id.index_title:
-                mPresent.designation(DataTypeHelper.getWarehouse(),2);
+                mPresent.designation(mWareHouseList,2);
                 break;
             case R.id.index_chart_chose:
                 mPresent.designation(DataTypeHelper.getDataNames(),1);
@@ -139,14 +127,50 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     }
 
     @Override
-    public void showWareHouse(String warehouse) {
+    public void getWareHouse(List<Integer> storeId, List<String> warehouse) {
+        mStoreId = storeId.get(0);
+        mStoreIdList = storeId;
+        mWareHouseList = warehouse;
+        mPresent.getRealTimeData(mStoreId);
+        mPresent.getTrendData(TimeUtils.getNowDay(),TimeUtils.getYesterday(),DataTypeHelper.getDataTypes().get(0),mStoreId);
+    }
+
+    @Override
+    public void showWareHouse(int position,String warehouse) {
+        mStoreId = mStoreIdList.get(position);
         title.setText(warehouse);
+        mPresent.getRealTimeData(mStoreId);
+    }
+
+    @Override
+    public void updateRealTimeData(RealTimeData mData) {
+        adapter.getRealTime(mData);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showTrendData(List<TrendData.Data> today, List<TrendData.Data> yesterday) {
+        xValues = new ArrayList<>();
+        mToday = new ArrayList<>();
+        mYesterday = new ArrayList<>();
+        for (int i = 0; i < today.size(); i++) {
+            xValues.add(today.get(i).getTimeYMD());
+            mToday.add(today.get(i).getAvgDate());
+            mYesterday.add(yesterday.get(i).getAvgDate());
+        }
+        mPresent.showLineChart(mChartManager,xValues,mToday,mYesterday,mTypeColor);
     }
 
     @Override
     public void showDataType(int index, String title) {
         chart_title.setText(title);
-        showChart(DataTypeHelper.getColors().get(index));
+        mTypeColor = DataTypeHelper.getColors().get(index);
+        mPresent.getTrendData(TimeUtils.getNowDay(),TimeUtils.getYesterday(),DataTypeHelper.getDataTypes().get(index),mStoreId);
+    }
+
+    @Override
+    public void netWorkError() {
+        showToast(getResources().getString(R.string.network_error));
     }
 
 }

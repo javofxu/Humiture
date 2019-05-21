@@ -49,6 +49,7 @@
     <string name="dw_temp">℃</string>
     <string name="dw_hum">%RH</string>
     <string name="no_data">暂无数据</string>
+    <string name="network_error">网络异常！</string>
 
     <!--消息-->
     <string name="news_title">我的消息</string>

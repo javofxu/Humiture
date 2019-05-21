@@ -46,6 +46,23 @@ public class DataTypeHelper {
     }
 
     /**
+     * 获取环境数据字段名称
+     * @return
+     */
+    public static List<String> getDataTypes(){
+        List<String> name = new ArrayList<>();
+        name.add("temperature");
+        name.add("humidity");
+        name.add("pm2");
+        name.add("colony");
+        name.add("formaldehyde");
+        name.add("tvoc");
+        name.add("harmful");
+        name.add("eco2");
+        return name;
+    }
+
+    /**
      * 获取库房列表
      * @return
      */

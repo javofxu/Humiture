@@ -23,7 +23,12 @@ public class TrendPresent extends RxPresenter<TrendContract.mView> implements Tr
     }
 
     @Override
-    public void showLineChart(LineChartManager manager, ArrayList<Float> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int typeColor) {
+    public void getTrendData(String today, String yesterday, String type, int storeId) {
+
+    }
+
+    @Override
+    public void showLineChart(LineChartManager manager, ArrayList<Integer> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int typeColor) {
         manager.showLineChart(xValues, toadyValues, yesterdayValues, typeColor,true);
         manager.setYAxis(60, 10, 6);
     }

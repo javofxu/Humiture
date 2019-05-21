@@ -92,8 +92,44 @@ public class TimeUtils {
         }
     }
 
+    /**
+     * 获取当天时间
+     * @return
+     */
     public static String getNowDay(){
         String currentTime = getCurrentStringTime();
         return formatTime(currentTime, TimeUtils.DEFAULT_TIME_FORMAT, TimeUtils.DAY_TIME_FORMAT);
+    }
+
+    /**
+     * 获取前一天时间
+     * @return
+     */
+    public static String getYesterday(){
+        SimpleDateFormat sf = new SimpleDateFormat(DAY_TIME_FORMAT);
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE,-1);
+        String date = sf.format(calendar.getTime());
+        return date;
+    }
+
+    /**
+     * 获取选定时间的前一天
+     * @param date 选定的时间
+     * @return
+     */
+    public static String dataForYesterday(String date){
+        SimpleDateFormat sf = new SimpleDateFormat(DAY_TIME_FORMAT);
+        final long nd = 24 * 3600 * 1000;
+        String yesterday = null;
+        try {
+            Date mDate =sf.parse(date);
+            long time = mDate.getTime() - nd;
+            Date day = new Date(time);
+            yesterday = sf.format(day);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return yesterday;
     }
 }

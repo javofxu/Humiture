@@ -23,6 +23,15 @@ public interface TrendContract {
 
     interface present{
         /**
+         * 获取今日趋势
+         * @param today 今日时间
+         * @param yesterday 昨日数据
+         * @param type 数据类型
+         * @param storeId 当前库房ID
+         */
+        void getTrendData(String today, String yesterday, String type, int storeId);
+
+        /**
          * 动态显示曲线
          * @param manager 初始化曲线
          * @param xValues X轴数据
@@ -30,6 +39,6 @@ public interface TrendContract {
          * @param yesterdayValues 昨日数据
          * @param typeColor 数据类型颜色
          */
-        void showLineChart(LineChartManager manager, ArrayList<Float> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int typeColor);
+        void showLineChart(LineChartManager manager, ArrayList<Integer> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int typeColor);
     }
 }

@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="192dp"
                 app:showIndicator="false"
-                app:autoPlaying="true"
+                app:autoPlaying="false"
                 app:centerScale="1.2"
                 app:itemSpace="0"
                 app:moveSpeed="1">

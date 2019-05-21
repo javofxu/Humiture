@@ -25,7 +25,7 @@ public class TrendFragment extends BaseFragment<TrendPresent> {
     LineChart mLineChart;
 
     private LineChartManager mChartManager;
-    private ArrayList<Float> xValues;
+    private ArrayList<Integer> xValues;
     private List<Float> today;
     private List<Float> yesterday;
 
@@ -51,7 +51,7 @@ public class TrendFragment extends BaseFragment<TrendPresent> {
     void showChart(int color){
         xValues = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
-            xValues.add((float) i);
+            xValues.add(i);
         }
         //设置Y轴数据
         today = new ArrayList<>();

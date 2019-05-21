@@ -143,7 +143,7 @@ public class LineChartManager {
          * @param yesterdayValues 多条曲线Y轴数据集合的集合
          * @param colours
          */
-        public void showLineChart(List<Float> xAxisValues, List<Float> toadyValues, List<Float> yesterdayValues,int colours,boolean isWhite) {
+        public void showLineChart(List<Integer> xAxisValues, List<Float> toadyValues, List<Float> yesterdayValues,int colours,boolean isWhite) {
             initLineChart(isWhite);
             //设置Y轴数据
             List<List<Float>> yValues = new ArrayList<>();
