@@ -67,4 +67,9 @@ dependencies {
     implementation 'com.github.addappcn:android-pickers:1.0.3'
     //动态刷新
     implementation 'com.baoyz.pullrefreshlayout:library:1.2.0'
+    /**
+     * 时间选择
+     */
+    implementation 'com.github.addappcn:android-pickers:1.0.0'
+    implementation 'com.contrarywind:Android-PickerView:4.1.8'
 }

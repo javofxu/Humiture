@@ -1,47 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/index_title"
+    android:orientation="vertical"
     tools:context=".ui.fragment.StatisticFragment">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base"/>
+
     <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/stat_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:refreshType="water_drop">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="false">
+
         <LinearLayout
-            android:layout_marginTop="@dimen/base"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/stat_rlt_top"
-                android:layout_width="match_parent"
-                android:layout_height="48dp">
+            <include layout="@layout/title_head"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="库房选择"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@color/stat_choose_time">
-
-            </RelativeLayout>
-            <!--<ScrollView
-                android:id="@+id/scrollView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true">-->
+            <include layout="@layout/choose_date"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -115,13 +105,10 @@
                 android:layout_height="260dp"
                 android:layout_gravity="center"/>
 
-            <!--  </ScrollView>-->
-
 
         </LinearLayout>
+        </ScrollView>
 
     </com.baoyz.widget.PullRefreshLayout>
-
-
 
 </LinearLayout>

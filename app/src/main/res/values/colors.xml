@@ -22,4 +22,8 @@
     <!--统计首页-->
     <color name="stat_choose_time">#ffd4d4d4</color>
     <color name="state_radarview">#ff00c0e0</color>
+    <!--统计 时间选择-->
+    <color name="stat_date_year">#ff333333</color>
+    <color name="stat_date_edit">#ff108ee9</color>
+    <color name="stat_date_black">#FF000000</color>
 </resources>

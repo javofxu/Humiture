@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--统计-->
+    <!--时间选择-->
+    <dimen name="date_txt_size">13sp</dimen>
+</resources>

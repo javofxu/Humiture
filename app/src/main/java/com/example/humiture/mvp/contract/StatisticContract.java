@@ -18,7 +18,8 @@ public interface StatisticContract {
     }
 
     interface mView extends BaseView{
-
+        //时间选择按钮的样式
+        void initTextView();
     }
 
     /**
