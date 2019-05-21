@@ -39,5 +39,13 @@
 
     <!--统计报警-->
     <string name="alarm_title">报警统计</string>
+    <string name="alarm_pm_title">PM2.5</string>
+    <string name="alarm_pm_value">30μg/m³</string>
+    <string name="alarm_pm_state">超高</string>
+    <string name="alarm_pm_day">今天</string>
+    <string name="alarm_pm_time">11:47</string>
+    <string name="alarm_search">请输入关键字</string>
+    <string name="alarm_search_sort">分类</string>
+    <string name="alarm_search_search">搜索</string>
 
 </resources>

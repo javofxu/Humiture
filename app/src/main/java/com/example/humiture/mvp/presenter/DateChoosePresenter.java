@@ -116,22 +116,6 @@ public class DateChoosePresenter extends RxPresenter<DateChooseContract.mView> i
                 textView.setText(year + "-" + month + "-" + day);
             }
         });
-        picker.setOnWheelListener(new DatePicker.OnWheelListener() {
-            @Override
-            public void onYearWheeled(int index, String year) {
-                picker.setTitleText(year + "-" + picker.getSelectedMonth() + "-" + picker.getSelectedDay());
-            }
-
-            @Override
-            public void onMonthWheeled(int index, String month) {
-                picker.setTitleText(picker.getSelectedYear() + "-" + month + "-" + picker.getSelectedDay());
-            }
-
-            @Override
-            public void onDayWheeled(int index, String day) {
-                picker.setTitleText(picker.getSelectedYear() + "-" + picker.getSelectedMonth() + "-" + day);
-            }
-        });
         picker.show();
     }
 }

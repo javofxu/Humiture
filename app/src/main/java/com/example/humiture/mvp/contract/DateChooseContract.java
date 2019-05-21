@@ -1,14 +1,9 @@
 package com.example.humiture.mvp.contract;
 
-import android.app.Activity;
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
 
 import com.example.base.BaseView;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 /**

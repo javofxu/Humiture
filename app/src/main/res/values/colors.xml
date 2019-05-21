@@ -26,4 +26,9 @@
     <color name="stat_date_year">#ff333333</color>
     <color name="stat_date_edit">#ff108ee9</color>
     <color name="stat_date_black">#FF000000</color>
+    <!--报警统计-->
+    <color name="alarm_view_color">#ffc6c8c9</color>
+    <color name="alarm_time_color">#ff999999</color>
+    <color name="alarm_pm_color">#ff333333</color>
+    <color name="alarm_sort_color">#ff6a6a6a</color>
 </resources>

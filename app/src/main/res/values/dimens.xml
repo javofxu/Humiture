@@ -3,4 +3,7 @@
     <!--统计-->
     <!--时间选择-->
     <dimen name="date_txt_size">13sp</dimen>
+    <dimen name="alarm_time_size">12sp</dimen>
+    <dimen name="alarm_pm_size">16sp</dimen>
+    <dimen name="txt_size_14">14sp</dimen>
 </resources>

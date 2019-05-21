@@ -18,6 +18,7 @@ import com.example.humiture.mvp.contract.StatisticContract;
 import com.example.humiture.mvp.presenter.IndexPresent;
 import com.example.humiture.mvp.presenter.StatisticPresent;
 import com.example.humiture.ui.activity.DateChooseActivity;
+import com.example.humiture.ui.activity.StatAlarmActivity;
 import com.example.humiture.ui.view.RadarData;
 import com.example.humiture.ui.view.RadarView;
 import com.example.humiture.utils.ToastUtils;
@@ -82,12 +83,15 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
         });
     }
 
-    @OnClick({R.id.stat_date})
+    @OnClick({R2.id.stat_date,R2.id.stat_more})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.stat_date:
                 //时间选择
                 skipAnotherActivity(DateChooseActivity.class);
+                break;
+            case R.id.stat_more:
+                skipAnotherActivity(StatAlarmActivity.class);
                 break;
         }
     }
