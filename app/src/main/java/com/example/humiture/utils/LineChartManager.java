@@ -3,6 +3,8 @@ package com.example.humiture.utils;
 import android.content.Context;
 
 import com.example.humiture.R;
+import com.example.humiture.ui.view.LineChartMarker;
+import com.example.humiture.utils.helper.DataTypeHelper;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
@@ -33,6 +35,7 @@ public class LineChartManager {
         public LineChartManager(Context context, LineChart mLineChart) {
             this.mContext = context;
             this.lineChart = mLineChart;
+            lineChart.setNoDataText("暂无数据");
             leftAxis = lineChart.getAxisLeft();
             rightAxis = lineChart.getAxisRight();
             rightAxis.setDrawLabels(false);//右侧Y轴数据不显示
@@ -42,7 +45,8 @@ public class LineChartManager {
         /**
          * 初始化LineChart
          */
-        private void initLineChart(boolean iswhite) {
+        private void initLineChart(int type, boolean isWhite) {
+
             lineChart.setDrawGridBackground(false);
             //显示边界
             lineChart.setDrawBorders(false);
@@ -66,7 +70,8 @@ public class LineChartManager {
             //XY轴的设置
             //X轴设置显示位置在底部
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-            xAxis.setAxisMinimum(0f);
+            xAxis.setAvoidFirstLastClipping(false);//图表将避免第一个和最后一个标签条目被减掉在图表或屏幕的边缘
+            //xAxis.setAxisMinimum(0f);
             xAxis.setGranularity(1f);
             //保证Y轴从0开始，不然会上移一点
             leftAxis.setAxisMinimum(0f);
@@ -75,7 +80,10 @@ public class LineChartManager {
             leftAxis.setDrawAxisLine(false);
             rightAxis.setDrawAxisLine(false);
             leftAxis.enableGridDashedLine(10f,10f,0f);
-            if (iswhite) setColor(legend);
+            LineChartMarker marker = new LineChartMarker(mContext,xAxis.getValueFormatter(),type);
+            lineChart.setMarker(marker);
+            lineChart.zoomToCenter(2f,2f);
+            if (isWhite) setColor(legend);
         }
 
         private void setColor(Legend legend){
@@ -120,7 +128,7 @@ public class LineChartManager {
          * @param color
          */
         public void showLineChart(List<Float> xAxisValues, List<Float> yAxisValues, String label, int color) {
-            initLineChart(false);
+            initLineChart(1,false);
             ArrayList<Entry> entries = new ArrayList<>();
             for (int i = 0; i < xAxisValues.size(); i++) {
                 entries.add(new Entry(xAxisValues.get(i), yAxisValues.get(i)));
@@ -141,10 +149,10 @@ public class LineChartManager {
          * @param xAxisValues
          * @param toadyValues
          * @param yesterdayValues 多条曲线Y轴数据集合的集合
-         * @param colours
+         * @param type 数据类型
          */
-        public void showLineChart(List<Integer> xAxisValues, List<Float> toadyValues, List<Float> yesterdayValues,int colours,boolean isWhite) {
-            initLineChart(isWhite);
+        public void showLineChart(List<Integer> xAxisValues, List<Float> toadyValues, List<Float> yesterdayValues,int type,boolean isWhite) {
+            initLineChart(type, isWhite);
             //设置Y轴数据
             List<List<Float>> yValues = new ArrayList<>();
             yValues.add(toadyValues);
@@ -155,7 +163,7 @@ public class LineChartManager {
             names.add("昨日");
             //添加曲线颜色(昨日颜色不变）
             List<Integer> colors = new ArrayList<>();
-            colors.add(mContext.getResources().getColor(colours));
+            colors.add(mContext.getResources().getColor(DataTypeHelper.getColors().get(type)));
             colors.add(mContext.getResources().getColor(R.color.yesterday_line));
 
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
@@ -172,7 +180,7 @@ public class LineChartManager {
                 dataSets.add(lineDataSet);
             }
             LineData data = new LineData(dataSets);
-            xAxis.setLabelCount(xAxisValues.size(), true);
+            xAxis.setLabelCount(8, true);
             lineChart.setData(data);
         }
 

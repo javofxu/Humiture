@@ -63,6 +63,19 @@ public class DataTypeHelper {
     }
 
     /**
+     * 获取环境数据单位
+     * @return
+     */
+    public static List<String> getDataUnit(){
+        List<String> unit = new ArrayList<>();
+        unit.add("℃");
+        unit.add("%RH");
+        unit.add("ug/m3");
+        unit.add("mg/m3");
+        return unit;
+    }
+
+    /**
      * 获取库房列表
      * @return
      */

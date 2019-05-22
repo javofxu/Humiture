@@ -20,16 +20,22 @@ import java.util.List;
 public class TrendAdapter extends FragmentPagerAdapter {
 
     private List<String> titles = DataTypeHelper.getDataNames();
+    private String mTime;
 
     public TrendAdapter(FragmentManager fm) {
         super(fm);
+    }
+
+    public void setDateTime(String time){
+        this.mTime = time;
     }
 
     @Override
     public Fragment getItem(int i) {
         Fragment fragment = new TrendFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("trend",titles.get(i));
+        bundle.putString("type",DataTypeHelper.getDataTypes().get(i));
+        bundle.putString("time", mTime);
         bundle.putInt("number",i);
         fragment.setArguments(bundle);
         return fragment;

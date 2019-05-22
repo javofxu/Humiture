@@ -1,13 +1,18 @@
 package com.example.humiture.ui.fragment;
 
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import com.example.base.BaseFragment;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.data.TrendData;
+import com.example.humiture.mvp.contract.TrendContract;
 import com.example.humiture.mvp.presenter.TrendPresent;
 import com.example.humiture.utils.LineChartManager;
+import com.example.humiture.utils.TimeUtils;
 import com.example.humiture.utils.helper.DataTypeHelper;
 import com.github.mikephil.charting.charts.LineChart;
 
@@ -19,15 +24,28 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TrendFragment extends BaseFragment<TrendPresent> {
+public class TrendFragment extends BaseFragment<TrendPresent> implements TrendContract.mView{
 
     @BindView(R2.id.trend_chart)
     LineChart mLineChart;
 
     private LineChartManager mChartManager;
     private ArrayList<Integer> xValues;
-    private List<Float> today;
-    private List<Float> yesterday;
+    private List<Float> mToday;
+    private List<Float> mYesterday;
+
+    private String dateTime;
+    private String mType;
+    private int mNumber;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        dateTime = getArguments().getString("time");
+        mType = getArguments().getString("type");
+        mNumber = getArguments().getInt("number");
+        Log.i(TAG, "onAttach: "+dateTime+mType+mNumber);
+    }
 
     @Override
     protected int getLayoutId() {
@@ -44,23 +62,24 @@ public class TrendFragment extends BaseFragment<TrendPresent> {
     protected void initView() {
         super.initView();
         mChartManager = new LineChartManager(mContext, mLineChart);
-        int number = getArguments().getInt("number");
-        showChart(DataTypeHelper.getColors().get(number));
+        mPresent.getTrendData(dateTime, TimeUtils.dataForYesterday(dateTime), mType, mNumber);
     }
 
-    void showChart(int color){
+    @Override
+    public void showTrendData(List<TrendData.Data> today, List<TrendData.Data> yesterday) {
         xValues = new ArrayList<>();
-        for (int i = 0; i < 12; i++) {
-            xValues.add(i);
+        mToday = new ArrayList<>();
+        mYesterday = new ArrayList<>();
+        for (int i = 0; i < today.size(); i++) {
+            xValues.add(today.get(i).getTimeYMD());
+            mToday.add(today.get(i).getAvgDate());
+            mYesterday.add(yesterday.get(i).getAvgDate());
         }
-        //设置Y轴数据
-        today = new ArrayList<>();
-        yesterday = new ArrayList<>();
-        //一条曲线模拟数据
-        for (int j = 0; j < 12; j++) {
-            today.add((float) (Math.random() * 50));
-            yesterday.add((float) (Math.random() * 50));
-        }
-        mPresent.showLineChart(mChartManager, xValues, today, yesterday, color);
+        mPresent.showLineChart(mChartManager,xValues,mToday,mYesterday,mNumber);
+    }
+
+    @Override
+    public void netWorkError() {
+        showToast(getResources().getString(R.string.network_error));
     }
 }

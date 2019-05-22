@@ -1,6 +1,7 @@
 package com.example.humiture.mvp.contract;
 
 import com.example.base.BaseView;
+import com.example.humiture.data.TrendData;
 import com.example.humiture.utils.LineChartManager;
 
 import java.util.ArrayList;
@@ -18,7 +19,16 @@ public interface TrendContract {
     }
 
     interface mView extends BaseView{
-
+        /**
+         * 获得今日数据和昨日数据用于画图
+         * @param today 今日趋势
+         * @param yesterday 昨日趋势
+         */
+        void showTrendData(List<TrendData.Data> today, List<TrendData.Data> yesterday);
+        /**
+         * 网络异常
+         */
+        void netWorkError();
     }
 
     interface present{

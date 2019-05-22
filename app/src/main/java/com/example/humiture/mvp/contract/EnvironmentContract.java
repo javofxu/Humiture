@@ -17,10 +17,16 @@ public interface EnvironmentContract {
 
     interface mView extends BaseView{
 
+        /**
+         * 显示所选时间
+         * @param date
+         */
         void showDate(String date);
+
     }
 
     interface present{
+
 
         void choseDate(Activity mActivity);
     }

@@ -55,13 +55,13 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     private LoopShowAdapter adapter;
     private LineChartManager mChartManager;
     private int pagerNumber;
+    private int mStoreId;
+    private int mType;
 
     private HashMap<String, Integer> map;
     private ArrayList<Integer> xValues;
     private List<Float> mToday;
     private List<Float> mYesterday;
-    private int mStoreId;
-    private int mTypeColor;
     private List<String> mWareHouseList;
     private List<Integer> mStoreIdList;
 
@@ -79,7 +79,6 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     @Override
     protected void initView() {
         super.initView();
-        mChartView.setNoDataText("暂无数据");
         mChartManager = new LineChartManager(mContext, mChartView);
         pagerNumber = 4;
         map = new HashMap<>();
@@ -112,7 +111,11 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     void onClock(View v){
         switch (v.getId()){
             case R.id.index_title:
-                mPresent.designation(mWareHouseList,2);
+                if (mWareHouseList!=null&&mWareHouseList.size()>0) {
+                    mPresent.designation(mWareHouseList, 2);
+                }else {
+                    mPresent.designation(DataTypeHelper.getWarehouse(),2);
+                }
                 break;
             case R.id.index_chart_chose:
                 mPresent.designation(DataTypeHelper.getDataNames(),1);
@@ -158,13 +161,13 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
             mToday.add(today.get(i).getAvgDate());
             mYesterday.add(yesterday.get(i).getAvgDate());
         }
-        mPresent.showLineChart(mChartManager,xValues,mToday,mYesterday,mTypeColor);
+        mPresent.showLineChart(mChartManager,xValues,mToday,mYesterday,mType);
     }
 
     @Override
     public void showDataType(int index, String title) {
         chart_title.setText(title);
-        mTypeColor = DataTypeHelper.getColors().get(index);
+        mType = index;
         mPresent.getTrendData(TimeUtils.getNowDay(),TimeUtils.getYesterday(),DataTypeHelper.getDataTypes().get(index),mStoreId);
     }
 

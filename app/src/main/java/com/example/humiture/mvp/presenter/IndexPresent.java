@@ -148,8 +148,8 @@ public class IndexPresent extends RxPresenter<IndexContract.mView> implements In
     }
 
     @Override
-    public void showLineChart(LineChartManager manager, ArrayList<Integer> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int typeColor) {
-        manager.showLineChart(xValues, toadyValues, yesterdayValues, typeColor,false);
+    public void showLineChart(LineChartManager manager, ArrayList<Integer> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int type) {
+        manager.showLineChart(xValues, toadyValues, yesterdayValues, type,false);
         manager.setYAxis(60, 10, 6);
     }
 }

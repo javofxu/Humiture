@@ -59,6 +59,7 @@ public class EnvironmentActivity extends BaseActivity<EnvironmentPresent> implem
         mTime.setText(TimeUtils.getNowDay());
         title = DataTypeHelper.getDataNames();
         mAdapter = new TrendAdapter(getSupportFragmentManager());
+        mAdapter.setDateTime(TimeUtils.getNowDay());
         mDetailsAdapter = new DetailsAdapter(getSupportFragmentManager());
         for (int i = 0; i < title.size(); i++) {
             mTabLayout.addTab(mTabLayout.newTab().setText(title.get(i)));
@@ -106,5 +107,6 @@ public class EnvironmentActivity extends BaseActivity<EnvironmentPresent> implem
     @Override
     public void showDate(String date) {
         mTime.setText(date);
+        mAdapter.setDateTime(date);
     }
 }
