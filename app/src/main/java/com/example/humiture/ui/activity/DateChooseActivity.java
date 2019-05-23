@@ -16,6 +16,7 @@ import com.example.humiture.R2;
 import com.example.humiture.mvp.contract.DateChooseContract;
 import com.example.humiture.mvp.presenter.DateChoosePresenter;
 import com.example.humiture.mvp.presenter.IndexPresent;
+import com.example.humiture.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -52,7 +53,7 @@ public class DateChooseActivity extends BaseActivity<DateChoosePresenter> implem
     private List<String> optionYears = new ArrayList<>();
 
     Calendar cal;
-    private String year,month;
+    private String year,month,day,hour,minute;
 
     @Override
     protected int getLayoutId() {
@@ -178,6 +179,10 @@ public class DateChooseActivity extends BaseActivity<DateChoosePresenter> implem
         cal = Calendar.getInstance();
         year = String.valueOf(cal.get(Calendar.YEAR));
         month = String.valueOf(cal.get(Calendar.MONTH) + 1);
+        /*day = String.valueOf(cal.get(Calendar.DATE));
+        hour = String.valueOf(cal.get(Calendar.HOUR));
+        minute = String.valueOf(cal.get(Calendar.MINUTE));
+        ToastUtils.showToast(year + "-" + month + "-" + day + "-" + hour + "-" + minute);*/
         tv_time.setText(year + "-" + month);
     }
 

@@ -48,4 +48,14 @@
     <string name="alarm_search_sort">分类</string>
     <string name="alarm_search_search">搜索</string>
 
+    <!--我的-->
+    <string name="mine_info_title">我的消息</string>
+    <string name="mine_set_title">设置</string>
+    <string name="mine_set_safe_title">账户与安全</string>
+
+    <string name="mine_kufang_set">库房环境</string>
+
+    <string name="mine_cache">清理缓存</string>
+    <string name="smart_assistant_title">智能小助手</string>
+
 </resources>

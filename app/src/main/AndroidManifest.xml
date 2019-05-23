@@ -23,6 +23,12 @@
         <activity android:name=".ui.activity.SplashActivity"></activity>
         <activity android:name=".ui.activity.DateChooseActivity"></activity>
         <activity android:name=".ui.activity.StatAlarmActivity"></activity>
+        <activity android:name=".ui.activity.MineInfoActivity"></activity>
+        <activity android:name=".ui.activity.MineSetActivity"></activity>
+        <activity android:name=".ui.activity.MineSafeActivity"></activity>
+        <activity android:name=".ui.activity.KuFangActivity"></activity>
+        <activity android:name=".ui.activity.CacheDataActivity"></activity>
+        <activity android:name=".ui.activity.SmartAssistantActivity"></activity>
     </application>
 
 </manifest>
