@@ -77,7 +77,6 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
         dataSet.setHighlightEnabled(true);
         //设置连线的颜色
         dataSet.setValueLineColor(Color.parseColor("#a1a1a1"));
-//        dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         //设置Y轴描述线和填充区域的颜色一致
         dataSet.setUsingSliceColorAsValueLineColor(true);
         //线前半部分的长度
@@ -97,6 +96,9 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
         pieChart.setDrawCenterText(true);
 
         pieChart.setCenterText("总计2014");
+        //添加动画效果
+//        pieChart.animateXY(2000,2000);
+        pieChart.animateY(3000);
         //文字的位移
 //        pieChart.setCenterTextOffset(5,20);
         //绘制内容value,设置字体颜色大小

@@ -35,5 +35,6 @@
     <!--我的-->
     <color name="mine_set_bg">#ffd4d4d4</color>
     <color name="edit_bg">#00000000</color>
+    <color name="pie_chart">#078FEA</color>
 
 </resources>

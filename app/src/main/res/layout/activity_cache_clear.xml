@@ -45,12 +45,12 @@
         android:layout_marginLeft="@dimen/base"
         android:layout_marginBottom="@dimen/margin_40">
 
-        <TextView
-            android:id="@+id/tv_cache_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="13.75M"/>
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pie_chart"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_marginTop="@dimen/margin_60"
+            android:layout_centerHorizontal="true"/>
 
         <Button
             android:id="@+id/btn_cache_clear"

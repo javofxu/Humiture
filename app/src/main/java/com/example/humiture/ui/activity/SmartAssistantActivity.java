@@ -3,11 +3,13 @@ package com.example.humiture.ui.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.base.BaseActivity;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,7 +24,7 @@ import cn.addapp.pickers.picker.TimePicker;
 /**
  *Time:2019/5/23
  *Author:冰冰凉
- *dec:智能小助手
+ *dec:智能小助手,默认的为上班模式，更改之后调取更改的接口
  */
 public class SmartAssistantActivity extends BaseActivity {
 
@@ -32,7 +34,14 @@ public class SmartAssistantActivity extends BaseActivity {
     TextView smart_time_end;
     @BindView(R2.id.smart_tv_warn)
     TextView smart_tv_warn;
+    @BindView(R2.id.img_work)
+    ImageView img_work;
+    @BindView(R2.id.img_off_work)
+    ImageView img_off_work;
+    @BindView(R2.id.img_holiday)
+    ImageView img_holiday;
     Calendar cal;
+    private int position_id;
 
     @Override
     protected int getLayoutId() {
@@ -54,7 +63,7 @@ public class SmartAssistantActivity extends BaseActivity {
         super.initData();
     }
 
-    @OnClick({R2.id.smart_back,R2.id.smart_ll_start,R2.id.smart_ll_end,R2.id.smart_tv_warn})
+    @OnClick({R2.id.smart_back,R2.id.smart_ll_start,R2.id.smart_ll_end,R2.id.smart_tv_warn,R2.id.ll_work,R2.id.ll_off_work,R2.id.ll_holiday})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.smart_back:
@@ -71,6 +80,18 @@ public class SmartAssistantActivity extends BaseActivity {
             case R.id.smart_tv_warn:
                 //异常提醒
                 onOptionPicker(smart_tv_warn);
+                break;
+            case R.id.ll_work:
+                setTimeResouce(R.mipmap.mine_work_click,R.mipmap.mine_off_duty_normal,R.mipmap.mine_holiday_normal,1);
+                ToastUtils.showToast("这是上班的id"+position_id);
+                break;
+            case R.id.ll_off_work:
+                setTimeResouce(R.mipmap.mine_work_normal,R.mipmap.mine_off_duty_click,R.mipmap.mine_holiday_normal,2);
+                ToastUtils.showToast("这是下班的id"+position_id);
+                break;
+            case R.id.ll_holiday:
+                setTimeResouce(R.mipmap.mine_work_normal,R.mipmap.mine_off_duty_normal,R.mipmap.mine_holiday_click,3);
+                ToastUtils.showToast("这是假期的id"+position_id);
                 break;
         }
 
@@ -132,10 +153,25 @@ public class SmartAssistantActivity extends BaseActivity {
         picker.setOnItemPickListener(new OnItemPickListener<String>() {
             @Override
             public void onItemPicked(int index, String item) {
-                showToast("index=" + index + ", item=" + item);
+//                showToast("index=" + index + ", item=" + item);
+                smart_tv_warn.setText(item);
             }
         });
         picker.show();
+    }
+
+    /**
+     * 切换按钮，加载布局
+     * @param work_id
+     * @param offwork_id
+     * @param holiday_id
+     * @param position
+     */
+    private void setTimeResouce(int work_id,int offwork_id,int holiday_id,int position){
+        img_work.setImageResource(work_id);
+        img_off_work.setImageResource(offwork_id);
+        img_holiday.setImageResource(holiday_id);
+        position_id = position;
     }
 
 }
