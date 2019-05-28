@@ -1,14 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/index_title"
     tools:context=".ui.fragment.OperateFragment">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base"/>
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/operate_swipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:refreshType="water_drop">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_50"
+                android:background="@color/index_title">
+                <TextView
+                    android:id="@+id/operate_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/text_18"
+                    android:textColor="@color/white"
+                    android:text="一库房"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/operate_title"
+                    app:srcCompat="@drawable/index_title_down"/>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/base">
+                    <ImageView
+                        android:id="@+id/operate_alarm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/index_alarm"/>
+                    <TextView
+                        android:id="@+id/operate_alarm_number"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_gravity="right"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/index_alarm_red"/>
+                </FrameLayout>
+            </RelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/operate_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-</FrameLayout>
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </com.baoyz.widget.PullRefreshLayout>
+
+</LinearLayout>

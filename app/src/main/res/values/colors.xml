@@ -9,8 +9,8 @@
     <color name="red">#FF0000</color>
     <color name="gray">#688092</color>
 
+    <!--首页-->
     <color name="index_title">#1f9df1</color>
-
     <color name="index_tem">#e60e6f</color>
     <color name="index_hum">#0173e9</color>
     <color name="index_pm">#21d458</color>
@@ -19,6 +19,19 @@
     <color name="index_colony">#9abb00</color>
     <color name="index_eco">#00cbff</color>
     <color name="index_harmful">#c132e0</color>
+
+    <!--操作首页-->
+    <color name="operate_click">#33A3F4</color>
+    <color name="operate_normal">#AAAAAA</color>
+
+    <color name="yesterday_line">#FFA911</color>
+    <color name="yesterday">#ffb74b</color>
+    <color name="yesterday_active">#ff9800</color>
+    <color name="today">#7ec681</color>
+    <color name="today_active">#4caf50</color>
+    <color name="today_bg_light">#e8f5e9</color>
+    <color name="yesterday_bg_light">#fff3e0</color>
+
     <!--统计首页-->
     <color name="stat_choose_time">#ffd4d4d4</color>
     <color name="state_radarview">#ff00c0e0</color>

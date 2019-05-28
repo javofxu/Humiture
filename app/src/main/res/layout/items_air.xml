@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="192dp">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="160dp"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/equipment_bg"/>
+    <ImageView
+        android:id="@+id/item_air_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/oper_humidifier"/>
+    <TextView
+        android:id="@+id/item_air_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/operate_group_facility"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/margin_10"
+        android:textSize="@dimen/text_10"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/margin_25"
+        android:text="@string/index_hum"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/base"
+        android:layout_below="@+id/item_air_icon"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/item_air_light"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/round_one"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:text="@string/operate_state"/>
+    </LinearLayout>
+</RelativeLayout>

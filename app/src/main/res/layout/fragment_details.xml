@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.DetailsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.example.refreshview.CustomRefreshView
+        android:id="@+id/details_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.example.refreshview.CustomRefreshView>
+
+    <LinearLayout
+        android:id="@+id/details_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/fail"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="@string/network_error"/>
+        <LinearLayout
+            android:id="@+id/details_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:gravity="center"
+            android:background="@drawable/en_chose_date"
+            android:layout_marginTop="@dimen/margin_10"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/margin_15"
+                android:layout_height="@dimen/margin_15"
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/refresh"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textSize="@dimen/text_12"
+                android:textColor="@color/index_title"
+                android:text="@string/refresh"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
