@@ -1,4 +1,4 @@
-package com.example.humiture.utils;
+package com.example.humiture.utils.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
