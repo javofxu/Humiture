@@ -183,7 +183,7 @@
                     android:id="@+id/iv_op_heating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/refrigeration_normal" />
+                    android:src="@mipmap/heating_normal" />
 
                 <TextView
                     android:id="@+id/tv_op_heating"

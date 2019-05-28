@@ -37,6 +37,7 @@ public class TrendFragment extends BaseFragment<TrendPresent> implements TrendCo
     private String dateTime;
     private String mType;
     private int mNumber;
+    private int mStoreId;
 
     @Override
     public void onAttach(Context context) {
@@ -44,6 +45,7 @@ public class TrendFragment extends BaseFragment<TrendPresent> implements TrendCo
         dateTime = getArguments().getString("time");
         mType = getArguments().getString("type");
         mNumber = getArguments().getInt("number");
+        mStoreId = getArguments().getInt("storeId");
         Log.i(TAG, "onAttach: "+dateTime+mType+mNumber);
     }
 
@@ -62,7 +64,7 @@ public class TrendFragment extends BaseFragment<TrendPresent> implements TrendCo
     protected void initView() {
         super.initView();
         mChartManager = new LineChartManager(mContext, mLineChart);
-        mPresent.getTrendData(dateTime, TimeUtils.dataForYesterday(dateTime), mType, mNumber);
+        mPresent.getTrendData(dateTime, TimeUtils.dataForYesterday(dateTime), mType, mStoreId);
     }
 
     @Override

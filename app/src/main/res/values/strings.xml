@@ -25,6 +25,7 @@
     <string name="index_eco">ECO2</string>
     <string name="index_harmful">有害气体</string>
     <string name="index_warehouse">库房选择</string>
+    <string name="index_chose_time">自定义</string>
 
     <!--操作-->
     <string name="operate_temp">当前温度</string>
@@ -49,7 +50,8 @@
     <string name="dw_temp">℃</string>
     <string name="dw_hum">%RH</string>
     <string name="no_data">暂无数据</string>
-    <string name="network_error">网络异常！</string>
+    <string name="network_error">网络异常</string>
+    <string name="refresh">刷新</string>
 
     <!--消息-->
     <string name="news_title">我的消息</string>

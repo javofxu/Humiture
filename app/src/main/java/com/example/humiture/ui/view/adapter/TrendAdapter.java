@@ -21,9 +21,11 @@ public class TrendAdapter extends FragmentPagerAdapter {
 
     private List<String> titles = DataTypeHelper.getDataNames();
     private String mTime;
+    private int mStoreId;
 
-    public TrendAdapter(FragmentManager fm) {
+    public TrendAdapter(int storeId, FragmentManager fm) {
         super(fm);
+        this.mStoreId = storeId;
     }
 
     public void setDateTime(String time){
@@ -35,6 +37,7 @@ public class TrendAdapter extends FragmentPagerAdapter {
         Fragment fragment = new TrendFragment();
         Bundle bundle = new Bundle();
         bundle.putString("type",DataTypeHelper.getDataTypes().get(i));
+        bundle.putInt("storeId", mStoreId);
         bundle.putString("time", mTime);
         bundle.putInt("number",i);
         fragment.setArguments(bundle);

@@ -4,24 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/index_title"
+    android:orientation="vertical"
     tools:context=".ui.activity.EnvironmentActivity">
-
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/base"/>
 
     <!-- TODO: Update blank fragment layout -->
-    <com.baoyz.widget.PullRefreshLayout
-        android:id="@+id/en_pull"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:refreshType="water_drop">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_50"
@@ -47,7 +37,11 @@
                     android:layout_centerVertical="true"
                     app:srcCompat="@drawable/ic_chevron_left"/>
             </RelativeLayout>
-
+        <LinearLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <android.support.design.widget.TabLayout
                 android:id="@+id/en_tab"
                 android:layout_width="match_parent"
@@ -68,7 +62,10 @@
                 android:layout_height="200dp">
 
             </android.support.v4.view.ViewPager>
+
+        </LinearLayout>
             <RelativeLayout
+                android:id="@+id/details_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/margin_15">
@@ -105,6 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:bt_active="true"
+                        android:layout_marginLeft="@dimen/margin_35"
                         app:bt_colorActive="@color/yesterday_active"
                         app:bt_colorInactive="@color/yesterday"
                         app:bt_icon="@mipmap/trend_yesterday"
@@ -127,7 +125,12 @@
                     android:layout_height="match_parent"
                     android:layout_below="@+id/top_navigation"/>
 
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/base"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    app:srcCompat="@drawable/ic_today_black_24dp"/>
             </RelativeLayout>
-        </LinearLayout>
-    </com.baoyz.widget.PullRefreshLayout>
 </LinearLayout>

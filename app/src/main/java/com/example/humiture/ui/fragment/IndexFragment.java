@@ -1,7 +1,7 @@
 package com.example.humiture.ui.fragment;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -121,7 +121,9 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
                 mPresent.designation(DataTypeHelper.getDataNames(),1);
                 break;
             case R.id.index_more:
-                skipAnotherActivity(EnvironmentActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putInt("storeId", mStoreId);
+                skipAnotherActivity(mBundle,EnvironmentActivity.class);
                 break;
             case R.id.index_news:
                 skipAnotherActivity(NewsActivity.class);

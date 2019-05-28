@@ -1,5 +1,6 @@
 package com.example.humiture.http;
 
+import com.example.humiture.data.DetailsList;
 import com.example.humiture.data.RealTimeData;
 import com.example.humiture.data.TrendData;
 import com.example.humiture.data.Warehouse;
@@ -21,7 +22,7 @@ public interface ApiService {
     String GET_WAREHOUSE = BASE_URL+"/getWmsStore";
     String REAL_TIME = BASE_URL+"/getNewHum";
     String GET_TREND = BASE_URL+"/getEvnFormDateType";
-
+    String GET_DETAILS = BASE_URL+"/getDateByTime";
     /**
      * 获取库房
      * @return
@@ -48,4 +49,17 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(GET_TREND)
     Observable<TrendData> getTrendData(@Field("strTime") String time, @Field("type") String type, @Field("storeId") int storeId);
+
+    /**
+     * 获取库房详细数据
+     * @param storeId 库房ID
+     * @param type 数据类型
+     * @param startTime 开始时间
+     * @param endTime 结束时间
+     * @param page 分页页码
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(GET_DETAILS)
+    Observable<DetailsList> getDetailsList(@Field("storeId") int storeId, @Field("type") String type, @Field("strTime") long startTime, @Field("endTime") long endTime, @Field("page") int page);
 }

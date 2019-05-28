@@ -14,6 +14,7 @@ public class TimeUtils {
 
     public static final String DEFAULT_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static final String DAY_TIME_FORMAT = "yyyy-MM-dd";
+    public static final String DAY_FOR_TIME = "HH:mm:ss";
     public static final int LABEL_SECOND = 0x1001;
     public static final int LABEL_MINUTE = 0x1002;
     public static final int LABEL_HOUR = 0x1003;
@@ -131,5 +132,76 @@ public class TimeUtils {
             e.printStackTrace();
         }
         return yesterday;
+    }
+
+    /**
+     * 获得当天零时零分零秒
+     * @return
+     */
+    public static String todayFirstDate(){
+        SimpleDateFormat sf = new SimpleDateFormat(DEFAULT_TIME_FORMAT);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        String day = sf.format(calendar.getTime());
+        return day;
+    }
+
+    /**
+     * 获得当天23点59分59秒
+     * @return
+     */
+    public static String todayLastDate() {
+        SimpleDateFormat sf = new SimpleDateFormat(DEFAULT_TIME_FORMAT);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        return sf.format(calendar.getTime());
+    }
+
+    /**
+     * 获得前一天零时零分零秒
+     * @return
+     */
+    public static String yesterdayFirstDate() {
+        SimpleDateFormat sf = new SimpleDateFormat(DEFAULT_TIME_FORMAT);
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE,-1);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return sf.format(calendar.getTime());
+    }
+
+    /**
+     * 将时间戳转换成字符串
+     * @param milSecond
+     * @return
+     */
+    public static String getDateToString(long milSecond) {
+        Date date = new Date(milSecond);
+        SimpleDateFormat format = new SimpleDateFormat(DEFAULT_TIME_FORMAT);
+        return format.format(date);
+    }
+
+    /**
+     * 将字符串转换成时间戳
+     * @param dateString
+     * @param pattern
+     * @return
+     */
+    public static long getStringToDate(String dateString, String pattern) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+        Date date = new Date();
+        try{
+            date = dateFormat.parse(dateString);
+        } catch(ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return date.getTime();
     }
 }

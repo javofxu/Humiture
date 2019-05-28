@@ -20,17 +20,24 @@ import java.util.List;
 public class DetailsAdapter extends FragmentPagerAdapter {
 
     private String[] titles = new String[]{"今日数据","昨日数据"};
+    private int mStoreId;
+    private String mTime;
 
-    public DetailsAdapter(FragmentManager fm) {
+    public DetailsAdapter(int storeId, FragmentManager fm) {
         super(fm);
+        this.mStoreId = storeId;
+    }
+
+    public void setDateTime(String time){
+        this.mTime = time;
     }
 
     @Override
     public Fragment getItem(int i) {
         Fragment fragment = new DetailsFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("details",titles[i]);
-        bundle.putInt("number",i);
+        bundle.putInt("storeId", mStoreId);
+        bundle.putString("time", mTime);
         fragment.setArguments(bundle);
         return fragment;
     }

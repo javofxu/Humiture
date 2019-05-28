@@ -82,7 +82,7 @@ public class LineChartManager {
             leftAxis.enableGridDashedLine(10f,10f,0f);
             LineChartMarker marker = new LineChartMarker(mContext,xAxis.getValueFormatter(),type);
             lineChart.setMarker(marker);
-            lineChart.zoomToCenter(2f,2f);
+            lineChart.zoomToCenter(2f,1f);
             if (isWhite) setColor(legend);
         }
 
