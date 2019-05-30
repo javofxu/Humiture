@@ -225,7 +225,7 @@ public class RadarView extends View {
      */
     public static int dip2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * scale + 5.0f);
+        return (int) (dipValue * scale + 2.0f);
     }
 
     /**

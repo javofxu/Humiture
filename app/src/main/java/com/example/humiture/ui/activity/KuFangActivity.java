@@ -7,7 +7,7 @@ import android.view.View;
 import com.example.base.BaseActivity;
 import com.example.humiture.R;
 import com.example.humiture.R2;
-import com.example.humiture.ui.adapter.MyFragmentPagerAdapter;
+import com.example.humiture.ui.view.adapter.MyFragmentPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

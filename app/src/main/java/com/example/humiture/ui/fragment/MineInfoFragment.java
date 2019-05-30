@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.base.BaseFragment;
 import com.example.humiture.R;
 import com.example.humiture.R2;
-import com.example.humiture.ui.adapter.MineInfoAdapter;
+import com.example.humiture.ui.view.adapter.MineInfoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

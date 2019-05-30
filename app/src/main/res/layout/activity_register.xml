@@ -39,11 +39,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginRight="@dimen/base"
             app:contents=""
             app:isEyeShow="false"
             app:hintText="@string/register_name"
             app:is_icon_show="false"
-            app:isPassword="false">
+            android:forceHasOverlappingRendering="true"
+            app:isPassword="false"
+            app:is_background="false"
+            >
 
         </com.example.custom.CustomEditText>
 
@@ -59,11 +63,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginRight="@dimen/base"
         app:contents=""
-        app:isEyeShow="false"
+        app:isEyeShow="true"
         app:hintText="@string/register_pwd"
         app:is_icon_show="false"
-        app:isPassword="false">
+        app:isPassword="true"
+        app:is_background="false">
     </com.example.custom.CustomEditText>
 
     <View
@@ -78,11 +84,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginRight="@dimen/base"
         app:contents=""
-        app:isEyeShow="false"
+        app:isEyeShow="true"
         app:hintText="@string/register_pwd_again"
         app:is_icon_show="false"
-        app:isPassword="false">
+        app:isPassword="true"
+        app:is_background="false">
     </com.example.custom.CustomEditText>
 
     <View

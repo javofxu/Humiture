@@ -100,7 +100,8 @@ public class CacheDataActivity extends BaseActivity {
             switch (msg.what) {
                 case 0:
                     Toast.makeText(CacheDataActivity.this, "清理完成", Toast.LENGTH_SHORT).show();
-                    showPieChart(pieChart,getPieChartData());
+                    //加上这句有时候有bug，是否不用加？？测试
+//                    showPieChart(pieChart,getPieChartData());
             }
         }
     };

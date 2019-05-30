@@ -6,11 +6,16 @@
     <!--登录-->
     <string name="login_name">请输入用户账号</string>
     <string name="login_pwd">请输入密码</string>
+    <string name="login_other">本机直接登录</string>
+    <string name="login">登录</string>
+    <string name="login_password_forget">忘记密码</string>
+    <string name="login_other_title">其他快捷登录</string>
     <!--注册-->
     <string name="register_name">用户名</string>
     <string name="register_pwd">密码</string>
-    <string name="register_pwd_again">请确认密码</string>
+    <string name="register_pwd_again">确认密码</string>
     <string name="register_rgs">注册</string>
+    <string name="register_now">立即注册</string>
 
     <!--首页-->
     <string name="index_data">环境数据</string>

@@ -1,4 +1,4 @@
-package com.example.humiture.ui.adapter;
+package com.example.humiture.ui.view.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,11 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.humiture.R;
-import com.example.humiture.R2;
 
 import java.util.List;
-
-import butterknife.BindView;
 
 public class MineInfoAdapter extends RecyclerView.Adapter<MineInfoAdapter.ViewHolder>{
 

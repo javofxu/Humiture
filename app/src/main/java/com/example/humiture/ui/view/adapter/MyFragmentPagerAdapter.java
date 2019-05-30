@@ -1,4 +1,4 @@
-package com.example.humiture.ui.adapter;
+package com.example.humiture.ui.view.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

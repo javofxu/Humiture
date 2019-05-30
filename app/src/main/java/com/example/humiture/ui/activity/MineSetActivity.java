@@ -55,7 +55,7 @@ public class MineSetActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.mine_ll_safe:
-                skipAnotherActivity(MineSetActivity.class);
+                skipAnotherActivity(MineSafeActivity.class);
                 break;
             case R.id.mine_ll_bio:
                 //以后开发

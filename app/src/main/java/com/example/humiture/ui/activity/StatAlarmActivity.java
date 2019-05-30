@@ -1,13 +1,9 @@
 package com.example.humiture.ui.activity;
 
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +13,7 @@ import com.example.humiture.R;
 import com.example.humiture.R2;
 import com.example.humiture.mvp.contract.StatAlarmContract;
 import com.example.humiture.mvp.presenter.StatAlarmPresenter;
-import com.example.humiture.ui.adapter.StatAlarmAdapter;
+import com.example.humiture.ui.view.adapter.StatAlarmAdapter;
 import com.example.humiture.ui.view.CustomPopupWindow;
 import com.example.humiture.utils.ToastUtils;
 

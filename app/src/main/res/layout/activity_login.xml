@@ -8,12 +8,12 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="245dp">
+            android:layout_height="220dp">
 
             <ImageView
                 android:id="@+id/img"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:background="@mipmap/login_top" />
 
             <ImageView
@@ -43,7 +43,7 @@
             app:hintText="@string/login_name"
             app:icon_normal="@mipmap/login_name"
             app:icon_selected="@mipmap/login_name"
-            app:isPassword="false" >
+            app:isPassword="false">
 
         </com.example.custom.CustomEditText>
 
@@ -72,10 +72,10 @@
             android:layout_height="wrap_content"
             android:background="@mipmap/login_btn_background"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_50"
+            android:layout_marginTop="@dimen/margin_40"
             android:textColor="#ffffffff"
             android:textSize="17sp"
-            android:text="登录"/>
+            android:text="@string/login"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:text="立即注册"
+                android:text="@string/register_now"
                 android:textColor="#ffb6b6b6"
                 android:textSize="10sp"/>
 
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="忘记密码"
+                android:text="@string/login_password_forget"
                 android:textColor="#ffb6b6b6"
                 android:textSize="10sp"/>
 
@@ -105,7 +105,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_30">
+            android:layout_marginTop="@dimen/base">
 
             <View
                 android:layout_width="match_parent"
@@ -118,30 +118,32 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:background="#fff"
-                android:text="其他快捷登录"
+                android:text="@string/login_other_title"
                 android:textColor="#ffb6b6b6"
                 android:textSize="10sp"/>
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="50dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30"
+            android:layout_gravity="center_horizontal">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:paddingRight="@dimen/margin_120"
-                android:src="@mipmap/login_face"/>
+                android:id="@+id/img_login_other"
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"
+                android:src="@mipmap/login_other" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:paddingLeft="@dimen/margin_120"
-                android:src="@mipmap/login_finger"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/img_login_other"
+                    android:textSize="@dimen/text_10"
+                    android:textColor="@color/pie_chart"
+                    android:text="@string/login_other"/>
 
         </RelativeLayout>
 

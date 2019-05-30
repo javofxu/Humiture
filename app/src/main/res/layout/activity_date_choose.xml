@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/index_title"
@@ -13,15 +14,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_50"
-        android:background="@color/white">
+        android:background="@color/index_title">
 
         <ImageView
             android:id="@+id/date_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/back"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_15"/>
+            app:srcCompat="@drawable/ic_chevron_left"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/stat_choose_ok"
-            android:textColor="#ff108ee9"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"

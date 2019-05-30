@@ -35,12 +35,15 @@ public class MineSafeActivity extends BaseActivity {
         super.initData();
     }
 
-    @OnClick({})
+    @OnClick({R2.id.mine_safe_back,R2.id.mine_safe_ll_name,R2.id.mine_safe_ll_password})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.mine_safe_ll_name:
                 break;
             case R.id.mine_safe_ll_password:
+                break;
+            case R.id.mine_safe_back:
+                finish();
                 break;
         }
     }

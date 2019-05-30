@@ -59,7 +59,7 @@ dependencies {
     /**
      * 自定义输入框
      */
-    implementation 'com.github.javofxu:CustomEditText:v2.0'
+    implementation 'com.github.JhonBFang:CustomEditText:V1.0.1'
     implementation 'com.yarolegovich:discrete-scrollview:1.0.3'
     /**
      * 折线图和饼图

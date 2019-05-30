@@ -3,26 +3,19 @@ package com.example.humiture.ui.activity;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.base.BaseActivity;
 import com.example.humiture.R;
 import com.example.humiture.R2;
 import com.example.humiture.mvp.contract.MineInfoContract;
 import com.example.humiture.mvp.presenter.MineInfoPresenter;
-import com.example.humiture.ui.adapter.MineInfoAdapter;
-import com.example.humiture.ui.adapter.MyFragmentPagerAdapter;
-import com.github.mikephil.charting.data.LineData;
+import com.example.humiture.ui.view.adapter.MyFragmentPagerAdapter;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.example.humiture.utils.DensityUtils.dip2px;
 
 /**
  *Time:2019/5/22

@@ -1,4 +1,4 @@
-package com.example.humiture.ui.adapter;
+package com.example.humiture.ui.view.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
