@@ -39,4 +39,19 @@
     <color name="green">#179F76</color>
     <color name="blue">#2A74FF</color>
     <color name="pink">#9B2E2E</color>
+    <!--统计 时间选择-->
+    <color name="stat_date_year">#ff333333</color>
+    <color name="stat_date_edit">#ff108ee9</color>
+    <color name="stat_date_black">#FF000000</color>
+    <!--报警统计-->
+    <color name="alarm_view_color">#ffc6c8c9</color>
+    <color name="alarm_time_color">#ff999999</color>
+    <color name="alarm_pm_color">#ff333333</color>
+    <color name="alarm_sort_color">#ff6a6a6a</color>
+
+    <!--我的-->
+    <color name="mine_set_bg">#ffd4d4d4</color>
+    <color name="edit_bg">#00000000</color>
+    <color name="pie_chart">#078FEA</color>
+
 </resources>

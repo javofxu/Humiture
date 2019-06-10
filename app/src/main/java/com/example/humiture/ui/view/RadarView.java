@@ -7,8 +7,10 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.humiture.R;
+import com.example.humiture.utils.ToastUtils;
 
 import java.util.List;
 

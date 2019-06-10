@@ -28,6 +28,7 @@
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.EnvironmentActivity" />
         <activity android:name=".ui.activity.NewsActivity" />
+
         <activity android:name=".ui.activity.AirActivity" />
         <activity android:name=".ui.activity.VoiceActivity" />
 
@@ -45,6 +46,16 @@
         <meta-data
             android:name="com.baidu.speech.SECRET_KEY"
             android:value="462zNUM2kxT56R7SoxtnooaoSo6ZQLBi" />
+
+        <activity android:name=".ui.activity.DateChooseActivity"></activity>
+        <activity android:name=".ui.activity.StatAlarmActivity"></activity>
+        <activity android:name=".ui.activity.MineInfoActivity"></activity>
+        <activity android:name=".ui.activity.MineSetActivity"></activity>
+        <activity android:name=".ui.activity.MineSafeActivity"></activity>
+        <activity android:name=".ui.activity.KuFangActivity"></activity>
+        <activity android:name=".ui.activity.CacheDataActivity"></activity>
+        <activity android:name=".ui.activity.SmartAssistantActivity"></activity>
+
     </application>
 
 </manifest>

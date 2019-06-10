@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/index_title"
+    android:orientation="vertical">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_50"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/date_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_15"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff000000"
+            android:textSize="18sp"
+            android:text="@string/stat_choose_title"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/date_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stat_choose_ok"
+            android:textColor="#ff108ee9"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_25"/>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffc6c8c9"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/margin_25"
+        android:paddingBottom="@dimen/margin_25"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/date_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/date_selector"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/stat_choose_year"
+            android:drawableRight="@mipmap/stat_focus"
+            android:textColor="@color/stat_date_year"
+            android:textSize="@dimen/date_txt_size"/>
+
+        <TextView
+            android:id="@+id/date_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/date_choose_unfocued"
+            android:layout_marginLeft="27dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="@string/stat_choose_month"
+            android:focusable="true"
+            android:drawableRight="@mipmap/stat_focus"
+            android:textColor="@color/stat_date_year"
+            android:textSize="@dimen/date_txt_size"/>
+
+        <TextView
+            android:id="@+id/date_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/date_choose_unfocued"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="@dimen/margin_15"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="@string/stat_choose_day"
+            android:drawableRight="@mipmap/stat_focus"
+            android:textColor="@color/stat_date_year"
+            android:textSize="@dimen/date_txt_size"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="测试"
+            android:textSize="13sp"
+            android:textColor="@color/stat_date_edit"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/stat_date_edit"
+            android:layout_marginRight="@dimen/base"
+            android:layout_marginLeft="@dimen/base"
+            android:layout_marginTop="@dimen/margin_10"
+            />
+
+        <ImageView
+            android:id="@+id/stat_delet"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginRight="@dimen/base"
+            android:src="@mipmap/stat_delet"
+            android:layout_gravity="right"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
