@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.App"
@@ -24,7 +28,23 @@
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.EnvironmentActivity" />
         <activity android:name=".ui.activity.NewsActivity" />
-        <activity android:name=".ui.activity.AirActivity"></activity>
+        <activity android:name=".ui.activity.AirActivity" />
+        <activity android:name=".ui.activity.VoiceActivity" />
+
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true"/>
+
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="16371361" />
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="qjfi4hwZbCp9vI4syLy7r9Li" />
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="462zNUM2kxT56R7SoxtnooaoSo6ZQLBi" />
     </application>
 
 </manifest>

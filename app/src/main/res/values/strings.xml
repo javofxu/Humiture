@@ -55,4 +55,8 @@
 
     <!--消息-->
     <string name="news_title">我的消息</string>
+
+    <!--语音-->
+    <string name="voice_title">请问有什么可以帮助您？</string>
+
 </resources>
