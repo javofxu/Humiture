@@ -1,6 +1,13 @@
 package com.example.humiture.mvp.model;
 
+import android.util.Log;
+
+import com.example.humiture.data.Alarm;
+import com.example.humiture.http.ApiService;
+import com.example.humiture.http.RetrofitClient;
 import com.example.humiture.mvp.contract.StatAlarmContract;
+import io.reactivex.Observable;
+import io.reactivex.functions.Function;
 
 /**
  *Time:2019/5/21
@@ -8,4 +15,16 @@ import com.example.humiture.mvp.contract.StatAlarmContract;
  *dec:报警统计的数据处理
  */
 public class StatAlarmModel implements StatAlarmContract.Model {
+
+    ApiService api = RetrofitClient.create(ApiService.class);
+
+    @Override
+    public Observable<Alarm> getStaticAlarmList(String type, String date, String storeId) {
+        return api.getStaticAlarmList(type,date,storeId).map(new Function<Alarm, Alarm>() {
+            @Override
+            public Alarm apply(Alarm alarm) throws Exception {
+                return alarm;
+            }
+        }).compose(RetrofitClient.schedulersTransformer);
+    }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.base.BaseActivity;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.data.MessageData;
 import com.example.humiture.mvp.contract.MineInfoContract;
 import com.example.humiture.mvp.presenter.MineInfoPresenter;
 import com.example.humiture.ui.view.adapter.MyFragmentPagerAdapter;
@@ -79,5 +80,31 @@ public class MineInfoActivity extends BaseActivity<MineInfoPresenter> implements
         one = mTabLayout.getTabAt(0);
         two = mTabLayout.getTabAt(1);
     }
+
+    @Override
+    public void onSuccess(String msg) {
+
+    }
+
+    @Override
+    public void onFail(String msg) {
+
+    }
+
+    @Override
+    public void onListSuccess(MessageData data) {
+
+    }
+
+    @Override
+    public void noDetails() {
+
+    }
+
+    @Override
+    public void netWorkError() {
+
+    }
+
 
 }

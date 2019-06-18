@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base"
+        android:background="@color/index_title"/>
+
+    <RelativeLayout
+        android:id="@+id/rlt_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_50"
+        android:background="@color/index_title">
+
+        <ImageView
+            android:id="@+id/register_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_chevron_left"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/mine_safe_password_title"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffc6c8c9"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+    <com.example.custom.CustomEditText
+        android:id="@+id/edt_register_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_05"
+        android:layout_marginRight="@dimen/base"
+        app:contents=""
+        app:isEyeShow="true"
+        app:hintText="@string/register_pwd"
+        app:is_icon_show="false"
+        app:isPassword="true"
+        app:is_background="false">
+    </com.example.custom.CustomEditText>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_05"
+        android:background="#ffc6c8c9"
+        android:layout_centerInParent="true"/>
+
+    <com.example.custom.CustomEditText
+        android:id="@+id/edt_register_pwd_again"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_05"
+        android:layout_marginRight="@dimen/base"
+        app:contents=""
+        app:isEyeShow="true"
+        app:hintText="@string/register_pwd_again"
+        app:is_icon_show="false"
+        app:isPassword="true"
+        app:is_background="false">
+    </com.example.custom.CustomEditText>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_05"
+        android:background="#ffc6c8c9"
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/btn_change"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_100"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_gravity="center"
+        android:background="@mipmap/login_btn_background"
+        android:text="@string/mine_safe_password_btn"
+        android:textColor="#ffffffff"
+        android:textSize="17sp"/>
+
+</LinearLayout>

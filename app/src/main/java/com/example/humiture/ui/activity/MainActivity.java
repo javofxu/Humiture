@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity {
                 .navigationBackground(Color.parseColor("#FFFFFF"))
                         .onTabClickListener((view, i) -> {
                             if (i==2){
-                                skipAnotherActivity(LoginActivity.class);
+//                                skipAnotherActivity(LoginActivity.class);
                                 return true;
                             }
                             return false;

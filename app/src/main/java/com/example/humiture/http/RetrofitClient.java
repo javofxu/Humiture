@@ -44,7 +44,7 @@ public class RetrofitClient {
     public static <T> T create(Class<T> clazz) {
         Retrofit retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("http://192.168.1.216:8080")
+                .baseUrl("http://192.168.1.17:8080")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

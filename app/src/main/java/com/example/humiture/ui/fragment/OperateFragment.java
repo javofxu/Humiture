@@ -15,6 +15,7 @@ import com.example.humiture.R;
 import com.example.humiture.R2;
 import com.example.humiture.mvp.contract.OperateContract;
 import com.example.humiture.mvp.presenter.OperatePresent;
+import com.example.humiture.ui.activity.MineInfoActivity;
 import com.example.humiture.ui.activity.NewsActivity;
 import com.example.humiture.ui.view.adapter.OperateAdapter;
 import com.example.humiture.utils.helper.DataTypeHelper;
@@ -101,7 +102,7 @@ public class OperateFragment extends BaseFragment<OperatePresent> implements Ope
                 mPresent.choseWareHouse(mContext,DataTypeHelper.getWarehouse());
                 break;
             case R.id.operate_alarm:
-                skipAnotherActivity(NewsActivity.class);
+                skipAnotherActivity(MineInfoActivity.class);
                 break;
         }
     }

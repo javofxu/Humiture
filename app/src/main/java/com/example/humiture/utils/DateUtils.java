@@ -1,6 +1,7 @@
 package com.example.humiture.utils;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,6 +14,9 @@ import java.util.Locale;
  * dec:时间帮助类
  */
 public class DateUtils {
+
+    private static final String TAG = "DateUtils";
+
     // 日期格式
     public static final String DATE_FORMAT = "yyyy-MM-dd";
     public static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
@@ -31,6 +35,8 @@ public class DateUtils {
     public static final String FORMAT_YYYYCMMCDD = "yyyy年MM月dd日";
 
     public static final long ONE_DAY = 1000 * 60 * 60 * 24;
+
+    private static String time = null;
 
     //判断选择的日期是否是本周（分从周日开始和从周一开始两种方式）
     public static boolean isThisWeek(Date time) {
@@ -208,6 +214,17 @@ public class DateUtils {
         }
         return "";
 
+    }
+
+    /**
+     * 将获取到的日期转换为字符串
+     * @param date
+     * @param type
+     * @return
+     */
+    public static String convertToDate(Date date,String type){
+        SimpleDateFormat format = new SimpleDateFormat(type);
+        return format.format(date);
     }
 
 }

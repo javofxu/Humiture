@@ -43,7 +43,8 @@
             app:hintText="@string/login_name"
             app:icon_normal="@mipmap/login_name"
             app:icon_selected="@mipmap/login_name"
-            app:isPassword="false">
+            app:isPassword="false"
+            app:is_background="false">
 
         </com.example.custom.CustomEditText>
 
@@ -51,23 +52,27 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#ffc6c8c9"
-            android:layout_marginTop="@dimen/margin_10"/>
+            android:layout_centerInParent="true"
+            android:alpha="0.5"
+            android:layout_marginTop="5dp"/>
 
         <com.example.custom.CustomEditText
             android:id="@+id/edt_login_pwd"
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_50"
-            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_05"
             app:contents=""
             app:isEyeShow="true"
             app:hintText="@string/login_pwd"
             app:icon_normal="@mipmap/login_pwd"
             app:icon_selected="@mipmap/login_pwd"
-            app:isPassword="true">
+            app:isPassword="true"
+            app:is_background="false">
 
         </com.example.custom.CustomEditText>
 
         <Button
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@mipmap/login_btn_background"
@@ -89,7 +94,7 @@
                 android:layout_alignParentLeft="true"
                 android:text="@string/register_now"
                 android:textColor="#ffb6b6b6"
-                android:textSize="10sp"/>
+                android:textSize="@dimen/text_12"/>
 
             <TextView
                 android:id="@+id/tv_forgetpwd"
@@ -98,19 +103,20 @@
                 android:layout_alignParentRight="true"
                 android:text="@string/login_password_forget"
                 android:textColor="#ffb6b6b6"
-                android:textSize="10sp"/>
+                android:textSize="@dimen/text_12"/>
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base">
+            android:layout_marginTop="@dimen/margin_40">
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#ffc6c8c9"
+                android:alpha="0.5"
                 android:layout_centerInParent="true"/>
 
             <TextView
@@ -120,20 +126,21 @@
                 android:background="#fff"
                 android:text="@string/login_other_title"
                 android:textColor="#ffb6b6b6"
-                android:textSize="10sp"/>
+                android:textSize="@dimen/text_12"/>
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/login_Direct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_30"
+            android:layout_marginTop="@dimen/margin_40"
             android:layout_gravity="center_horizontal">
 
             <ImageView
                 android:id="@+id/img_login_other"
                 android:layout_width="wrap_content"
-                android:layout_height="13dp"
+                android:layout_height="wrap_content"
                 android:src="@mipmap/login_other" />
 
                 <TextView
@@ -141,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/img_login_other"
-                    android:textSize="@dimen/text_10"
+                    android:textSize="@dimen/text_12"
                     android:textColor="@color/pie_chart"
                     android:text="@string/login_other"/>
 

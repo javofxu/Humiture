@@ -70,8 +70,9 @@ public class DataTypeHelper {
         List<String> unit = new ArrayList<>();
         unit.add("℃");
         unit.add("%RH");
-        unit.add("ug/m3");
-        unit.add("mg/m3");
+        unit.add("ug/m³");
+        unit.add("mg/m³");
+        unit.add("cfu/mL");
         return unit;
     }
 

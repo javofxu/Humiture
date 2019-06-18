@@ -1,9 +1,15 @@
 package com.example.humiture.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,10 +17,12 @@ import com.example.base.BaseActivity;
 import com.example.custom.CustomEditText;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.data.Alarm;
 import com.example.humiture.mvp.contract.StatAlarmContract;
 import com.example.humiture.mvp.presenter.StatAlarmPresenter;
 import com.example.humiture.ui.view.adapter.StatAlarmAdapter;
 import com.example.humiture.ui.view.CustomPopupWindow;
+import com.example.humiture.utils.DateUtils;
 import com.example.humiture.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -33,12 +41,17 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
     TextView alarm_sort;
     @BindView(R2.id.alarm_search)
     CustomEditText alarm_search;
+    @BindView(R2.id.info_no_data)
+    LinearLayout no_detail;
 
     private StatAlarmAdapter statAlarmAdapter;
-    private List<String> mList;
+    private List<Alarm.Data.ListAlarm> mList;
 
     private Drawable drawable;
     CustomPopupWindow customPopupWindow;
+    private String resultTime = null;
+    private String time = null;
+    private String type = null;
 
     @Override
     protected int getLayoutId() {
@@ -48,19 +61,13 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
     @Override
     protected void initPresent() {
         super.initPresent();
-
+        mPresent = new StatAlarmPresenter(this);
     }
 
     @Override
     public void initData() {
         super.initData();
-        mList = new ArrayList<>();
-        mList.add("Pm2.5");
-        mList.add("30");
-        mList.add("超高");
-        mList.add("今日");
-        mList.add("11:47");
-        recyclerView.setAdapter(new StatAlarmAdapter(this,mList));
+        mPresent.getStaticAlarmList("1","2019","1");
     }
 
     @Override
@@ -80,7 +87,10 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
                 finish();
                 break;
             case R.id.stat_date:
-                skipAnotherActivity(DateChooseActivity.class);
+                Intent intent = new Intent(this,DateChooseActivity.class);
+                Bundle bundle = new Bundle();
+                intent.putExtras(bundle);
+                startActivityForResult(intent,0);
                 break;
             case R.id.tv_alarm_search:
                 String search = alarm_search.getText();
@@ -103,25 +113,77 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
     public void initTextView(Drawable drawable, int id, TextView textView) {
         drawable = getResources().getDrawable(id);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-        textView.setPadding(0, 0, 20, 0);
+        textView.setPadding(30, 0, 30, 0);
         textView.setCompoundDrawables(null, null, drawable, null);
         //设置间距
-        textView.setCompoundDrawablePadding(8);
+        textView.setCompoundDrawablePadding(15);
         textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.stat_date_normal, 0);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 0 && resultCode == Activity.RESULT_OK){
+            Bundle bundle = data.getExtras();
+            resultTime = bundle.getString("time");
+            if(resultTime.contains("年")){
+                resultTime = resultTime.replace("年","");
+                Log.i(TAG, "onActivityResult: " + resultTime);
+            }
+            stat_date.setText(resultTime);
+            if(resultTime.length() < 5){
+                Log.i(TAG, "onActivityResultYear: " + resultTime);
+                type = "1";
+            }else if(resultTime.length() > 5 && resultTime.length() <8){
+                Log.i(TAG, "onActivityResultMonth: " + resultTime);
+                type = "2";
+            }else if(resultTime.length() > 8 ){
+                Log.i(TAG, "onActivityResultDay: " + resultTime);
+                type = "3";
+            }
+            mPresent.getStaticAlarmList(type,resultTime,"1");
+        }
+    }
+
+    @Override
+    public void onSuccess(Alarm alarm) {
+        mList = new ArrayList<>();
+        for (int i = 0;i< alarm.getData().getList().size();i++){
+            Alarm.Data.ListAlarm data = new Alarm().new Data().new ListAlarm();
+            data.setAlarmType(alarm.getData().getList().get(i).getAlarmType());
+            data.setAlarm_value(alarm.getData().getList().get(i).getAlarm_value());
+            data.setCreated(alarm.getData().getList().get(i).getCreated());
+            mList.add(data);
+        }
+        recyclerView.setAdapter(new StatAlarmAdapter(this,mList));
+    }
+
+    @Override
+    public void onFail(String msg) {
+
+    }
+
+    @Override
+    public void noDetails() {
+        recyclerView.setVisibility(View.GONE);
+        no_detail.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void netWorkError() {
+
+    }
+
+    /**
+     * 显示CustomPopupWindow
+     * @param view
+     */
     private void show(View view){
         CustomPopupWindow customPopupWindow = CustomPopupWindow.builder()
                 .contentView(CustomPopupWindow.inflateView(this, R.layout.stat_alarm_sort))
                 .isWrap(false)
                 .isOutsideTouch(false)
-                .customListener(new CustomPopupWindow.CustomPopupWindowListener() {
-                    @Override
-                    public void initPopupView(View contentView) {
-                        handleLogic(contentView);
-
-                    }
-                })
+                .customListener(contentView -> handleLogic(contentView))
                 .build();
         customPopupWindow.showAsDropDown(view);
     }
@@ -140,6 +202,7 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
                 switch (v.getId()){
                     case R.id.sort_all:
                         Toast.makeText(StatAlarmActivity.this,"显示",Toast.LENGTH_SHORT).show();
+                        alarm_sort.setText("全部");
                         break;
                 }
             }

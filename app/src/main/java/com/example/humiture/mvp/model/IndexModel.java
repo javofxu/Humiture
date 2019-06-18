@@ -33,6 +33,11 @@ public class IndexModel implements IndexContract.model {
 
     @Override
     public Observable<List<TrendData.Data>> getTrendData(String time, String type, int storeId) {
-        return api.getTrendData(time, type, storeId).map(trendData -> trendData.getData()).compose(RetrofitClient.schedulersTransformer);
+        return api.getTrendData(time, type, storeId).map(new Function<TrendData, List<TrendData.Data>>() {
+            @Override
+            public List<TrendData.Data> apply(TrendData trendData) throws Exception {
+                return trendData.getData();
+            }
+        }).compose(RetrofitClient.schedulersTransformer);
     }
 }

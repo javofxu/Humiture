@@ -53,11 +53,13 @@
                         android:src="@mipmap/index_alarm"/>
                     <TextView
                         android:id="@+id/operate_alarm_number"
-                        android:layout_width="5dp"
-                        android:layout_height="5dp"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
                         android:layout_gravity="right"
-                        android:layout_margin="1dp"
-                        android:background="@drawable/index_alarm_red"/>
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="@drawable/index_alarm_red" />
                 </FrameLayout>
             </RelativeLayout>
             <android.support.v7.widget.RecyclerView

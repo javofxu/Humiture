@@ -21,7 +21,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void initData() {
         super.initData();
-        RxTimerUtil.timer(1000,()->{skipAnotherActivity(MainActivity.class);finish();});
+        RxTimerUtil.timer(1000,()->{skipAnotherActivity(LoginActivity.class);finish();});
     }
 
     @Override

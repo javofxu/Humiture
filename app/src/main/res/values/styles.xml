@@ -38,4 +38,12 @@
         <item name="android:textSize">16sp</item>
         <item name="textAllCaps">false</item>
     </style>
+
+    <style name="radioStyle">
+
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/date_selector</item>
+
+    </style>
+
 </resources>

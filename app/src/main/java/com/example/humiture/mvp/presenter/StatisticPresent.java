@@ -33,10 +33,13 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
      * #F1B34E : EOC2
      * #F4407E : 温度
      * #108EE9 : 甲醛
+     * #84D32F : TVOC
+     *
      */
     public static final int[] MATERIAL_CLOLOR = {
             rgb("#BDD25A"), rgb("#A15EC7"), rgb("#1048E9"),
-            rgb("#F1B34E"), rgb("#F4407E"), rgb("#108EE9")
+            rgb("#F1B34E"), rgb("#F4407E"), rgb("#108EE9"),
+            rgb("#84D32F"),rgb("#4AB35C")
     };
 
     public StatisticPresent(Context mContext){
@@ -49,7 +52,7 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
         PieDataSet dataSet = new PieDataSet(pieList,"");
         //不显示图例
         Legend legend = pieChart.getLegend();
-        legend.setEnabled(true);
+        legend.setEnabled(false);
         //设置颜色list,让不同的块显示不同的颜色
         ArrayList<Integer> colors = new ArrayList<Integer>();
         for(int c : MATERIAL_CLOLOR){

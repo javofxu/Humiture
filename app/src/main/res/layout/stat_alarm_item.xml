@@ -5,92 +5,91 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/stat_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/alarm_img"
-            android:layout_width="30dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/stat_pm"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_marginRight="@dimen/margin_15"
-            android:layout_marginTop="@dimen/margin_15"
-            android:layout_marginBottom="@dimen/margin_05"/>
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/alarm_img"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/stat_pm"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:layout_marginRight="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_15"
+                android:layout_marginBottom="@dimen/margin_05"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/alarm_tv_pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/alarm_pm_title"
+                        android:textColor="@color/alarm_pm_color"
+                        android:textSize="@dimen/alarm_pm_size"/>
+
+                    <TextView
+                        android:id="@+id/alarm_tv_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/base"
+                        android:textColor="@color/alarm_pm_color"
+                        android:textSize="@dimen/alarm_pm_size"
+                        android:text="@string/alarm_pm_value" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/alarm_tv_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alarm_pm_state"
+                    android:textColor="@color/alarm_pm_color"
+                    android:textSize="@dimen/alarm_time_size"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/alarm_tv_pm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:text="@string/alarm_pm_title"
-                    android:textColor="@color/alarm_pm_color"
-                    android:textSize="@dimen/alarm_pm_size"/>
-
-                <TextView
-                    android:id="@+id/alarm_tv_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/base"
-                    android:textColor="@color/alarm_pm_color"
-                    android:textSize="@dimen/alarm_pm_size"
-                    android:text="@string/alarm_pm_value" />
-
-            </RelativeLayout>
+            android:layout_marginLeft="@dimen/margin_60"
+            android:layout_marginBottom="@dimen/margin_05"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/alarm_tv_state"
+                android:id="@+id/alarm_tv_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/alarm_pm_state"
-                android:textColor="@color/alarm_pm_color"
+                android:text="@string/alarm_pm_day"
+                android:textColor="@color/alarm_time_color"
                 android:textSize="@dimen/alarm_time_size"/>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_60"
-        android:layout_marginBottom="@dimen/margin_05"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/alarm_tv_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/alarm_pm_day"
-            android:textColor="@color/alarm_time_color"
-            android:textSize="@dimen/alarm_time_size"/>
-
-        <TextView
-            android:id="@+id/alarm_tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/base"
-            android:text="@string/alarm_pm_time"
-            android:textColor="@color/alarm_time_color"
-            android:textSize="@dimen/alarm_time_size"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/alarm_view_color"/>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/alarm_view_color"/>
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.humiture.ui.view.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import com.example.humiture.ui.fragment.AlarmInfoFragment;
 import com.example.humiture.ui.fragment.MineInfoFragment;

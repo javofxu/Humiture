@@ -64,10 +64,18 @@ public class IndexPresent extends RxPresenter<IndexContract.mView> implements In
     @Override
     public void getRealTimeData(int storeId) {
         Observable<RealTimeData> observable = mModel.getRealTimeData(storeId);
-        observable.subscribe(realTimeData -> {
-            Log.d(TAG, "getRealTimeData: "+realTimeData.getData().getHumidity());
-            mView.updateRealTimeData(realTimeData);
-        },throwable -> mView.netWorkError());
+        observable.subscribe(new Consumer<RealTimeData>() {
+            @Override
+            public void accept(RealTimeData realTimeData) throws Exception {
+                Log.d(TAG, "getRealTimeData: " + realTimeData.getData().getHumidity());
+                mView.updateRealTimeData(realTimeData);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                mView.netWorkError();
+            }
+        });
     }
 
     @Override

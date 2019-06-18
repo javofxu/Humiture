@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ff000000"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:text="@string/mine_info_title"
             android:layout_centerInParent="true"/>
@@ -47,9 +47,9 @@
         app:tabMinWidth="120dp"
         app:tabMaxWidth="120dp"
         app:tabGravity="fill"
-        app:tabIndicatorColor="#ff000000"
+        app:tabIndicatorColor="#ff333333"
         app:tabIndicatorHeight="2dp"
-        app:tabMode="fixed" />
+        app:tabMode="fixed"/>
 
     <View
         android:layout_width="match_parent"

@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
-        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.MainActivity"/>
         <activity android:name=".ui.activity.EnvironmentActivity" />
         <activity android:name=".ui.activity.NewsActivity" />
         <activity android:name=".ui.activity.AirActivity"></activity>
@@ -33,6 +33,8 @@
         <activity android:name=".ui.activity.KuFangActivity"></activity>
         <activity android:name=".ui.activity.CacheDataActivity"></activity>
         <activity android:name=".ui.activity.SmartAssistantActivity"></activity>
+        <activity android:name=".ui.activity.PlayActivity"/>
+        <activity android:name=".ui.activity.MineSafeChangePassword"/>
     </application>
 
 </manifest>
