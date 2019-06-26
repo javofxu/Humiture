@@ -1,11 +1,14 @@
 package com.example.humiture.http;
 
 import com.example.humiture.data.Alarm;
+import com.example.humiture.data.AllList;
 import com.example.humiture.data.Common;
 import com.example.humiture.data.DetailsList;
+import com.example.humiture.data.KuFangData;
 import com.example.humiture.data.LoginData;
 import com.example.humiture.data.MessageData;
 import com.example.humiture.data.RealTimeData;
+import com.example.humiture.data.StaticAlarmList;
 import com.example.humiture.data.TrendData;
 import com.example.humiture.data.Warehouse;
 
@@ -32,8 +35,10 @@ public interface ApiService {
     String LOGIN = "/bis_hwhs/api/admin/login";     //登录
     String REGISTER = "/bis_hwhs/api/admin/reg";    //注册
     String MINE_SET_SAFE = "/bis_hwhs/api/admin/changepwd";     //修改密码
-    String MINE_MESSAGE_ALARM = "/bis_hwhs/api/alarm/selectAllAlarmlist";   //报警信息
+    String MINE_MESSAGE_ALARM = "/bis_hwhs/api/alarm/selectAllAlarmlist";   //我的消息 报警信息
     String STATIC_ALARMLIST = "/bis_hwhs/api/alarm/getAlarmSataList";       //报警统计 更多
+    String STATIC_ALARM = "/bis_hwhs/api/alarm/getAlarmSata";               //报警统计首页
+    String KUFANG_SET = "/bis_hwhs/api/device/updateHcsLimit";              //库房设置
 
     /**
      * 获取库房
@@ -126,4 +131,33 @@ public interface ApiService {
     @POST(STATIC_ALARMLIST)
     Observable<Alarm> getStaticAlarmList(@Field("type") String type,@Field("date") String date,@Field("storeId") String storeId);
 
+    /**
+     * 报警统计  首页
+     * @param type
+     * @param date
+     * @param storeId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(STATIC_ALARM)
+    Observable<StaticAlarmList> getStaticAlarm(@Field("type") String type,@Field("date") String date,@Field("storeId") String storeId);
+
+    /**
+     * 库房环境设置
+     * @param storeId
+     * @param humUp
+     * @param humDown
+     * @param temUp
+     * @param temDown
+     * @param pm2Up
+     * @param tvocUp
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(KUFANG_SET)
+    /*Observable<AllList> getKuFangData(@Field("storeId") String storeId, @Field("humUp") String humUp,
+                                      @Field("humDown") String humDown, @Field("temUp") String temUp,
+                                      @Field("temDown") String temDown, @Field("pm2Up") String pm2Up,
+                                      @Field("tvocUp") String tvocUp);*/
+    Observable<Common> getKuFangData(@Field("storeId") String storeId, @Field("humUp") String humUp, @Field("humDown") String humDown, @Field("temUp") String temUp, @Field("temDown") String temDown, @Field("pm2Up") String pm2Up, @Field("tvocUp") String tvocUp);
 }

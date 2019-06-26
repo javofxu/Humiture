@@ -1,5 +1,7 @@
 package com.example.humiture.ui.activity;
 
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -9,6 +11,7 @@ import com.example.base.BaseActivity;
 import com.example.humiture.R;
 import com.example.humiture.R2;
 import com.example.humiture.utils.CacheDataManager;
+import com.example.humiture.utils.helper.SpUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,7 +73,14 @@ public class MineSetActivity extends BaseActivity {
                 break;
             case R.id.mine_ll_change:
                 break;
+                //退出登录
             case R.id.mine_ll_exit:
+                SpUtils.getInstance(this).clear();
+                if(SpUtils.getInstance(this).getString("username","").length() <= 0){
+                    skipAnotherActivity(LoginActivity.class);
+                }else{
+                    showToast("退出登录失败");
+                }
                 break;
         }
     }

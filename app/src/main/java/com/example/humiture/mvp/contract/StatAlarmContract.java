@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.widget.TextView;
 import com.example.base.BaseView;
 import com.example.humiture.data.Alarm;
+import com.example.humiture.data.StaticAlarmList;
 
 import java.util.List;
 

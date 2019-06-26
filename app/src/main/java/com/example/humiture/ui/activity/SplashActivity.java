@@ -1,8 +1,11 @@
 package com.example.humiture.ui.activity;
 
+import android.os.UserManager;
+
 import com.example.base.BaseActivity;
 import com.example.base.rx.RxTimerUtil;
 import com.example.humiture.R;
+import com.example.humiture.utils.helper.SpUtils;
 
 
 /**
@@ -21,7 +24,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void initData() {
         super.initData();
-        RxTimerUtil.timer(1000,()->{skipAnotherActivity(LoginActivity.class);finish();});
+        isLogin();
     }
 
     @Override
@@ -29,4 +32,19 @@ public class SplashActivity extends BaseActivity {
         super.onDestroy();
         RxTimerUtil.cancel();
     }
+
+    /**
+     * 判断是否登录过
+     */
+    private void isLogin(){
+        String name = SpUtils.getInstance(this).getString("username","");
+        String password = SpUtils.getInstance(this).getString("password","");
+        if(name.length()<=0 || password.length() <= 0){
+            showToast("请登录");
+            RxTimerUtil.timer(1000,()->{skipAnotherActivity(LoginActivity.class);finish();});
+        }else{
+            RxTimerUtil.timer(1000,()->{skipAnotherActivity(MainActivity.class);finish();});
+        }
+    }
+
 }

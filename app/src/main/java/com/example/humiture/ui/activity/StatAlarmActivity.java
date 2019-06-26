@@ -4,11 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -192,22 +196,95 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
      * 设置点击事件
      * @param contentView
      */
-    private void handleLogic(View contentView){
-        View.OnClickListener listener = new View.OnClickListener(){
+    private void handleLogic(View contentView) {
+        View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(customPopupWindow != null){
+                if (customPopupWindow != null) {
                     customPopupWindow.dismiss();
                 }
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.sort_all:
-                        Toast.makeText(StatAlarmActivity.this,"显示",Toast.LENGTH_SHORT).show();
-                        alarm_sort.setText("全部");
+                        alarm_sort.setText(R.string.sort_all);
+                        break;
+                    //全部环境
+                    case R.id.sort_environment:
+                        alarm_sort.setText(R.string.sort_environment);
+                        break;
+                    //温度
+                    case R.id.sort_wendu:
+                        alarm_sort.setText(R.string.sort_wendu);
+                        break;
+                    //湿度
+                    case R.id.sort_shidu:
+                        alarm_sort.setText(R.string.sort_shidu);
+                        break;
+                    //PM2.5
+                    case R.id.sort_pm:
+                        alarm_sort.setText(R.string.sort_pm);
+                        break;
+                    //TVOC
+                    case R.id.sort_tvoc:
+                        alarm_sort.setText(R.string.sort_tvoc);
+                        break;
+                    //菌落
+                    case R.id.sort_junluo:
+                        alarm_sort.setText(R.string.sort_junluo);
+                        break;
+                    //甲醛
+                    case R.id.sort_jiaquan:
+                        alarm_sort.setText(R.string.sort_jiaquan);
+                        break;
+                    //EOC2
+                    case R.id.sort_eoc2:
+                        alarm_sort.setText(R.string.sort_eoc2);
+                        break;
+                    //有害气体
+                    case R.id.sort_gas:
+                        alarm_sort.setText(R.string.sort_gas);
+                        break;
+                    //全部设备
+                    case R.id.sort_dev_all:
+                        alarm_sort.setText(R.string.sort_dev_all);
+                        break;
+                    //空调
+                    case R.id.sort_air:
+                        alarm_sort.setText(R.string.sort_air);
+                        break;
+                    //恒湿机
+                    case R.id.sort_hengshi:
+                        alarm_sort.setText(R.string.sort_hengshi);
+                        break;
+                    //消毒机
+                    case R.id.sort_xiaodu:
+                        alarm_sort.setText(R.string.sort_xiaodu);
+                        break;
+                    //除湿机
+                    case R.id.sort_chushi:
+                        alarm_sort.setText(R.string.sort_chushi);
+                        break;
+                    //加湿机
+                    case R.id.sort_jiashi:
+                        alarm_sort.setText(R.string.sort_jiashi);
                         break;
                 }
             }
         };
         contentView.findViewById(R.id.sort_all).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_environment).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_wendu).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_shidu).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_pm).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_tvoc).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_junluo).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_jiaquan).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_eoc2).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_gas).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_dev_all).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_air).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_hengshi).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_xiaodu).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_chushi).setOnClickListener(listener);
+        contentView.findViewById(R.id.sort_jiashi).setOnClickListener(listener);
     }
-
 }

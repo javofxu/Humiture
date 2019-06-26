@@ -81,6 +81,24 @@
     <string name="alarm_search_sort">分类</string>
     <string name="alarm_search_search">搜索</string>
 
+    <string name="sort_all">全部</string>
+    <string name="sort_environment">全部环境</string>
+    <string name="sort_wendu">温度</string>
+    <string name="sort_shidu">湿度</string>
+    <string name="sort_pm">PM2.5</string>
+    <string name="sort_tvoc">TVOC</string>
+    <string name="sort_junluo">菌落</string>
+    <string name="sort_jiaquan">甲醛</string>
+    <string name="sort_eoc2">EOC2</string>
+    <string name="sort_gas">有害气体</string>
+    <string name="sort_dev_all">全部设备</string>
+    <string name="sort_air">空调</string>
+    <string name="sort_hengshi">恒湿机</string>
+    <string name="sort_xiaodu">消毒机</string>
+    <string name="sort_chushi">除湿机</string>
+    <string name="sort_jiashi">加湿机</string>
+
+
     <!--我的-->
     <string name="mine_info_title">我的消息</string>
     <string name="mine_set_title">设置</string>

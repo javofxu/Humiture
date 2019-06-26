@@ -1,10 +1,14 @@
 package com.example.humiture.ui.view.adapter;
 
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
+import android.view.ViewGroup;
 
+import com.example.humiture.data.Warehouse;
 import com.example.humiture.ui.fragment.AlarmInfoFragment;
 import com.example.humiture.ui.fragment.MineInfoFragment;
 import com.example.humiture.ui.fragment.MineKuFangFragment;
@@ -18,6 +22,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private List<String> list;
     private String type;
+    private static final String TAG = "MyFragmentPagerAdapter";
 
     public MyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -38,11 +43,11 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
             }
             return new MineInfoFragment();
         }else if(type.equals("b")){
-            if(position == 1)
-            {
-                return new MineKuFangFragment();
-            }
-            return new MineKuFangFragment();
+            Fragment mineKuFang = new MineKuFangFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("name",list.get(position));
+            mineKuFang.setArguments(bundle);
+            return mineKuFang;
         }else{
         }
         return null;
@@ -58,5 +63,9 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return list.get(position);
+    }
+
+    @Override
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
     }
 }

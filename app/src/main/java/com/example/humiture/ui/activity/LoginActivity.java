@@ -102,7 +102,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         String password = SpUtils.getInstance(this).getString("password","");
         int user_id = SpUtils.getInstance(this).getInt("user_id",0);
         String username = SpUtils.getInstance(this).getString("name","");
-//        showToast("username" + name + "password" + password + "user_id" + user_id + "name" + username);
         mPresent.getLogin(name,password);
     }
 

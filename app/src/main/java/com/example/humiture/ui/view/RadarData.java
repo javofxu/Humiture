@@ -8,9 +8,9 @@ public class RadarData {
     //标题
     private String title;
     //百分比
-    private double percentage;
+    private int percentage;
 
-    public RadarData(String title, double percentage) {
+    public RadarData(String title, int percentage) {
         this.title = title;
         this.percentage = percentage;
     }
@@ -19,7 +19,7 @@ public class RadarData {
         return title;
     }
 
-    public double getPercentage() {
+    public int getPercentage() {
         return percentage;
     }
 

@@ -2,8 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.humiture">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
 
     <application
         android:name=".app.App"
@@ -35,6 +38,20 @@
         <activity android:name=".ui.activity.SmartAssistantActivity"></activity>
         <activity android:name=".ui.activity.PlayActivity"/>
         <activity android:name=".ui.activity.MineSafeChangePassword"/>
+
+        <service android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="false">
+
+        </service>
+
+        <receiver android:name=".service.MyReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

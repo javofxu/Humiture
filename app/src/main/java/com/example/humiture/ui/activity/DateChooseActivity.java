@@ -276,7 +276,12 @@ public class DateChooseActivity extends BaseActivity<DateChoosePresenter> implem
      * 选择年月日
      */
     private void initTimeDayPicker() {//Dialog 模式下，在底部弹出
-        pvDayTime = new TimePickerBuilder(DateChooseActivity.this, (date, v) -> tv_time.setText(DateUtils.convertToDate(date,DATE_FORMAT))).setType(new boolean[]{true,true,true,false,false,false})
+        pvDayTime = new TimePickerBuilder(DateChooseActivity.this, new OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {
+                tv_time.setText(DateUtils.convertToDate(date, DATE_FORMAT));
+            }
+        }).setType(new boolean[]{true,true,true,false,false,false})
                 .setCancelText("取消")
                 .setSubmitText("确定")
                 .setTitleText("请选择年月")

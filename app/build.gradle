@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 28
@@ -32,6 +33,14 @@ allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
     }
+}
+
+greendao{
+    schemaVersion 1
+    daoPackage 'com.example.humiture.greenDao'       //设置DaoMaster、DaoSession、Dao包名
+    targetGenDir 'src/main/java'
+    generateTests false
+    targetGenDirTests 'src/main/java'
 }
 
 dependencies {
@@ -90,5 +99,16 @@ dependencies {
      * fastJson
      */
     implementation 'com.alibaba:fastjson:1.1.26'
+
+    /**
+     * GreenDao
+     */
+    implementation 'org.greenrobot:greendao:3.2.2'
+
+    /**
+     * 调试数据库
+     */
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+    debugImplementation 'com.amitshekhar.android:debug-db-encrypt:1.0.6'
 
 }

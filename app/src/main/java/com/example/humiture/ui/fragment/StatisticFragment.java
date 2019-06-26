@@ -18,6 +18,7 @@ import com.baoyz.widget.PullRefreshLayout;
 import com.example.base.BaseFragment;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.data.StaticAlarmList;
 import com.example.humiture.mvp.contract.StatisticContract;
 import com.example.humiture.mvp.presenter.IndexPresent;
 import com.example.humiture.mvp.presenter.StatisticPresent;
@@ -53,9 +54,16 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
     TextView stat_date;
     @BindView(R2.id.stat_play)
     TextView stat_play;
+    @BindView(R2.id.stat_zh)
+    TextView stat_zh;
+    private int zh = 0;
 
     private Drawable drawable;
     private String resultTime = null;
+
+    private List<StaticAlarmList.Data.Bjtj> bjtjs = null;
+
+    private List<StaticAlarmList.Data.Zhtj> zhtjs = null;
 
 
     @Override
@@ -72,11 +80,6 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
     @Override
     protected void initView() {
         super.initView();
-
-        //雷达图数据
-        RadarData();
-        //饼图
-        mPresent.showPieChart(pieChart, getPieChartData());
         //设置时间选择按钮
         initTextView();
     }
@@ -84,12 +87,14 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
     @Override
     protected void initData() {
         super.initData();
+        mPresent.getStaticAlarm("1","2019","1");
         /**
          * 动态刷新数据
          */
-        pullRefreshLayout.setOnRefreshListener(() -> {
-            pullRefreshLayout.postDelayed(() -> pullRefreshLayout.setRefreshing(false), 1000);
-        });
+        pullRefreshLayout.setOnRefreshListener(() -> pullRefreshLayout.postDelayed(() -> {
+            mPresent.getStaticAlarm("1","2019","1");
+            pullRefreshLayout.setRefreshing(false);
+        }, 1000));
     }
 
     @OnClick({R2.id.stat_date,R2.id.stat_more,R2.id.stat_play,R2.id.alarm})
@@ -120,12 +125,17 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
      */
     private void RadarData() {
         List<RadarData> dataList = new ArrayList<>();
-        for (int i = 1; i < 6; i++) {
+        for (int i = 0; i < zhtjs.size(); i++) {
             //传入数据
-            RadarData data = new RadarData("标题" + i, i * 11);
-            dataList.add(data);
+            dataList.add(new RadarData("维护", zhtjs.get(i).getWh()));
+            dataList.add(new RadarData("环境",zhtjs.get(i).getHj()));
+            dataList.add(new RadarData("网络",zhtjs.get(i).getWl()));
+            dataList.add(new RadarData("操控",zhtjs.get(i).getCk()));
+            dataList.add(new RadarData("设备",zhtjs.get(i).getSb()));
+            zh = zhtjs.get(i).getZh();
         }
         radarView.setDataList(dataList);
+        stat_zh.setText(zh + "%");
     }
 
     /**
@@ -135,14 +145,9 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
      */
     private List<PieEntry> getPieChartData() {
         List<PieEntry> dataList = new ArrayList<>();
-        dataList.add(new PieEntry(20, "菌落"));
-        dataList.add(new PieEntry(30, "有害气体"));
-        dataList.add(new PieEntry(40, "设备"));
-        dataList.add(new PieEntry(50, "EOC2"));
-        dataList.add(new PieEntry(60, "温度"));
-        dataList.add(new PieEntry(70, "甲醛"));
-        dataList.add(new PieEntry(80,"TVOC"));
-        dataList.add(new PieEntry(90,"PM2.5"));
+        for(int i=0;i<bjtjs.size();i++){
+            dataList.add(new PieEntry(bjtjs.get(i).getCount(), bjtjs.get(i).getAlarmType().substring(0,bjtjs.get(i).getAlarmType().length()-3)));
+        }
         return dataList;
     }
 
@@ -174,5 +179,43 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
             stat_date.setText(resultTime);
         }
     }
+
+    @Override
+    public void onSuccess(StaticAlarmList staticAlarmList) {
+        //解析获取到的数据
+        bjtjs = new ArrayList<>();
+        zhtjs = new ArrayList<>();
+        //饼图数据
+        for(int i =0;i<staticAlarmList.getData().getBjtj().size();i++){
+            StaticAlarmList.Data.Bjtj bjtj = new StaticAlarmList().new Data().new Bjtj();
+            bjtj.setAlarmType_id(staticAlarmList.getData().getBjtj().get(i).getAlarmType_id());
+            bjtj.setAlarmType(staticAlarmList.getData().getBjtj().get(i).getAlarmType());
+            bjtj.setCount(staticAlarmList.getData().getBjtj().get(i).getCount());
+            bjtjs.add(bjtj);
+        }
+        //饼图
+        mPresent.showPieChart(pieChart, getPieChartData());
+        //雷达图数据
+        for(int j = 0;j<staticAlarmList.getData().getZhtj().size();j++){
+            StaticAlarmList.Data.Zhtj zhtj = new StaticAlarmList().new Data().new Zhtj();
+            zhtj.setWh(staticAlarmList.getData().getZhtj().get(j).getWh());
+            zhtj.setZh(staticAlarmList.getData().getZhtj().get(j).getZh());
+            zhtj.setHj(staticAlarmList.getData().getZhtj().get(j).getHj());
+            zhtj.setWl(staticAlarmList.getData().getZhtj().get(j).getWl());
+            zhtj.setCk(staticAlarmList.getData().getZhtj().get(j).getCk());
+            zhtj.setSb(staticAlarmList.getData().getZhtj().get(j).getSb());
+            zhtjs.add(zhtj);
+        }
+
+        //雷达图数据
+        RadarData();
+
+    }
+
+    @Override
+    public void onFail() {
+        showToast("获取数据失败");
+    }
+
 }
 

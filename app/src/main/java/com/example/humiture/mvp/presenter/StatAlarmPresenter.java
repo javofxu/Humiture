@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.base.rx.RxPresenter;
 import com.example.humiture.data.Alarm;
+import com.example.humiture.data.StaticAlarmList;
 import com.example.humiture.mvp.contract.StatAlarmContract;
 import com.example.humiture.mvp.model.StatAlarmModel;
 
@@ -26,6 +27,12 @@ public class StatAlarmPresenter extends RxPresenter<StatAlarmContract.View> impl
         this.context = context;
     }
 
+    /**
+     * 报警统计  更多
+     * @param type
+     * @param date
+     * @param storeId
+     */
     @Override
     public void getStaticAlarmList(String type, String date, String storeId) {
         Observable<Alarm> observable = model.getStaticAlarmList(type,date,storeId);

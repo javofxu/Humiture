@@ -153,7 +153,7 @@ public class RadarView extends View {
             float y = (float) ((radius + fontHeight * 2) * Math.cos(angle / 2 + angle * i));
             String title = dataList.get(i).getTitle();
             Log.i(TAG, "drawText: " + title);
-            Double percentage = dataList.get(i).getPercentage();
+            int percentage = dataList.get(i).getPercentage();
             float dis = textPaint.measureText(title);//文本长度
             float disp = textPaint.measureText(percentage+"%");
             Log.i(TAG, "drawText: " + dis + "--------------" + disp);

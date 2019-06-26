@@ -163,5 +163,11 @@ public class SpUtils {
         editor.commit();
     }
 
+    public void clear(){
+        editor.remove("username");
+        editor.remove("password");
+        editor.commit();
+
+    }
 
 }

@@ -1,476 +1,555 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none">
+    android:background="#ffc6c8c9"
+    android:orientation="vertical"
+    >
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/kufang_wendu"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_25"
-                android:layout_marginRight="@dimen/margin_25"
-                android:layout_marginTop="@dimen/margin_15"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:src="@mipmap/mine_icon_temperature"/>
+                android:background="@color/white"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:singleLine="true"
-                android:ellipsize="end"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginRight="@dimen/margin_25"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:src="@mipmap/mine_icon_temperature"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp" />
 
-            <EditText
-                android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/up_wendu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="14"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/down_wendu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffc6c8c9"/>
+
+                <LinearLayout
+                    android:id="@+id/kufang_shidu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginRight="@dimen/margin_25"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:src="@mipmap/mine_icon_humidity"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/up_shidu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="14"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/down_shidu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffc6c8c9"/>
+
+                <LinearLayout
+                    android:id="@+id/kufang_pm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginRight="@dimen/margin_25"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:src="@mipmap/mine_icon_pm"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/up_pm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="14"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/down_pm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffc6c8c9"/>
+
+                <LinearLayout
+                    android:id="@+id/kufang_tvoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginRight="@dimen/margin_25"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:src="@mipmap/mine_icon_tvoc"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/up_tvoc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="14"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/down_tvoc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffc6c8c9"/>
+
+                <LinearLayout
+                    android:id="@+id/kufang_bacterial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginRight="@dimen/margin_25"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:src="@mipmap/mine_icon_bacterial"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/up_junluo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="14"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/down_junluo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffc6c8c9"/>
+
+                <LinearLayout
+                    android:id="@+id/kufang_formol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginRight="@dimen/margin_25"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:src="@mipmap/mine_icon_formol"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/up_jiaquan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="14"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/down_jiaquan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffc6c8c9"/>
+
+                <LinearLayout
+                    android:id="@+id/kufang_eoc2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginRight="@dimen/margin_25"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:src="@mipmap/mine_icon_eoc2"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/up_eoc2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="14"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/down_eoc2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffc6c8c9"/>
+
+                <LinearLayout
+                    android:id="@+id/kufang_gas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_25"
+                        android:layout_marginRight="@dimen/margin_25"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginBottom="@dimen/margin_15"
+                        android:src="@mipmap/mine_icon_gas"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/up_gas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="14"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下限值:"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/down_gas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/edit_bg"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#ff333333"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffc6c8c9"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/kufang_ok"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
+                android:layout_marginTop="@dimen/base"
+                android:background="@color/white"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:layout_marginBottom="@dimen/margin_15"
+                    android:textColor="#ff333333"
+                    android:textSize="16sp"
+                    android:text="确认保存"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffc6c8c9"/>
+    </ScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_25"
-                android:layout_marginRight="@dimen/margin_25"
-                android:layout_marginTop="@dimen/margin_15"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:src="@mipmap/mine_icon_humidity"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffc6c8c9"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_25"
-                android:layout_marginRight="@dimen/margin_25"
-                android:layout_marginTop="@dimen/margin_15"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:src="@mipmap/mine_icon_pm"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffc6c8c9"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_25"
-                android:layout_marginRight="@dimen/margin_25"
-                android:layout_marginTop="@dimen/margin_15"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:src="@mipmap/mine_icon_tvoc"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffc6c8c9"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_25"
-                android:layout_marginRight="@dimen/margin_25"
-                android:layout_marginTop="@dimen/margin_15"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:src="@mipmap/mine_icon_bacterial"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffc6c8c9"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_25"
-                android:layout_marginRight="@dimen/margin_25"
-                android:layout_marginTop="@dimen/margin_15"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:src="@mipmap/mine_icon_formol"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffc6c8c9"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_25"
-                android:layout_marginRight="@dimen/margin_25"
-                android:layout_marginTop="@dimen/margin_15"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:src="@mipmap/mine_icon_eoc2"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffc6c8c9"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_25"
-                android:layout_marginRight="@dimen/margin_25"
-                android:layout_marginTop="@dimen/margin_15"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:src="@mipmap/mine_icon_gas"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp" />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下限值:"
-                android:textColor="#ff333333"
-                android:textSize="16sp"/>
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/edit_bg"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_weight="1"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"/>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#ffc6c8c9"/>
-
-        <Button
-            android:id="@+id/set_ok"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:background="@drawable/btn_bg"
-            android:text="@string/stat_choose_ok"
-            android:textSize="14sp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_15"
-            android:layout_marginBottom="@dimen/margin_15"/>
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>
