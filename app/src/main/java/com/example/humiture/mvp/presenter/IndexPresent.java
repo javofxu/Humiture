@@ -122,16 +122,16 @@ public class IndexPresent extends RxPresenter<IndexContract.mView> implements In
     public void designation(List<String> name, int type) {
         picker = new SinglePicker<>((Activity) mContext,name);
         picker.setCanLoop(false);//不禁用循环
-        picker.setTopBackgroundColor(0xFFEEEEEE);
-        picker.setTopHeight(40);
+        picker.setTopBackgroundColor(0xFFFFFFFF);
+        picker.setTopHeight(50);
         picker.setTitleTextColor(0xFF000000);
-        picker.setTitleTextSize(16);
-        picker.setCancelTextColor(0xFF999999);
-        picker.setCancelTextSize(14);
-        picker.setSubmitTextColor(0xFF33B5E5);
-        picker.setSubmitTextSize(14);
-        picker.setSelectedTextColor(0xFF33B5E5);
-        picker.setUnSelectedTextColor(0xFF999999);
+        picker.setTitleTextSize(15);
+        picker.setCancelTextColor(0xff108ee9);
+        picker.setCancelTextSize(15);
+        picker.setSubmitTextColor(0xff108ee9);
+        picker.setSubmitTextSize(15);
+        picker.setSelectedTextColor(0xff108ee9);
+        picker.setUnSelectedTextColor(0xff108ee9);
         picker.setWheelModeEnable(false);
         LineConfig config = new LineConfig();
         config.setColor(Color.GRAY);//线颜色

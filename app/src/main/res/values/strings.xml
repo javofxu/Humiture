@@ -69,6 +69,8 @@
     <string name="stat_choose_title">选择时间</string>
     <string name="stat_choose_ok">完成</string>
     <string name="stat_play_title">视频监控</string>
+    <string name="stat_zh_title">综合统计</string>
+    <string name="stat_bj_title">报警统计</string>
 
     <!--统计报警-->
     <string name="alarm_title">报警统计</string>
@@ -111,5 +113,11 @@
     <string name="smart_assistant_working">设置时间内，打开APP,会自动改为上班模式</string>
     <string name="smart_assistant_workout">设置时间内，所有设备会改为自动模式</string>
     <string name="smart_assistant_holiday">设置时间内，会进行托管模式</string>
+
+    <!--视频监控-->
+    <string name="player_operate">视频操控</string>
+    <string name="player_folder">文件夹</string>
+    <string name="player_screenshot">抓图</string>
+    <string name="player_video">录像</string>
 
 </resources>

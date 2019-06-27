@@ -42,6 +42,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.addapp.pickers.common.LineConfig;
 import cn.addapp.pickers.picker.DatePicker;
 
 import static com.example.humiture.utils.DateUtils.DATE_FORMAT;
@@ -245,10 +246,11 @@ public class DateChooseActivity extends BaseActivity<DateChoosePresenter> implem
                 .setCancelText("取消")
                 .setSubmitText("确定")
                 .setTitleText("请选择年月")
-                .setTitleSize(13)
-                .setSubCalSize(13)
-                .setSubmitColor(this.getResources().getColor(R.color.stat_date_black))
-                .setCancelColor(this.getResources().getColor(R.color.stat_date_black))
+                .setTitleSize(15)
+                .setSubCalSize(15)
+                .setSubmitColor(this.getResources().getColor(R.color.stat_date_blue))
+                .setCancelColor(this.getResources().getColor(R.color.stat_date_blue))
+                .setTitleBgColor(this.getResources().getColor(R.color.white))
                 .isDialog(true)
                 .build();
         Dialog mDialog = pvMonthTime.getDialog();
@@ -276,6 +278,9 @@ public class DateChooseActivity extends BaseActivity<DateChoosePresenter> implem
      * 选择年月日
      */
     private void initTimeDayPicker() {//Dialog 模式下，在底部弹出
+        LineConfig config = new LineConfig();
+        config.setColor(Color.GRAY);//线颜色
+        config.setAlpha(120);//线透明度
         pvDayTime = new TimePickerBuilder(DateChooseActivity.this, new OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
@@ -285,10 +290,11 @@ public class DateChooseActivity extends BaseActivity<DateChoosePresenter> implem
                 .setCancelText("取消")
                 .setSubmitText("确定")
                 .setTitleText("请选择年月")
-                .setTitleSize(13)
-                .setSubCalSize(13)
-                .setSubmitColor(this.getResources().getColor(R.color.stat_date_black))
-                .setCancelColor(this.getResources().getColor(R.color.stat_date_black))
+                .setTitleSize(15)
+                .setSubCalSize(15)
+                .setSubmitColor(this.getResources().getColor(R.color.stat_date_blue))
+                .setCancelColor(this.getResources().getColor(R.color.stat_date_blue))
+                .setTitleBgColor(this.getResources().getColor(R.color.white))
                 .isDialog(true)
                 .build();
         Dialog mDialog = pvDayTime.getDialog();

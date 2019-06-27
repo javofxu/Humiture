@@ -72,12 +72,13 @@ public class DateChoosePresenter extends RxPresenter<DateChooseContract.mView> i
                 }
             }
         }).setTitleText("请按年选择")
-                .setTitleSize(13)
-                .setSubCalSize(13)
+                .setTitleSize(15)
+                .setSubCalSize(15)
                 .setSubmitText("确定")
-                .setSubmitColor(mContext.getResources().getColor(R.color.stat_date_black))
+                .setSubmitColor(mContext.getResources().getColor(R.color.stat_date_blue))
                 .setCancelText("取消")
-                .setCancelColor(mContext.getResources().getColor(R.color.stat_date_black))
+                .setCancelColor(mContext.getResources().getColor(R.color.stat_date_blue))
+                .setTitleBgColor(mContext.getResources().getColor(R.color.white))
                 .build();
         multipleOp.setPicker(optionYears);
         multipleOp.show();

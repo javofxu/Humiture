@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_15"
+    android:layout_marginBottom="@dimen/margin_15"
+    android:layout_marginRight="@dimen/margin_15"
+    android:background="@mipmap/item_play_bg">
+
+    <TextView
+        android:id="@+id/play_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_10"
+        android:text="展示中心"
+        android:textColor="#5F5F5E"
+        android:textSize="14sp"/>
+
+</RelativeLayout>

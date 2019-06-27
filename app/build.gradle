@@ -11,8 +11,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        /**
+         *匹配海康威视的so文件
+         */
+        ndk{
+            abiFilters "armeabi","armeabi-v7a","x86_64"
+        }
     }
+
     buildTypes {
         release {
             minifyEnabled false

@@ -31,6 +31,7 @@ import com.example.humiture.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -71,30 +72,30 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
     @Override
     public void initData() {
         super.initData();
-        mPresent.getStaticAlarmList("1","2019","1");
+        mPresent.getStaticAlarmList("1", "2019", "1");
     }
 
     @Override
     protected void initView() {
         super.initView();
         //设置时间选择器的样式
-        initTextView(drawable,R.mipmap.stat_date_normal,stat_date);
+        initTextView(drawable, R.mipmap.stat_date_normal, stat_date);
         //设置分类的样式
-        initTextView(drawable,R.mipmap.stat_classify_normal,alarm_sort);
+        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    @OnClick({R2.id.alarm_back,R2.id.stat_date,R2.id.tv_alarm_search,R2.id.alarm_sort})
+    @OnClick({R2.id.alarm_back, R2.id.stat_date, R2.id.tv_alarm_search, R2.id.alarm_sort})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.alarm_back:
                 finish();
                 break;
             case R.id.stat_date:
-                Intent intent = new Intent(this,DateChooseActivity.class);
+                Intent intent = new Intent(this, DateChooseActivity.class);
                 Bundle bundle = new Bundle();
                 intent.putExtras(bundle);
-                startActivityForResult(intent,0);
+                startActivityForResult(intent, 0);
                 break;
             case R.id.tv_alarm_search:
                 String search = alarm_search.getText();
@@ -102,6 +103,7 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
                 break;
             case R.id.alarm_sort:
                 //设置一个PopupWindow
+                initTextView(drawable, R.mipmap.stat_classify_click, alarm_sort);
                 show(view);
                 break;
         }
@@ -109,6 +111,7 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
 
     /**
      * 设置分类和时间选择的样式
+     *
      * @param drawable
      * @param id
      * @param textView
@@ -121,45 +124,45 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
         textView.setCompoundDrawables(null, null, drawable, null);
         //设置间距
         textView.setCompoundDrawablePadding(15);
-        textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.stat_date_normal, 0);
+        textView.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 0 && resultCode == Activity.RESULT_OK){
+        if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
             Bundle bundle = data.getExtras();
             resultTime = bundle.getString("time");
-            if(resultTime.contains("年")){
-                resultTime = resultTime.replace("年","");
+            if (resultTime.contains("年")) {
+                resultTime = resultTime.replace("年", "");
                 Log.i(TAG, "onActivityResult: " + resultTime);
             }
             stat_date.setText(resultTime);
-            if(resultTime.length() < 5){
+            if (resultTime.length() < 5) {
                 Log.i(TAG, "onActivityResultYear: " + resultTime);
                 type = "1";
-            }else if(resultTime.length() > 5 && resultTime.length() <8){
+            } else if (resultTime.length() > 5 && resultTime.length() < 8) {
                 Log.i(TAG, "onActivityResultMonth: " + resultTime);
                 type = "2";
-            }else if(resultTime.length() > 8 ){
+            } else if (resultTime.length() > 8) {
                 Log.i(TAG, "onActivityResultDay: " + resultTime);
                 type = "3";
             }
-            mPresent.getStaticAlarmList(type,resultTime,"1");
+            mPresent.getStaticAlarmList(type, resultTime, "1");
         }
     }
 
     @Override
     public void onSuccess(Alarm alarm) {
         mList = new ArrayList<>();
-        for (int i = 0;i< alarm.getData().getList().size();i++){
+        for (int i = 0; i < alarm.getData().getList().size(); i++) {
             Alarm.Data.ListAlarm data = new Alarm().new Data().new ListAlarm();
             data.setAlarmType(alarm.getData().getList().get(i).getAlarmType());
             data.setAlarm_value(alarm.getData().getList().get(i).getAlarm_value());
             data.setCreated(alarm.getData().getList().get(i).getCreated());
             mList.add(data);
         }
-        recyclerView.setAdapter(new StatAlarmAdapter(this,mList));
+        recyclerView.setAdapter(new StatAlarmAdapter(this, mList));
     }
 
     @Override
@@ -180,13 +183,15 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
 
     /**
      * 显示CustomPopupWindow
+     *
      * @param view
      */
-    private void show(View view){
-        CustomPopupWindow customPopupWindow = CustomPopupWindow.builder()
+    private void show(View view) {
+        customPopupWindow = CustomPopupWindow.builder()
                 .contentView(CustomPopupWindow.inflateView(this, R.layout.stat_alarm_sort))
                 .isWrap(false)
                 .isOutsideTouch(false)
+                .isFocus(true)
                 .customListener(contentView -> handleLogic(contentView))
                 .build();
         customPopupWindow.showAsDropDown(view);
@@ -194,6 +199,7 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
 
     /**
      * 设置点击事件
+     *
      * @param contentView
      */
     private void handleLogic(View contentView) {
@@ -206,66 +212,82 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
                 switch (v.getId()) {
                     case R.id.sort_all:
                         alarm_sort.setText(R.string.sort_all);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //全部环境
                     case R.id.sort_environment:
                         alarm_sort.setText(R.string.sort_environment);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //温度
                     case R.id.sort_wendu:
                         alarm_sort.setText(R.string.sort_wendu);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //湿度
                     case R.id.sort_shidu:
                         alarm_sort.setText(R.string.sort_shidu);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //PM2.5
                     case R.id.sort_pm:
                         alarm_sort.setText(R.string.sort_pm);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //TVOC
                     case R.id.sort_tvoc:
                         alarm_sort.setText(R.string.sort_tvoc);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //菌落
                     case R.id.sort_junluo:
                         alarm_sort.setText(R.string.sort_junluo);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //甲醛
                     case R.id.sort_jiaquan:
                         alarm_sort.setText(R.string.sort_jiaquan);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //EOC2
                     case R.id.sort_eoc2:
                         alarm_sort.setText(R.string.sort_eoc2);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //有害气体
                     case R.id.sort_gas:
                         alarm_sort.setText(R.string.sort_gas);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //全部设备
                     case R.id.sort_dev_all:
                         alarm_sort.setText(R.string.sort_dev_all);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //空调
                     case R.id.sort_air:
                         alarm_sort.setText(R.string.sort_air);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //恒湿机
                     case R.id.sort_hengshi:
                         alarm_sort.setText(R.string.sort_hengshi);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //消毒机
                     case R.id.sort_xiaodu:
                         alarm_sort.setText(R.string.sort_xiaodu);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //除湿机
                     case R.id.sort_chushi:
                         alarm_sort.setText(R.string.sort_chushi);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                     //加湿机
                     case R.id.sort_jiashi:
                         alarm_sort.setText(R.string.sort_jiashi);
+                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
                         break;
                 }
             }

@@ -22,7 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            app:srcCompat="@drawable/ic_chevron_left"/>
+            android:layout_marginLeft="@dimen/margin_15"
+            app:srcCompat="@mipmap/ic_chevron_left"/>
 
         <TextView
             android:layout_width="wrap_content"

@@ -18,102 +18,112 @@
         android:layout_height="match_parent"
         app:refreshType="water_drop">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="false"
-            android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
 
             <include layout="@layout/title_head"/>
 
             <include layout="@layout/choose_date"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
-                android:layout_marginLeft="16dp"
-                android:text="综合统计"
-                android:textColor="#ff333333"
-                android:textSize="18sp"/>
+                <ScrollView
+                    android:id="@+id/scrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="false"
+                    android:scrollbars="none">
 
-            <com.example.humiture.ui.view.RadarView
-                android:id="@+id/radarView"
-                android:layout_width="wrap_content"
-                android:layout_height="260dp"
-                android:layout_gravity="center_horizontal"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_15"
+                        android:textStyle="bold"
+                        android:text="@string/stat_zh_title"
+                        android:textColor="@color/title_color"
+                        android:textSize="@dimen/alarm_pm_size"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="综合评估指数:"
-                    android:textColor="#ff333333"
-                    android:textSize="14sp"/>
+                    <com.example.humiture.ui.view.RadarView
+                        android:id="@+id/radarView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="280dp"
+                        android:layout_gravity="center_horizontal"/>
 
-                <TextView
-                    android:id="@+id/stat_zh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="89%"
-                    android:textColor="#ffffa800"
-                    android:textSize="14sp"
-                    android:paddingLeft="10dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal">
 
-            </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="综合评估指数:"
+                            android:textColor="#ff333333"
+                            android:textSize="14sp"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="11dp">
+                        <TextView
+                            android:id="@+id/stat_zh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="89%"
+                            android:textColor="#ffffa800"
+                            android:textSize="14sp"
+                            android:paddingLeft="10dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="报警统计"
-                    android:textColor="#ff333333"
-                    android:textSize="18sp"/>
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/stat_more"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="更多"
-                    android:textColor="#ff999999"
-                    android:textSize="12sp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginRight="12dp"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_10">
 
-            </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stat_bj_title"
+                            android:textStyle="bold"
+                            android:textColor="@color/title_color"
+                            android:textSize="@dimen/alarm_pm_size"/>
 
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/pie_chart"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_marginLeft="@dimen/margin_10"
-                android:layout_height="300dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_10" />
+                        <TextView
+                            android:id="@+id/stat_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="更多"
+                            android:textColor="#ff999999"
+                            android:textSize="12sp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="12dp"/>
 
+                    </RelativeLayout>
 
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/pie_chart"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:layout_height="300dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_10" />
+
+                </LinearLayout>
+
+                </ScrollView>
         </LinearLayout>
-        </ScrollView>
 
     </com.baoyz.widget.PullRefreshLayout>
 

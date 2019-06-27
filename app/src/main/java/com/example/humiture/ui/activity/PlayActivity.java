@@ -1,5 +1,6 @@
 package com.example.humiture.ui.activity;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
@@ -26,10 +27,11 @@ public class PlayActivity extends BaseActivity {
 
     @BindView(R2.id.stat_suplayer)
     SurfaceView surfaceView;
-    @BindView(R2.id.name)
+    @BindView(R2.id.player_title)
     TextView name;
     private TvUtils tvUtils;
-    int num = 0;
+    private int num = 0;
+    private String title = null;
 
     @Override
     protected int getLayoutId() {
@@ -45,10 +47,15 @@ public class PlayActivity extends BaseActivity {
     protected void initView() {
         super.initView();
         tvUtils = new TvUtils(this,surfaceView,null);
+        Intent intent = getIntent();
+        num = intent.getIntExtra("num",0);
+        title = intent.getStringExtra("title");
+        Log.i(TAG, "initView: " + num);
         if(!tvUtils.initeSdk()){
             this.finish();
             return;
         }
+        name.setText(title);
         Log.e(TAG, "initeSdk!");
         Log.e(TAG, "onCreate!");
     }
@@ -59,20 +66,20 @@ public class PlayActivity extends BaseActivity {
 
     }
 
-    @OnClick({R2.id.play_back,R2.id.previous,R2.id.next})
+    @OnClick({R2.id.play_back})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.play_back:
                 finish();
                 break;
-            case R.id.previous:
+            /*case R.id.previous:
                 //上一个
                 syg();
                 break;
             case R.id.next:
                 //下一个
                 next();
-                break;
+                break;*/
         }
     }
 

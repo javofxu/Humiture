@@ -6,11 +6,14 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -52,10 +55,10 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
     PullRefreshLayout pullRefreshLayout;
     @BindView(R2.id.stat_date)
     TextView stat_date;
-    @BindView(R2.id.stat_play)
-    TextView stat_play;
     @BindView(R2.id.stat_zh)
     TextView stat_zh;
+    @BindView(R2.id.scrollView)
+    ScrollView scrollView;
     private int zh = 0;
 
     private Drawable drawable;
@@ -97,7 +100,22 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
         }, 1000));
     }
 
-    @OnClick({R2.id.stat_date,R2.id.stat_more,R2.id.stat_play,R2.id.alarm})
+    @Override
+    protected void initListener() {
+        super.initListener();
+        if (scrollView != null){
+            scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+                @Override
+                public void onScrollChanged() {
+                    if(pullRefreshLayout != null){
+                        pullRefreshLayout.setEnabled(scrollView.getScrollY() == 0);
+                    }
+                }
+            });
+        }
+    }
+
+    @OnClick({R2.id.stat_date,R2.id.stat_more,R2.id.alarm})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.stat_date:
@@ -110,9 +128,6 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
                 break;
             case R.id.stat_more:
                 skipAnotherActivity(StatAlarmActivity.class);
-                break;
-            case R.id.stat_play:
-                skipAnotherActivity(PlayActivity.class);
                 break;
             case R.id.alarm:
                 skipAnotherActivity(MineInfoActivity.class);
@@ -163,11 +178,6 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
         //设置间距
         stat_date.setCompoundDrawablePadding(15);
         stat_date.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.stat_date_normal, 0);
-        stat_play.setPadding(30,0,30,0);
-        stat_play.setCompoundDrawables(null,null,drawable,null);
-        //设置间距
-        stat_play.setCompoundDrawablePadding(15);
-        stat_play.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.stat_date_normal, 0);
     }
 
     @Override

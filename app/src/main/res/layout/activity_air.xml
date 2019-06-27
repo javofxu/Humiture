@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/index_title"
-    tools:context=".ui.activity.NewsActivity">
+    android:background="@color/index_title">
 
     <View
         android:layout_width="match_parent"
@@ -31,7 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            app:srcCompat="@drawable/ic_chevron_left"/>
+            android:layout_marginLeft="@dimen/margin_15"
+            app:srcCompat="@mipmap/ic_chevron_left"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
@@ -47,10 +47,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginLeft="@dimen/margin_15"
             android:text="@string/operate_number"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_18"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/alarm_pm_size"
             android:textStyle="bold" />
 
             <com.example.humiture.ui.view.Gallery.BannerLayout
@@ -90,10 +91,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginLeft="@dimen/margin_15"
             android:text="@string/operate_equipment"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_18"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/alarm_pm_size"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -119,6 +121,7 @@
                     android:id="@+id/tv_op_sm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="@string/operate_sm" />
             </LinearLayout>
 
@@ -139,6 +142,7 @@
                     android:id="@+id/tv_op_hm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="@string/operate_hm"
                     android:textColor="@color/operate_click" />
             </LinearLayout>
@@ -168,6 +172,7 @@
                     android:id="@+id/tv_op_refrigeration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="@string/operate_refrigeration"
                     android:textColor="@color/operate_click" />
             </LinearLayout>
@@ -189,6 +194,7 @@
                     android:id="@+id/tv_op_heating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="@string/operate_heating" />
             </LinearLayout>
 
@@ -209,6 +215,7 @@
                     android:id="@+id/tv_op_ventilate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="@string/operate_ventilate" />
             </LinearLayout>
 
@@ -229,6 +236,7 @@
                     android:id="@+id/tv_op_stop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="@string/operate_stop"
                     android:textColor="@color/operate_normal" />
             </LinearLayout>

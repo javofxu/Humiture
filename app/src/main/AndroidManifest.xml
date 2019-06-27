@@ -26,7 +26,6 @@
         <activity android:name=".ui.activity.RegisterActivity" />
         <activity android:name=".ui.activity.MainActivity"/>
         <activity android:name=".ui.activity.EnvironmentActivity" />
-        <activity android:name=".ui.activity.NewsActivity" />
         <activity android:name=".ui.activity.AirActivity"></activity>
         <activity android:name=".ui.activity.DateChooseActivity"></activity>
         <activity android:name=".ui.activity.StatAlarmActivity"></activity>
@@ -38,6 +37,7 @@
         <activity android:name=".ui.activity.SmartAssistantActivity"></activity>
         <activity android:name=".ui.activity.PlayActivity"/>
         <activity android:name=".ui.activity.MineSafeChangePassword"/>
+        <activity android:name=".ui.activity.PlayerInfoActivity"/>
 
         <service android:name=".service.MyService"
             android:enabled="true"

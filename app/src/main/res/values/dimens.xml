@@ -6,4 +6,5 @@
     <dimen name="alarm_time_size">12sp</dimen>
     <dimen name="alarm_pm_size">16sp</dimen>
     <dimen name="txt_size_14">14sp</dimen>
+    <dimen name="data_choose">45dp</dimen>
 </resources>

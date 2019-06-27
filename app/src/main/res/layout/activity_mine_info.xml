@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            app:srcCompat="@drawable/ic_chevron_left"/>
+            android:layout_marginLeft="@dimen/margin_15"
+            app:srcCompat="@mipmap/ic_chevron_left" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,15 +41,18 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="@dimen/margin_40"
         android:layout_marginTop="@dimen/margin_10"
         android:layout_gravity="center"
         app:tabIndicatorFullWidth="false"
         app:tabMinWidth="120dp"
         app:tabMaxWidth="120dp"
         app:tabGravity="fill"
-        app:tabIndicatorColor="#ff333333"
+        app:tabSelectedTextColor="#ff108ee8"
+        app:tabTextColor="#999999"
+        app:tabIndicatorColor="#ff108ee8"
         app:tabIndicatorHeight="2dp"
+        app:tabTextAppearance="@style/tabLayout"
         app:tabMode="fixed"/>
 
     <View
