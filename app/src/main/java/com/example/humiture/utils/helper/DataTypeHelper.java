@@ -102,4 +102,18 @@ public class DataTypeHelper {
         background.add(R.mipmap.oper_no7);
         return background;
     }
+
+    /**
+     * 获取视频列表的背景
+     * @return
+     */
+    public static List<Integer> getPlayerBackground(){
+        List<Integer> background = new ArrayList<>();
+        background.add(R.mipmap.item_play_bg1);
+        background.add(R.mipmap.item_play_bg2);
+        background.add(R.mipmap.item_play_bg3);
+        background.add(R.mipmap.item_play_bg4);
+        return background;
+    }
+
 }
