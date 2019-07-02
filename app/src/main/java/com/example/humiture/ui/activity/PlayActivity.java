@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -20,6 +21,7 @@ import com.example.base.BaseActivity;
 import com.example.humiture.R;
 import com.example.humiture.R2;
 import com.example.humiture.utils.DisplayUtils;
+import com.example.humiture.utils.SaveBitMap;
 import com.example.humiture.utils.TvUtils;
 
 import butterknife.BindView;
@@ -59,6 +61,7 @@ public class PlayActivity extends BaseActivity {
     private boolean isBack = false;
     private int count = 0;
     private boolean isFull = false;
+    private SaveBitMap saveBitMap;
 
     @Override
     protected int getLayoutId() {
@@ -150,7 +153,9 @@ public class PlayActivity extends BaseActivity {
                 break;
             case R.id.screenshot:
                 //抓图
-                showToast("暂不支持");
+                Bitmap bitmap = tvUtils.setJpg(tvUtils.getM_iStartChan() + num);
+                saveBitMap = new SaveBitMap();
+                saveBitMap.saveBitmap(bitmap,this);
                 break;
             case R.id.videotape:
                 //录像

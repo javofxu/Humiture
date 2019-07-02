@@ -33,6 +33,12 @@ android {
     packagingOptions {
         exclude 'META-INF/proguard/androidx-annotations.pro'
     }
+
+    //添加dataBinding数据绑定
+    dataBinding{
+        enabled = true
+    }
+
 }
 
 allprojects {
