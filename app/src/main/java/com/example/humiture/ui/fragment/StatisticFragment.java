@@ -3,17 +3,10 @@ package com.example.humiture.ui.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -23,15 +16,12 @@ import com.example.humiture.R;
 import com.example.humiture.R2;
 import com.example.humiture.data.StaticAlarmList;
 import com.example.humiture.mvp.contract.StatisticContract;
-import com.example.humiture.mvp.presenter.IndexPresent;
 import com.example.humiture.mvp.presenter.StatisticPresent;
 import com.example.humiture.ui.activity.DateChooseActivity;
 import com.example.humiture.ui.activity.MineInfoActivity;
-import com.example.humiture.ui.activity.PlayActivity;
 import com.example.humiture.ui.activity.StatAlarmActivity;
 import com.example.humiture.ui.view.RadarData;
 import com.example.humiture.ui.view.RadarView;
-import com.example.humiture.utils.ToastUtils;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieEntry;
 
@@ -40,7 +30,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import cn.addapp.pickers.picker.DatePicker;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -100,6 +89,9 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
         }, 1000));
     }
 
+    /**
+     * 解决下拉刷新和ScrollView的冲突
+     */
     @Override
     protected void initListener() {
         super.initListener();

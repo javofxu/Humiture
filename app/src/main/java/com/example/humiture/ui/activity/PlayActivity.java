@@ -1,10 +1,16 @@
 package com.example.humiture.ui.activity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -23,14 +29,17 @@ import com.example.humiture.R2;
 import com.example.humiture.utils.DisplayUtils;
 import com.example.humiture.utils.SaveBitMap;
 import com.example.humiture.utils.TvUtils;
+import com.example.refreshview.CustomRefreshView;
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- *Time:2019/6/4
- *Author:冰冰凉
- *dec:摄像头
+ * Time:2019/6/4
+ * Author:冰冰凉
+ * dec:摄像头
  * ip：在后台获取
  * 端口：外网映射的端口是8801
  * 端口：内网端口为8000
@@ -76,12 +85,12 @@ public class PlayActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-        tvUtils = new TvUtils(this,surfaceView,null);
+        tvUtils = new TvUtils(this, surfaceView, null);
         Intent intent = getIntent();
-        num = intent.getIntExtra("num",0);
+        num = intent.getIntExtra("num", 0);
         title = intent.getStringExtra("title");
         Log.i(TAG, "initView: " + num);
-        if(!tvUtils.initeSdk()){
+        if (!tvUtils.initeSdk()) {
             this.finish();
             return;
         }
@@ -96,11 +105,11 @@ public class PlayActivity extends BaseActivity {
                         magnify_exit.setVisibility(View.GONE);
                         mask.setVisibility(View.GONE);
                     } else if (count % 2 == 1) { //奇数
-                        if(isFull){
+                        if (isFull) {
                             magnify.setVisibility(View.GONE);
                             magnify_exit.setVisibility(View.VISIBLE);
                             mask.setVisibility(View.VISIBLE);
-                        }else {
+                        } else {
                             magnify_exit.setVisibility(View.GONE);
                             magnify.setVisibility(View.VISIBLE);
                             mask.setVisibility(View.VISIBLE);
@@ -121,9 +130,9 @@ public class PlayActivity extends BaseActivity {
 
     }
 
-    @OnClick({R2.id.play_back,R2.id.player_magnify,R2.id.player_magnify_exit,R2.id.folder,R2.id.screenshot,R2.id.videotape})
-    public void onClick(View view){
-        switch (view.getId()){
+    @OnClick({R2.id.play_back, R2.id.player_magnify, R2.id.player_magnify_exit, R2.id.folder, R2.id.screenshot, R2.id.videotape})
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.play_back:
                 finish();
                 break;
@@ -149,13 +158,14 @@ public class PlayActivity extends BaseActivity {
                 break;
             case R.id.folder:
                 //文件夹
-                showToast("暂不支持");
+                saveBitMap = new SaveBitMap();
+                saveBitMap.openImg(this);
                 break;
             case R.id.screenshot:
                 //抓图
                 Bitmap bitmap = tvUtils.setJpg(tvUtils.getM_iStartChan() + num);
                 saveBitMap = new SaveBitMap();
-                saveBitMap.saveBitmap(bitmap,this);
+                saveBitMap.saveBitmap(bitmap, this);
                 break;
             case R.id.videotape:
                 //录像
@@ -194,6 +204,11 @@ public class PlayActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
+        tvUtils = new TvUtils(this, surfaceView, null);
+        if (!tvUtils.initeSdk()) {
+            this.finish();
+            return;
+        }
         startVedio();
         Log.e(TAG, "onResume!");
     }
@@ -212,8 +227,8 @@ public class PlayActivity extends BaseActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
-            if(isBack){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (isBack) {
                 DisplayUtils.toggleScreenOrientation(PlayActivity.this);
                 view_top.setVisibility(View.VISIBLE);
                 rlt_top.setVisibility(View.VISIBLE);
@@ -223,11 +238,11 @@ public class PlayActivity extends BaseActivity {
                 isBack = false;
                 isFull = false;
                 return false;
-            }else{
-                return super.onKeyDown(keyCode,event);
+            } else {
+                return super.onKeyDown(keyCode, event);
             }
-        }else {
-            return super.onKeyDown(keyCode,event);
+        } else {
+            return super.onKeyDown(keyCode, event);
         }
     }
 }

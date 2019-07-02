@@ -1,9 +1,12 @@
 package com.example.humiture.utils;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.widget.Toast;
@@ -68,6 +71,39 @@ public class SaveBitMap {
         }
         // 最后通知图库更新
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + file)));
+    }
+
+    /**
+     * 使用文件管理器打开指定的文件夹
+     */
+    public void openAssignFolder(Context context){
+        File file = new File(Environment.getExternalStorageDirectory(), "Humiture");
+        if(null==file || !file.exists()){
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.setDataAndType(Uri.fromFile(file), "*/*");
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 跳转到图库
+     */
+    public void openImg(Activity activity){
+        Intent intent = new Intent();
+        if(Build.VERSION.SDK_INT < 19){
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            intent.setType("image/*");
+        }else{
+            intent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
+        }
+        activity.startActivity(intent);
     }
 
 }
