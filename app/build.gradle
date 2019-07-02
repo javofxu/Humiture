@@ -1,20 +1,24 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.humiture"
         minSdkVersion 22
-        targetSdkVersion 28
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        ndk {
-            abiFilters "armeabi","arm64-v8a","x86_64","x86","armeabi-v7"
+        /**
+         *匹配海康威视的so文件
+         */
+        ndk{
+            abiFilters "armeabi","armeabi-v7a","x86_64"
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,12 +33,26 @@ android {
     packagingOptions {
         exclude 'META-INF/proguard/androidx-annotations.pro'
     }
+
+    //添加dataBinding数据绑定
+    dataBinding{
+        enabled = true
+    }
+
 }
 
 allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
     }
+}
+
+greendao{
+    schemaVersion 1
+    daoPackage 'com.example.humiture.greenDao'       //设置DaoMaster、DaoSession、Dao包名
+    targetGenDir 'src/main/java'
+    generateTests false
+    targetGenDirTests 'src/main/java'
 }
 
 dependencies {
@@ -45,7 +63,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     implementation 'com.android.support:design:28.0.0'
     /**
      *   butter配置
@@ -63,7 +80,7 @@ dependencies {
     /**
      * 自定义输入框
      */
-    implementation 'com.github.javofxu:CustomEditText:v2.0'
+    implementation 'com.github.JhonBFang:CustomEditText:V1.0.1'
     implementation 'com.yarolegovich:discrete-scrollview:1.0.3'
     /**
      * 折线图和饼图
@@ -72,9 +89,7 @@ dependencies {
     implementation 'com.github.addappcn:android-pickers:1.0.3'
     //动态刷新
     implementation 'com.baoyz.pullrefreshlayout:library:1.2.0'
-
     implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
-    implementation 'com.android.support:design:28.0.0'
     implementation 'com.zt.maven.widget:refreshview:1.0.2'
     implementation files('libs/bdasr_V3_20190327_58c9395.jar')
     implementation files('libs/com.baidu.tts_2.3.2.20180713_6101c2a.jar')
@@ -83,9 +98,32 @@ dependencies {
      * 时间选择
      */
     implementation 'com.contrarywind:Android-PickerView:4.1.8'
-
     /**
      * 添加RecyclerView
      */
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    /**
+     * 海康威视视频导入包
+     */
+    implementation files('libs/AudioEngineSDK.jar')
+    implementation files('libs/HCNetSDK.jar')
+    implementation files('libs/PlayerSDK.jar')
+
+    /**
+     * fastJson
+     */
+    implementation 'com.alibaba:fastjson:1.1.26'
+
+    /**
+     * GreenDao
+     */
+    implementation 'org.greenrobot:greendao:3.2.2'
+
+    /**
+     * 调试数据库
+     */
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+    debugImplementation 'com.amitshekhar.android:debug-db-encrypt:1.0.6'
+
 }

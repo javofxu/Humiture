@@ -5,25 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base"
+        android:background="@color/index_title"/>
+
     <RelativeLayout
         android:id="@+id/rlt_top"
         android:layout_width="match_parent"
-        android:layout_height="75dp">
+        android:layout_height="@dimen/margin_50"
+        android:background="@color/index_title">
 
         <ImageView
             android:id="@+id/register_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="17dp"
-            android:src="@mipmap/back"/>
+            android:layout_marginLeft="@dimen/margin_15"
+            app:srcCompat="@mipmap/ic_chevron_left"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="账号注册"
-            android:textColor="#ff000000"
+            android:text="@string/register_title"
+            android:textColor="@color/white"
             android:textSize="18sp"/>
 
         <View
@@ -39,18 +45,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginRight="@dimen/base"
             app:contents=""
             app:isEyeShow="false"
             app:hintText="@string/register_name"
             app:is_icon_show="false"
-            app:isPassword="false">
+            android:forceHasOverlappingRendering="true"
+            app:isPassword="false"
+            app:is_background="false"
+            >
 
         </com.example.custom.CustomEditText>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_05"
         android:background="#ffc6c8c9"
         android:layout_centerInParent="true"/>
 
@@ -58,18 +68,20 @@
         android:id="@+id/edt_register_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_05"
+        android:layout_marginRight="@dimen/base"
         app:contents=""
-        app:isEyeShow="false"
+        app:isEyeShow="true"
         app:hintText="@string/register_pwd"
         app:is_icon_show="false"
-        app:isPassword="false">
+        app:isPassword="true"
+        app:is_background="false">
     </com.example.custom.CustomEditText>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_05"
         android:background="#ffc6c8c9"
         android:layout_centerInParent="true"/>
 
@@ -77,18 +89,20 @@
         android:id="@+id/edt_register_pwd_again"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_05"
+        android:layout_marginRight="@dimen/base"
         app:contents=""
-        app:isEyeShow="false"
+        app:isEyeShow="true"
         app:hintText="@string/register_pwd_again"
         app:is_icon_show="false"
-        app:isPassword="false">
+        app:isPassword="true"
+        app:is_background="false">
     </com.example.custom.CustomEditText>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_05"
         android:background="#ffc6c8c9"
         android:layout_centerInParent="true"/>
 

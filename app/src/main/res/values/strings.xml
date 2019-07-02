@@ -6,11 +6,17 @@
     <!--登录-->
     <string name="login_name">请输入用户账号</string>
     <string name="login_pwd">请输入密码</string>
+    <string name="login_other">本机直接登录</string>
+    <string name="login">登录</string>
+    <string name="login_password_forget">忘记密码</string>
+    <string name="login_other_title">其他快捷登录</string>
     <!--注册-->
     <string name="register_name">用户名</string>
     <string name="register_pwd">密码</string>
-    <string name="register_pwd_again">请确认密码</string>
+    <string name="register_pwd_again">确认密码</string>
     <string name="register_rgs">注册</string>
+    <string name="register_now">立即注册</string>
+    <string name="register_title">账号注册</string>
 
     <!--首页-->
     <string name="index_data">环境数据</string>
@@ -64,6 +70,9 @@
     <string name="stat_choose_day">按日选择</string>
     <string name="stat_choose_title">选择时间</string>
     <string name="stat_choose_ok">完成</string>
+    <string name="stat_play_title">视频监控</string>
+    <string name="stat_zh_title">综合统计</string>
+    <string name="stat_bj_title">报警统计</string>
 
     <!--统计报警-->
     <string name="alarm_title">报警统计</string>
@@ -76,14 +85,41 @@
     <string name="alarm_search_sort">分类</string>
     <string name="alarm_search_search">搜索</string>
 
+    <string name="sort_all">全部</string>
+    <string name="sort_environment">全部环境</string>
+    <string name="sort_wendu">温度</string>
+    <string name="sort_shidu">湿度</string>
+    <string name="sort_pm">PM2.5</string>
+    <string name="sort_tvoc">TVOC</string>
+    <string name="sort_junluo">菌落</string>
+    <string name="sort_jiaquan">甲醛</string>
+    <string name="sort_eoc2">EOC2</string>
+    <string name="sort_gas">有害气体</string>
+    <string name="sort_dev_all">全部设备</string>
+    <string name="sort_air">空调</string>
+    <string name="sort_hengshi">恒湿机</string>
+    <string name="sort_xiaodu">消毒机</string>
+    <string name="sort_chushi">除湿机</string>
+    <string name="sort_jiashi">加湿机</string>
+
+
     <!--我的-->
     <string name="mine_info_title">我的消息</string>
     <string name="mine_set_title">设置</string>
     <string name="mine_set_safe_title">账户与安全</string>
-
+    <string name="mine_safe_password_title">修改密码</string>
+    <string name="mine_safe_password_btn">重置</string>
     <string name="mine_kufang_set">库房环境</string>
-
     <string name="mine_cache">清理缓存</string>
     <string name="smart_assistant_title">智能小助手</string>
+    <string name="smart_assistant_working">设置时间内，打开APP,会自动改为上班模式</string>
+    <string name="smart_assistant_workout">设置时间内，所有设备会改为自动模式</string>
+    <string name="smart_assistant_holiday">设置时间内，会进行托管模式</string>
+
+    <!--视频监控-->
+    <string name="player_operate">视频操控</string>
+    <string name="player_folder">文件夹</string>
+    <string name="player_screenshot">抓图</string>
+    <string name="player_video">录像</string>
 
 </resources>

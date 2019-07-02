@@ -11,4 +11,24 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <LinearLayout
+        android:id="@+id/info_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/no_data"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/no_data"/>
+    </LinearLayout>
+
 </LinearLayout>

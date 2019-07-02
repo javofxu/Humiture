@@ -1,9 +1,18 @@
 package com.example.humiture.http;
 
+import com.example.humiture.data.Alarm;
+import com.example.humiture.data.AllList;
+import com.example.humiture.data.Common;
 import com.example.humiture.data.DetailsList;
+import com.example.humiture.data.KuFangData;
+import com.example.humiture.data.LoginData;
+import com.example.humiture.data.MessageData;
 import com.example.humiture.data.RealTimeData;
+import com.example.humiture.data.StaticAlarmList;
 import com.example.humiture.data.TrendData;
 import com.example.humiture.data.Warehouse;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -23,6 +32,14 @@ public interface ApiService {
     String REAL_TIME = BASE_URL+"/getNewHum";
     String GET_TREND = BASE_URL+"/getEvnFormDateType";
     String GET_DETAILS = BASE_URL+"/getDateByTime";
+    String LOGIN = "/bis_hwhs/api/admin/login";     //登录
+    String REGISTER = "/bis_hwhs/api/admin/reg";    //注册
+    String MINE_SET_SAFE = "/bis_hwhs/api/admin/changepwd";     //修改密码
+    String MINE_MESSAGE_ALARM = "/bis_hwhs/api/alarm/selectAllAlarmlist";   //我的消息 报警信息
+    String STATIC_ALARMLIST = "/bis_hwhs/api/alarm/getAlarmSataList";       //报警统计 更多
+    String STATIC_ALARM = "/bis_hwhs/api/alarm/getAlarmSata";               //报警统计首页
+    String KUFANG_SET = "/bis_hwhs/api/device/updateHcsLimit";              //库房设置
+
     /**
      * 获取库房
      * @return
@@ -62,4 +79,85 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(GET_DETAILS)
     Observable<DetailsList> getDetailsList(@Field("storeId") int storeId, @Field("type") String type, @Field("strTime") long startTime, @Field("endTime") long endTime, @Field("page") int page);
+
+    /**
+     * 登录的实现
+     * @param username
+     * @param password
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(LOGIN)
+    Observable<LoginData> getLogin(@Field("username") String username, @Field("password") String password);
+
+    /**
+     * 注册的实现
+     * @param username      用户名
+     * @param password      密码
+     * @param repassword    确认密码
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(REGISTER)
+    Observable<Common> getRegister(@Field("username") String username,@Field("password") String password,@Field("repassword") String repassword);
+
+    /**
+     * 修改密码
+     * @param userId
+     * @param password
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(MINE_SET_SAFE)
+    Observable<Common> getChangePwd(@Field("userId") int userId,@Field("password") String password);
+
+    /**
+     * 我的消息  报警信息列表
+     * @param strtime
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(MINE_MESSAGE_ALARM)
+    Observable<MessageData> getAlarmMessage(@Field("strtime") String strtime);
+
+    /**
+     * 报警统计 更多
+     * @param type
+     * @param date
+     * @param storeId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(STATIC_ALARMLIST)
+    Observable<Alarm> getStaticAlarmList(@Field("type") String type,@Field("date") String date,@Field("storeId") String storeId);
+
+    /**
+     * 报警统计  首页
+     * @param type
+     * @param date
+     * @param storeId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(STATIC_ALARM)
+    Observable<StaticAlarmList> getStaticAlarm(@Field("type") String type,@Field("date") String date,@Field("storeId") String storeId);
+
+    /**
+     * 库房环境设置
+     * @param storeId
+     * @param humUp
+     * @param humDown
+     * @param temUp
+     * @param temDown
+     * @param pm2Up
+     * @param tvocUp
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(KUFANG_SET)
+    /*Observable<AllList> getKuFangData(@Field("storeId") String storeId, @Field("humUp") String humUp,
+                                      @Field("humDown") String humDown, @Field("temUp") String temUp,
+                                      @Field("temDown") String temDown, @Field("pm2Up") String pm2Up,
+                                      @Field("tvocUp") String tvocUp);*/
+    Observable<Common> getKuFangData(@Field("storeId") String storeId, @Field("humUp") String humUp, @Field("humDown") String humDown, @Field("temUp") String temUp, @Field("temDown") String temDown, @Field("pm2Up") String pm2Up, @Field("tvocUp") String tvocUp);
 }

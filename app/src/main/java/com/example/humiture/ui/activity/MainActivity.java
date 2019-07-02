@@ -73,6 +73,7 @@ public class MainActivity extends BaseActivity {
                         .onTabClickListener((view, i) -> {
                             if (i==2){
                                 skipAnotherActivity(VoiceActivity.class);
+
                                 return true;
                             }
                             return false;

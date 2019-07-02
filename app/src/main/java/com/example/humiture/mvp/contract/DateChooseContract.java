@@ -3,6 +3,7 @@ package com.example.humiture.mvp.contract;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.example.base.BaseView;
 import java.util.List;
 
@@ -23,9 +24,5 @@ public interface DateChooseContract {
     interface Presenter {
         //设置年的选择
         void showPickerView(List<String> optionYears,TextView textView);
-        //设置年月的选择
-        void onYearMonthPicker(TextView textView);
-        //设置年月日的选择
-        void onYearMonthDayPicker(TextView textView);
     }
 }

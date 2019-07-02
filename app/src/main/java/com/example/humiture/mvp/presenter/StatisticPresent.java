@@ -2,9 +2,12 @@ package com.example.humiture.mvp.presenter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 
 import com.example.base.rx.RxPresenter;
+import com.example.humiture.data.StaticAlarmList;
 import com.example.humiture.mvp.contract.StatisticContract;
+import com.example.humiture.mvp.model.StatisticModel;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
@@ -16,6 +19,9 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
+
 import static com.github.mikephil.charting.utils.ColorTemplate.rgb;
 
 /**
@@ -23,9 +29,14 @@ import static com.github.mikephil.charting.utils.ColorTemplate.rgb;
  *Author:冰冰凉
  *dec:
  */
-public class StatisticPresent extends RxPresenter<StatisticContract.mView> implements StatisticContract.present{
+public class StatisticPresent extends RxPresenter<StatisticContract.mView> implements StatisticContract.Present{
+
+    private static final String TAG = "StatisticPresent";
 
     private Context mContext;
+
+    private StatisticContract.Model model = new StatisticModel();
+
     /**
      * #BDD25A : 菌落
      * #A15EC7 : 有毒气体
@@ -33,10 +44,13 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
      * #F1B34E : EOC2
      * #F4407E : 温度
      * #108EE9 : 甲醛
+     * #84D32F : TVOC
+     *
      */
     public static final int[] MATERIAL_CLOLOR = {
             rgb("#BDD25A"), rgb("#A15EC7"), rgb("#1048E9"),
-            rgb("#F1B34E"), rgb("#F4407E"), rgb("#108EE9")
+            rgb("#F1B34E"), rgb("#F4407E"), rgb("#108EE9"),
+            rgb("#84D32F"),rgb("#4AB35C")
     };
 
     public StatisticPresent(Context mContext){
@@ -49,7 +63,7 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
         PieDataSet dataSet = new PieDataSet(pieList,"");
         //不显示图例
         Legend legend = pieChart.getLegend();
-        legend.setEnabled(true);
+        legend.setEnabled(false);
         //设置颜色list,让不同的块显示不同的颜色
         ArrayList<Integer> colors = new ArrayList<Integer>();
         for(int c : MATERIAL_CLOLOR){
@@ -110,5 +124,25 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
         pieChart.setData(pieData);
         //更新视图
         pieChart.postInvalidate();
+    }
+
+    /**
+     * 报警统计   首页
+     * @param type
+     * @param date
+     * @param storeId
+     */
+    @Override
+    public void getStaticAlarm(String type, String date, String storeId) {
+        Observable<StaticAlarmList> observable = model.getStaticAlarm(type,date,storeId);
+        observable.subscribe(staticAlarmList -> {
+            Log.i(TAG, "accept: " + staticAlarmList.getStatus());
+            if(staticAlarmList.getStatus() == 0){
+                mView.onSuccess(staticAlarmList);
+            }else{
+                mView.onFail();
+            }
+        });
+
     }
 }

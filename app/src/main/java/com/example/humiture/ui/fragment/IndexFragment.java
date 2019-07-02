@@ -15,7 +15,7 @@ import com.example.humiture.data.TrendData;
 import com.example.humiture.mvp.contract.IndexContract;
 import com.example.humiture.mvp.presenter.IndexPresent;
 import com.example.humiture.ui.activity.EnvironmentActivity;
-import com.example.humiture.ui.activity.NewsActivity;
+import com.example.humiture.ui.activity.MineInfoActivity;
 import com.example.humiture.ui.view.adapter.LoopShowAdapter;
 import com.example.humiture.utils.ItemDecorationUtils;
 import com.example.humiture.utils.LineChartManager;
@@ -126,7 +126,7 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
                 skipAnotherActivity(mBundle,EnvironmentActivity.class);
                 break;
             case R.id.index_news:
-                skipAnotherActivity(NewsActivity.class);
+                skipAnotherActivity(MineInfoActivity.class);
                 break;
         }
     }
