@@ -1,11 +1,13 @@
 package com.example.humiture.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 
 import com.example.base.BaseActivity;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.service.MyService;
 import com.example.humiture.ui.fragment.IndexFragment;
 import com.example.humiture.ui.fragment.MineFragment;
 import com.example.humiture.ui.fragment.OperateFragment;
@@ -70,11 +72,19 @@ public class MainActivity extends BaseActivity {
                 .navigationBackground(Color.parseColor("#FFFFFF"))
                         .onTabClickListener((view, i) -> {
                             if (i==2){
-//                                skipAnotherActivity(LoginActivity.class);
+                                skipAnotherActivity(VoiceActivity.class);
+
                                 return true;
                             }
                             return false;
                         })
                 .build();
     }
+
+    @Override
+    public void initData() {
+        super.initData();
+        startService(new Intent(this,MyService.class));
+    }
+
 }

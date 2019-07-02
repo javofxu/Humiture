@@ -62,6 +62,8 @@
     <!--消息-->
     <string name="news_title">我的消息</string>
 
+    <!--语音-->
+    <string name="voice_title">请问有什么可以帮助您？</string>
     <!--统计-->
     <string name="stat_choose_year">按年选择</string>
     <string name="stat_choose_month">按月选择</string>

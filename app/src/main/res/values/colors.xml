@@ -35,6 +35,10 @@
     <!--统计首页-->
     <color name="stat_choose_time">#ffd4d4d4</color>
     <color name="state_radarview">#ff00c0e0</color>
+
+    <color name="green">#179F76</color>
+    <color name="blue">#2A74FF</color>
+    <color name="pink">#9B2E2E</color>
     <!--统计 时间选择-->
     <color name="stat_date_year">#ff333333</color>
     <color name="stat_date_edit">#ff108ee9</color>
