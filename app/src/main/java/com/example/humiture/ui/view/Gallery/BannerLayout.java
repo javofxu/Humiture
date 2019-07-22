@@ -33,6 +33,8 @@ import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
  */
 public class BannerLayout extends FrameLayout {
 
+    private static final String TAG = "BannerLayout";
+
     private int autoPlayDuration;//刷新间隔时间
 
     private boolean showIndicator;//是否显示指示器
@@ -56,12 +58,20 @@ public class BannerLayout extends FrameLayout {
     int itemSpace;
     float centerScale;
     float moveSpeed;
+
+    private OnBannerItemClickListener onBannerItemClickListener;
+
+    public void setOnBannerItemClickListener(OnBannerItemClickListener banner){
+        onBannerItemClickListener = banner;
+    }
+
     protected Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
             if (msg.what == WHAT_AUTO_PLAY) {
                 if (currentIndex == mLayoutManager.getCurrentPosition()) {
                     ++currentIndex;
+                    Log.i(TAG, "handleMessage: " + currentIndex);
                     mRecyclerView.smoothScrollToPosition(currentIndex);
                     mHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, autoPlayDuration);
                     refreshIndicator();
@@ -234,6 +244,9 @@ public class BannerLayout extends FrameLayout {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 if (dx != 0) {
                     setPlaying(false);
+                    Log.i(TAG, "onScrolled: " + mLayoutManager.getCurrentPosition());
+                    //获取到当前位置
+                    onBannerItemClickListener.onItemClick(mLayoutManager.getCurrentPosition());
                 }
             }
 

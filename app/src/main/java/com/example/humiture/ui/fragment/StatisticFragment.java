@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ScrollView;
@@ -14,6 +15,8 @@ import com.baoyz.widget.PullRefreshLayout;
 import com.example.base.BaseFragment;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.data.AllList;
+import com.example.humiture.data.KuFangSetData;
 import com.example.humiture.data.StaticAlarmList;
 import com.example.humiture.mvp.contract.StatisticContract;
 import com.example.humiture.mvp.presenter.StatisticPresent;
@@ -22,6 +25,7 @@ import com.example.humiture.ui.activity.MineInfoActivity;
 import com.example.humiture.ui.activity.StatAlarmActivity;
 import com.example.humiture.ui.view.RadarData;
 import com.example.humiture.ui.view.RadarView;
+import com.example.humiture.utils.helper.GreenDaoHelp;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieEntry;
 
@@ -48,6 +52,8 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
     TextView stat_zh;
     @BindView(R2.id.scrollView)
     ScrollView scrollView;
+    @BindView(R2.id.index_title)
+    TextView mTitle;
     private int zh = 0;
 
     private Drawable drawable;
@@ -56,7 +62,12 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
     private List<StaticAlarmList.Data.Bjtj> bjtjs = null;
 
     private List<StaticAlarmList.Data.Zhtj> zhtjs = null;
-
+    private List<KuFangSetData> list = null;
+    //头部库房
+    private String wareHouseName = null;
+    private List<String> wareHouseList = null;
+    private List<KuFangSetData> queryList = null;
+    private String wareHouseId = null;
 
     @Override
     protected int getLayoutId() {
@@ -72,6 +83,7 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
     @Override
     protected void initView() {
         super.initView();
+        GreenDaoHelp.getInstance(getActivity()).initGreenDao(getActivity());
         //设置时间选择按钮
         initTextView();
     }
@@ -79,7 +91,15 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
     @Override
     protected void initData() {
         super.initData();
+        list = GreenDaoHelp.getInstance(mContext).queryAllList();
         mPresent.getStaticAlarm("1","2019","1");
+        if (list.size() <= 0) {
+            mTitle.setText("一库房");
+            wareHouseName = "一库房";
+        } else {
+            mTitle.setText(list.get(0).getName());
+            wareHouseName = list.get(0).getName();
+        }
         /**
          * 动态刷新数据
          */
@@ -107,12 +127,11 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
         }
     }
 
-    @OnClick({R2.id.stat_date,R2.id.stat_more,R2.id.alarm})
+    @OnClick({R2.id.stat_date,R2.id.stat_more,R2.id.alarm,R2.id.index_title})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.stat_date:
                 //时间选择
-//                skipAnotherActivity(DateChooseActivity.class);
                 Intent intent = new Intent(getActivity(),DateChooseActivity.class);
                 Bundle bundle = new Bundle();
                 intent.putExtras(bundle);
@@ -123,6 +142,14 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
                 break;
             case R.id.alarm:
                 skipAnotherActivity(MineInfoActivity.class);
+                break;
+            case R.id.index_title:
+                //库房选择,在本地数据库中加载本地数据
+                wareHouseList = new ArrayList<>();
+                for (int i = 0; i < list.size(); i++) {
+                    wareHouseList.add(list.get(i).getName());
+                }
+                mPresent.choseWareHouse(mContext, wareHouseList);
                 break;
         }
     }
@@ -179,6 +206,17 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
             Bundle bundle = data.getExtras();
             resultTime = bundle.getString("time");
             stat_date.setText(resultTime);
+            Log.i(TAG, "onActivityResult: " + resultTime + "----" + resultTime.length());
+            //判断时间的类型
+            if (resultTime.length() <5){
+                //这属于第一类型 ：2019
+                mPresent.getStaticAlarm("1",resultTime,wareHouseId);
+            }else if (resultTime.length() > 5 && resultTime.length() < 8){
+                //这属于第二类型：2019-07
+                mPresent.getStaticAlarm("2",resultTime,wareHouseId);
+            }else if(resultTime.length() == 10){
+                mPresent.getStaticAlarm("3",resultTime,wareHouseId);
+            }
         }
     }
 
@@ -218,6 +256,27 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
     public void onFail() {
         showToast("获取数据失败");
     }
+
+    /**
+     * 显示选择的库房
+     * @param warehouse 库房名称
+     */
+    @Override
+    public void showWareHouse(String warehouse) {
+        mTitle.setText(warehouse);
+        wareHouseName = warehouse;
+        //查出选中的库房的id然后获取库房列表和状态
+        queryList = GreenDaoHelp.getInstance(mContext).getStorId(warehouse);
+        for (int i = 0; i < queryList.size(); i++) {
+            Log.i(TAG, "showWareHouse: " + queryList.get(i).getStoreId());
+//            mPresent.getRealTimeData(queryList.get(i).getStoreId());
+            wareHouseId = String.valueOf(queryList.get(i).getStoreId());
+            //获取综合统计和报警统计的数据
+            mPresent.getStaticAlarm("1","2019",String.valueOf(queryList.get(i).getStoreId()));
+        }
+    }
+
+
 
 }
 

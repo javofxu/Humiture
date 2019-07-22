@@ -8,7 +8,7 @@ import java.util.List;
  *Author:冰冰凉
  *dec:  库房设置的实体类
  */
-public class KuFangData implements Serializable {
+public class KuFangData {
 
     private int status;
     private String msg;

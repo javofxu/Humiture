@@ -1,11 +1,13 @@
 package com.example.humiture.data;
 
+import java.io.Serializable;
+
 /**
  * Created by 许格.
  * Date on 2019/5/21.
  * dec:首页实时温湿度等8个数据
  */
-public class RealTimeData {
+public class RealTimeData implements Serializable {
 
     private Common common;
     private Data data;
@@ -26,7 +28,7 @@ public class RealTimeData {
     }
 
 
-        public class Data {
+        public class Data implements Serializable{
             private String hcsId;
             private String deviceId;
             private String temperature;

@@ -15,7 +15,7 @@ android {
          *匹配海康威视的so文件
          */
         ndk{
-            abiFilters "armeabi","armeabi-v7a","x86_64"
+            abiFilters "armeabi","armeabi-v7a","x86_64","x86"
         }
     }
 
@@ -48,7 +48,7 @@ allprojects {
 }
 
 greendao{
-    schemaVersion 1
+    schemaVersion 2
     daoPackage 'com.example.humiture.greenDao'       //设置DaoMaster、DaoSession、Dao包名
     targetGenDir 'src/main/java'
     generateTests false
@@ -80,7 +80,8 @@ dependencies {
     /**
      * 自定义输入框
      */
-    implementation 'com.github.JhonBFang:CustomEditText:V1.0.1'
+//    implementation 'com.github.JhonBFang:CustomEditText:V1.0.1'
+    implementation 'com.github.JhonBFang:CustomEdit:1.0'
     implementation 'com.yarolegovich:discrete-scrollview:1.0.3'
     /**
      * 折线图和饼图
@@ -125,5 +126,10 @@ dependencies {
      */
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
     debugImplementation 'com.amitshekhar.android:debug-db-encrypt:1.0.6'
+
+    /**
+     * 文字滚动
+     */
+//    implementation 'com.github.paradoxie:AutoVerticalTextview:0.1'
 
 }

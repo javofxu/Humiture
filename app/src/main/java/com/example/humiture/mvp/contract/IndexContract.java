@@ -135,6 +135,10 @@ public interface IndexContract {
          * @param yesterdayValues 昨日数据
          * @param typeColor 数据类型颜色
          */
-        void showLineChart(LineChartManager manager, ArrayList<Integer> xValues, List<Float> toadyValues, List<Float> yesterdayValues, int typeColor);
+        void showLineChart(LineChartManager manager, ArrayList<Integer> xValues, List<Float> toadyValues,
+                           List<Float> yesterdayValues, int typeColor);
+
+
+        void setGreenDao(List<Integer> storeId,List<String> wareHouseName);
     }
 }

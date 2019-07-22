@@ -54,9 +54,12 @@ public class MineKuFangModel implements MineKuFangContract.Model {
      */
     @Override
     public Observable<Common> getKuFangData(String storeId, String humUp, String humDown, String temUp, String temDown, String pm2Up, String tvocUp) {
-        return api.getKuFangData(storeId,humUp,humDown,temUp,temDown,pm2Up,tvocUp).map(kuFangData -> {
-            Log.i(TAG, "apply: " + kuFangData.getStatus());
-            return kuFangData;
+        return api.getKuFangData(storeId,humUp,humDown,temUp,temDown,pm2Up,tvocUp).map(new Function<Common, Common>() {
+            @Override
+            public Common apply(Common kuFangData) throws Exception {
+                Log.i(TAG, "apply: " + kuFangData.getStatus());
+                return kuFangData;
+            }
         }).compose(RetrofitClient.schedulersTransformer);
     }
 }

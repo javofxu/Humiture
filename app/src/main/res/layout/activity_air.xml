@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/index_title">
+    android:background="@color/index_title"
+    android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base"/>
+        android:layout_height="@dimen/base" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,9 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="@dimen/text_18"
+            android:text="@string/operate_title"
             android:textColor="@color/white"
-            android:text="@string/operate_title"/>
+            android:textSize="@dimen/text_18" />
 
         <ImageView
             android:id="@+id/air_back"
@@ -31,12 +30,13 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_15"
-            app:srcCompat="@mipmap/ic_chevron_left"/>
+            app:srcCompat="@mipmap/ic_chevron_left" />
     </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/line"/>
+        android:background="@color/line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,52 +47,57 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
             android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10"
             android:text="@string/operate_number"
             android:textColor="@color/title_color"
             android:textSize="@dimen/alarm_pm_size"
             android:textStyle="bold" />
 
-            <com.example.humiture.ui.view.Gallery.BannerLayout
-                android:id="@+id/air_banner"
-                android:layout_width="match_parent"
-                android:layout_height="192dp"
-                app:showIndicator="false"
-                app:autoPlaying="false"
-                app:centerScale="1.2"
-                app:itemSpace="0"
-                app:moveSpeed="1">
-            </com.example.humiture.ui.view.Gallery.BannerLayout>
+        <com.example.humiture.ui.view.Gallery.BannerLayout
+            android:id="@+id/air_banner"
+            android:layout_width="match_parent"
+            android:layout_height="192dp"
+            app:autoPlaying="false"
+            app:centerScale="1.2"
+            app:itemSpace="0"
+            app:moveSpeed="1"
+            app:showIndicator="false"></com.example.humiture.ui.view.Gallery.BannerLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="@dimen/margin_10"
+            android:gravity="center"
             android:orientation="horizontal">
+
             <ImageView
+                android:id="@+id/air_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/icon_temperature"/>
+                android:src="@mipmap/icon_temperature" />
+
             <TextView
                 android:id="@+id/air_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_10"
-                android:textColor="@color/black"
-                android:text="@string/index_temp"/>
+                android:text="@string/index_temp"
+                android:textColor="@color/black" />
+
             <TextView
+                android:id="@+id/air_symbols"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="@string/dw_temp"/>
+                android:text="@string/dw_temp"
+                android:textColor="@color/black" />
         </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
             android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10"
             android:text="@string/operate_equipment"
             android:textColor="@color/title_color"
             android:textSize="@dimen/alarm_pm_size"
@@ -148,7 +153,9 @@
             </LinearLayout>
         </LinearLayout>
 
+        <!--空调-->
         <LinearLayout
+            android:id="@+id/air_air"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_10"
@@ -241,5 +248,26 @@
                     android:textColor="@color/operate_normal" />
             </LinearLayout>
         </LinearLayout>
+        <!--加湿机-->
+        <include
+            android:id="@+id/air_humidification"
+            layout="@layout/air_humidification"
+            android:visibility="gone" />
+        <!--除湿机-->
+        <include
+            android:id="@+id/air_dehumidification"
+            layout="@layout/air_dehumidification"
+            android:visibility="gone" />
+        <!--恒湿机-->
+        <include
+            android:id="@+id/air_constanthumidity"
+            layout="@layout/air_constanthumidity"
+            android:visibility="gone" />
+        <!--消毒机-->
+        <include
+            android:id="@+id/air_disinfection"
+            layout="@layout/air_disinfection"
+            android:visibility="gone" />
+
     </LinearLayout>
 </LinearLayout>

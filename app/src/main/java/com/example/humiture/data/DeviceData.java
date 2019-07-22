@@ -4,35 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
-import java.util.List;
 
-/**
- *Time:2019/6/19
- *Author:冰冰凉
- *dec: 库房设置类中的设备信息   现在还没有用到
- *
- */
-public class AllList implements Serializable {
-
-    private List<DeviceData> deviceData;
-    private String name;
-
-    public void setDeviceData(List<DeviceData> deviceData) {
-        this.deviceData = deviceData;
-    }
-    public List<DeviceData> getDeviceData() {
-        return deviceData;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return name;
-    }
-}
-
-/*class DeviceData implements Parcelable{
+public class DeviceData implements Serializable {
 
     private String brandName;
     private int creator;
@@ -72,17 +45,6 @@ public class AllList implements Serializable {
         status = in.readString();
     }
 
-    public static final Creator<DeviceData> CREATOR = new Creator<DeviceData>() {
-        @Override
-        public DeviceData createFromParcel(Parcel in) {
-            return new DeviceData(in);
-        }
-
-        @Override
-        public DeviceData[] newArray(int size) {
-            return new DeviceData[size];
-        }
-    };
 
     public void setBrandName(String brandName) {
         this.brandName = brandName;
@@ -202,30 +164,4 @@ public class AllList implements Serializable {
     public String getStatus() {
         return status;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(brandName);
-        dest.writeInt(creator);
-        dest.writeInt(modifier);
-        dest.writeInt(pId);
-        dest.writeString(remark);
-        dest.writeInt(storeId);
-        dest.writeString(mtime);
-        dest.writeInt(deviceId);
-        dest.writeString(categoryName);
-        dest.writeInt(stroreAreaId);
-        dest.writeInt(brandId);
-        dest.writeString(sortOrder);
-        dest.writeString(name);
-        dest.writeString(statusName);
-        dest.writeString(ctime);
-        dest.writeInt(categoryId);
-        dest.writeString(status);
-    }
-}*/
+}

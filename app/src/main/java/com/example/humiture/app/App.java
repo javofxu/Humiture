@@ -11,6 +11,7 @@ import com.example.humiture.greenDao.DaoSession;
 import com.example.humiture.service.MyService;
 import com.example.humiture.utils.helper.GreenDaoHelp;
 
+import io.reactivex.functions.Consumer;
 import io.reactivex.plugins.RxJavaPlugins;
 
 /**
@@ -36,7 +37,7 @@ public class App extends Application{
         instance = this;
         GreenDaoHelp.getInstance(this).initGreenDao(this);
         Log.i(TAG, "onCreate: " + DebugDB.getAddressLog());
-        RxJavaPlugins.setErrorHandler(throwable -> Log.e(TAG, "onCreate: 检查网络" ));
+        RxJavaPlugins.setErrorHandler(throwable -> Log.e(TAG, "onCreate: 检查网络"));
     }
 
 }

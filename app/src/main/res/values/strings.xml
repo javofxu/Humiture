@@ -34,10 +34,15 @@
     <string name="index_chose_time">自定义</string>
 
     <!--操作-->
-    <string name="operate_temp">当前温度</string>
-    <string name="operate_hum">当前湿度</string>
-    <string name="operate_jun">当前菌落</string>
-    <string name="operate_state">正在加热</string>
+    <string name="operate_temp">库房温度</string>
+    <string name="operate_hum">库房湿度</string>
+    <string name="operate_colony">库房菌落</string>
+    <string name="operate_pm2">库房PM2.5</string>
+    <string name="operate_formaldehyde">库房甲醛</string>
+    <string name="operate_tvoc">库房TVOC</string>
+    <string name="operate_harmful">库房有害气体</string>
+    <string name="operate_eco2">库房Eco2</string>
+    <string name="operate_state">暂无设备运行</string>
     <string name="operate_title">空调</string>
     <string name="operate_number">设备序号</string>
     <string name="operate_equipment">设备操控</string>
@@ -47,6 +52,14 @@
     <string name="operate_heating">制热</string>
     <string name="operate_ventilate">通风</string>
     <string name="operate_stop">停止</string>
+    <string name="operate_humidification">加湿</string>
+    <string name="operate_negativeion">负离子</string>
+    <string name="operate_hm_negativeion">加湿负离子</string>
+    <string name="operate_de_negativeion">除湿负离子</string>
+    <string name="operate_dehumidification">除湿</string>
+    <string name="operate_disinfection">消毒</string>
+    <string name="operate_Purification">净化</string>
+    <string name="operate_pm">PM2.5</string>
 
     <!--通用-->
     <string name="confirm">确定</string>
@@ -55,6 +68,12 @@
     <string name="data_today">今日数据</string>
     <string name="dw_temp">℃</string>
     <string name="dw_hum">%RH</string>
+    <string name="dw_pm2">ug/m³</string>
+    <string name="dw_tvoc">m³</string>
+    <string name="dw_colony">mg/m³</string>
+    <string name="dw_formaldehyde">L</string>
+    <string name="dw_eco2">mL</string>
+    <string name="dw_harmful">mL</string>
     <string name="no_data">暂无数据</string>
     <string name="network_error">网络异常</string>
     <string name="refresh">刷新</string>

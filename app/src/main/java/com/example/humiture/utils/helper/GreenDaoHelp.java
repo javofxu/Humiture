@@ -65,4 +65,28 @@ public class GreenDaoHelp {
         return kuFangSetDataList;
     }
 
+    /**
+     * 查询所有数据
+     * @return
+     */
+    public List queryAllList(){
+        daoSession = GreenDaoHelp.getInstance(context).getDaoSession();
+        QueryBuilder<KuFangSetData> qb = daoSession.queryBuilder(KuFangSetData.class);
+        List<KuFangSetData> kuFangSetDataList = qb.list();       //查出当前对应的数据
+        return kuFangSetDataList;
+    }
+
+    /**
+     * 判断数据库是否有数据
+     * @param name
+     * @return
+     */
+    public List<KuFangSetData> isExit(String name){
+        daoSession = GreenDaoHelp.getInstance(context).getDaoSession();
+        QueryBuilder<KuFangSetData> qb = daoSession.queryBuilder(KuFangSetData.class);
+        QueryBuilder<KuFangSetData> kuFangSetDataQueryBuilder = qb.where(KuFangSetDataDao.Properties.Name.eq(name)).orderAsc(KuFangSetDataDao.Properties.Id);
+        List<KuFangSetData> kuFangSetDataList = kuFangSetDataQueryBuilder.list();       //查出当前对应的数据
+        return kuFangSetDataList;
+    }
+
 }

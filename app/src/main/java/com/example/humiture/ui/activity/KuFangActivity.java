@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 
+import com.amitshekhar.DebugDB;
 import com.example.base.BaseActivity;
 import com.example.humiture.R;
 import com.example.humiture.R2;
@@ -64,7 +65,8 @@ public class KuFangActivity extends BaseActivity<MineKuFangPresenter> implements
     protected void initView() {
         super.initView();
         initViews();
-        GreenDaoHelp.getInstance(this).initGreenDao(this);
+//        GreenDaoHelp.getInstance(this).initGreenDao(this);
+//        Log.i(TAG, "onCreate: " + DebugDB.getAddressLog());
     }
 
     @Override
@@ -101,18 +103,18 @@ public class KuFangActivity extends BaseActivity<MineKuFangPresenter> implements
     @Override
     public void getWareHouse(List<Warehouse.Data> data) {
         list = new ArrayList<>();
-        daoSession = GreenDaoHelp.getInstance(this).getDaoSession();
+//        daoSession = GreenDaoHelp.getInstance(this).getDaoSession();
         for (int i = 0; i < data.size(); i++) {
             name = data.get(i).getName();
             id = data.get(i).getStoreId();
-            kuFangSetDataList = isExit(name);
-            Log.i(TAG, "getWareHouse: " + kuFangSetDataList.size());
+            /*kuFangSetDataList = isExit(name);
+            Log.i(TAG, "getWareHouse: " + kuFangSetDataList.size() + data.get(i).getName());
             if(kuFangSetDataList.size() <= 0){
                 kuFangSetData = new KuFangSetData();
                 kuFangSetData.setStoreId(id);
                 kuFangSetData.setName(name);
                 daoSession.insert(kuFangSetData);
-            }
+            }*/
             Log.i(TAG, "getWareHouse: " + name + "---" + id);
             list.add(name);
         }

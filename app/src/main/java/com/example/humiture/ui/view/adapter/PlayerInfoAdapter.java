@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.humiture.R;
+import com.example.humiture.data.PlayerListData;
 import com.example.humiture.ui.activity.PlayActivity;
 import com.example.humiture.utils.helper.DataTypeHelper;
 
@@ -32,7 +33,7 @@ public class PlayerInfoAdapter extends RecyclerView.Adapter<PlayerInfoAdapter.Vi
 
     private Context context;
     private LayoutInflater inflater;
-    private List<String> list;
+    private List<PlayerListData.Data> list;
     private List<Integer> mBackground;
     private Random random;
 
@@ -41,7 +42,7 @@ public class PlayerInfoAdapter extends RecyclerView.Adapter<PlayerInfoAdapter.Vi
         this.inflater = LayoutInflater.from(context);
     }
 
-    public PlayerInfoAdapter(Context context, List<String> list) {
+    public PlayerInfoAdapter(Context context, List<PlayerListData.Data> list) {
         this.context = context;
         this.list = list;
         this.inflater = LayoutInflater.from(context);
@@ -58,7 +59,7 @@ public class PlayerInfoAdapter extends RecyclerView.Adapter<PlayerInfoAdapter.Vi
     public void onBindViewHolder(@NonNull PlayerInfoAdapter.ViewHolder viewHolder, int i) {
         mBackground = DataTypeHelper.getPlayerBackground();
         random = new Random();
-        viewHolder.txt.setText(list.get(i));
+        viewHolder.txt.setText(list.get(i).getName());
 
         if (mBackground.size() > i) {
             viewHolder.relativeLayout.setBackgroundResource(mBackground.get(i));
@@ -72,8 +73,12 @@ public class PlayerInfoAdapter extends RecyclerView.Adapter<PlayerInfoAdapter.Vi
         viewHolder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, PlayActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putInt("num", i);
-            bundle.putString("title", list.get(i));
+            bundle.putString("channel", list.get(i).getChannel());
+            bundle.putString("title", list.get(i).getName());
+            bundle.putString("ip",list.get(i).getIp());
+            bundle.putString("port",list.get(i).getPort());
+            bundle.putString("username",list.get(i).getUsername());
+            bundle.putString("password",list.get(i).getPassword());
             intent.putExtras(bundle);
             context.startActivity(intent);
         });

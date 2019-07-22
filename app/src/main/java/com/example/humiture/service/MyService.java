@@ -1,6 +1,7 @@
 package com.example.humiture.service;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
@@ -17,41 +18,22 @@ import com.example.humiture.utils.wakeUp.MyWakeup;
 import com.example.humiture.utils.wakeUp.RecogWakeupListener;
 import java.util.HashMap;
 import java.util.Map;
-import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
-import android.content.Context;
-import android.content.Intent;
-import android.net.NetworkInfo
-import android.util.Log;
-import android.widget.GridLayout;
-import android.widget.Toast;
-
-import com.example.base.rx.RxTimerUtil;
 import com.example.humiture.R;
-import com.example.humiture.data.Alarm;
-import com.example.humiture.data.MessageData;
 import com.example.humiture.ui.activity.MineInfoActivity;
-import com.example.humiture.utils.NetWork;
-import com.example.humiture.utils.helper.SpUtils;
-import com.google.gson.Gson;
-
-import androidx.annotation.Nullable;
 
 /**
  *Time:2019/6/20
  *Author:冰冰凉
- *dec:  报警信息推送
+ *dec:  报警信息推送  语音唤醒功能
  */
 public class MyService extends Service {
 
     private static final String TAG = "MyService";
 
     private NotificationManager notificationManager;
-
-    private static final String TAG = MyService.class.getSimpleName();
     private static MyWakeup myWakeup;
     private Handler handler;
 
@@ -62,7 +44,7 @@ public class MyService extends Service {
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
-
+    }
     @Override
     public void onCreate() {
         super.onCreate();
@@ -129,29 +111,12 @@ public class MyService extends Service {
      */
     private void stop(){
         myWakeup.stop();
-=======
-
-        //定时轮询
-//        RxTimerUtil.interval(1000);
-
-        /*AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        int hour = 60 * 60 * 1000;
-        long triggerAtTime = System.currentTimeMillis() + hour;
-        Intent i = new Intent(this,MyReceiver.class);
-        PendingIntent pi = PendingIntent.getBroadcast(this,0,i,0);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,triggerAtTime,pi);
-
-            //获取的信息
-            showNotification(MyService.this);*/
-
-        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         myWakeup.release();
-    }
     }
 
     //通知

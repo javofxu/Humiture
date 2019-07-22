@@ -74,12 +74,12 @@ public class MineKuFangPresenter extends RxPresenter<MineKuFangContract.View> im
             Log.i(TAG, "accept: " + kuFangData.getStatus());
             if(kuFangData.getStatus() == 0){
                 //成功
-                mView.onSuccess();
-//                mView.onFail(kuFangData.getMsg());
-            }else{
-                //失败
 //                mView.onSuccess();
                 mView.onFail(kuFangData.getMsg());
+            }else{
+                //失败
+                mView.onSuccess();
+//                mView.onFail(kuFangData.getMsg());
             }
         }, throwable -> {
             //错误

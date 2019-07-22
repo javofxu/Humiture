@@ -5,6 +5,7 @@ import org.greenrobot.greendao.annotation.Id;
 
 import java.io.Serializable;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Index;
 
 /**
  *Time:2019/6/24
@@ -13,7 +14,7 @@ import org.greenrobot.greendao.annotation.Generated;
  *  这些参数需要保存在数据库中，所以需要进行序列化处理
  */
 
-@Entity
+@Entity(indexes = {@Index(value = "name",unique = true)})
 public class KuFangSetData{
 
     @Id(autoincrement = true)

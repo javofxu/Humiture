@@ -111,6 +111,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void loginSuccess() {
         dismissProgressDialog();
+        //获取库房
+        mPresent.getWareHouse();
         skipAnotherActivity(MainActivity.class);
     }
 
@@ -121,6 +123,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void loginFail(String msg) {
         dismissProgressDialog();
         showToast(msg);
+    }
+
+    @Override
+    public void netWorkError() {
+        showToast(getResources().getString(R.string.network_error));
     }
 
 }

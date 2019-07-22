@@ -47,8 +47,6 @@
         <meta-data
             android:name="com.baidu.speech.SECRET_KEY"
             android:value="462zNUM2kxT56R7SoxtnooaoSo6ZQLBi" />
-
-        <activity android:name=".ui.activity.AirActivity"></activity>
         <activity android:name=".ui.activity.DateChooseActivity"></activity>
         <activity android:name=".ui.activity.StatAlarmActivity"></activity>
         <activity android:name=".ui.activity.MineInfoActivity"></activity>
@@ -62,12 +60,6 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.activity.MineSafeChangePassword"/>
         <activity android:name=".ui.activity.PlayerInfoActivity"/>
-
-        <service android:name=".service.MyService"
-            android:enabled="true"
-            android:exported="false">
-
-        </service>
 
         <receiver android:name=".service.MyReceiver">
             <intent-filter>

@@ -103,6 +103,7 @@ public class MineKuFangFragment extends BaseFragment<MineKuFangPresenter> implem
         mPresent.show(list,name,up_wendu,down_wendu, up_shidu,down_shidu,up_pm,down_pm,
                 up_tvoc,down_tvoc,up_junluo,down_junluo, up_jiaquan,down_jiaquan,up_eoc2,
                 down_eoc2, up_gas,down_gas);
+        //初始化选择器上的数字
         mPresent.getWenDuData(numberData);
         initOptionPicker();
     }

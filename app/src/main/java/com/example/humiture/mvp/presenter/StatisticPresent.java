@@ -1,13 +1,16 @@
 package com.example.humiture.mvp.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 
 import com.example.base.rx.RxPresenter;
+import com.example.humiture.data.AllList;
 import com.example.humiture.data.StaticAlarmList;
 import com.example.humiture.mvp.contract.StatisticContract;
 import com.example.humiture.mvp.model.StatisticModel;
+import com.example.humiture.utils.DensityUtils;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
@@ -19,6 +22,8 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.addapp.pickers.common.LineConfig;
+import cn.addapp.pickers.picker.SinglePicker;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
@@ -36,6 +41,7 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
     private Context mContext;
 
     private StatisticContract.Model model = new StatisticModel();
+    private SinglePicker<String> picker;
 
     /**
      * #BDD25A : 菌落
@@ -108,8 +114,8 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
         pieChart.setDrawEntryLabels(true);
         //是否绘制pieChart内部中心文本
         pieChart.setDrawCenterText(true);
-
-        pieChart.setCenterText("总计2014");
+        //现在后台没有这个数据，所以先隐藏掉
+//        pieChart.setCenterText("总计2014");
         //添加动画效果
 //        pieChart.animateXY(2000,2000);
         pieChart.animateY(3000);
@@ -145,4 +151,37 @@ public class StatisticPresent extends RxPresenter<StatisticContract.mView> imple
         });
 
     }
+
+    /**
+     * 选择库房
+     * @param mActivity 绑定活动
+     * @param wareHouse 库房列表
+     */
+    @Override
+    public void choseWareHouse(Activity mActivity, List<String> wareHouse) {
+        picker = new SinglePicker<>(mActivity, wareHouse);
+        picker.setCanLoop(false);//不禁用循环
+        picker.setTopBackgroundColor(0xFFEEEEEE);
+        picker.setTopHeight(40);
+        picker.setTitleTextColor(0xFF000000);
+        picker.setTitleTextSize(16);
+        picker.setCancelTextColor(0xFF999999);
+        picker.setCancelTextSize(14);
+        picker.setSubmitTextColor(0xFF33B5E5);
+        picker.setSubmitTextSize(14);
+        picker.setSelectedTextColor(0xFF33B5E5);
+        picker.setUnSelectedTextColor(0xFF999999);
+        picker.setWheelModeEnable(false);
+        LineConfig config = new LineConfig();
+        config.setColor(Color.GRAY);//线颜色
+        config.setAlpha(120);//线透明度
+        picker.setLineConfig(config);
+        picker.setItemWidth(DensityUtils.getScreenWidth(mActivity) * 5 / 10);
+        picker.setBackgroundColor(0xFFFFFFFF);
+        picker.setSelectedIndex(wareHouse.size());
+        picker.setTitleText("请选择库房");
+        picker.setOnItemPickListener((index, item) -> mView.showWareHouse(item));
+        picker.show();
+    }
+
 }

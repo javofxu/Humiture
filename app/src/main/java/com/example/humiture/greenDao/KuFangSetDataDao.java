@@ -77,6 +77,9 @@ public class KuFangSetDataDao extends AbstractDao<KuFangSetData, Long> {
                 "\"DOWN__EOC2\" TEXT," + // 16: down_EOC2
                 "\"UP__GAS\" TEXT," + // 17: up_GAS
                 "\"DOWN__GAS\" TEXT);"); // 18: down_GAS
+        // Add Indexes
+        db.execSQL("CREATE UNIQUE INDEX " + constraint + "IDX_KU_FANG_SET_DATA_NAME ON \"KU_FANG_SET_DATA\"" +
+                " (\"NAME\" ASC);");
     }
 
     /** Drops the underlying database table. */

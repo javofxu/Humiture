@@ -2,16 +2,20 @@ package com.example.humiture.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.amitshekhar.DebugDB;
 import com.baoyz.widget.PullRefreshLayout;
 import com.example.base.BaseFragment;
 import com.example.humiture.R;
 import com.example.humiture.R2;
+import com.example.humiture.data.KuFangSetData;
 import com.example.humiture.data.RealTimeData;
 import com.example.humiture.data.TrendData;
+import com.example.humiture.greenDao.DaoSession;
 import com.example.humiture.mvp.contract.IndexContract;
 import com.example.humiture.mvp.presenter.IndexPresent;
 import com.example.humiture.ui.activity.EnvironmentActivity;
@@ -21,6 +25,7 @@ import com.example.humiture.utils.ItemDecorationUtils;
 import com.example.humiture.utils.LineChartManager;
 import com.example.humiture.utils.TimeUtils;
 import com.example.humiture.utils.helper.DataTypeHelper;
+import com.example.humiture.utils.helper.GreenDaoHelp;
 import com.github.mikephil.charting.charts.LineChart;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
@@ -65,6 +70,7 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     private List<String> mWareHouseList;
     private List<Integer> mStoreIdList;
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_index;
@@ -79,6 +85,8 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
     @Override
     protected void initView() {
         super.initView();
+        GreenDaoHelp.getInstance(getActivity()).initGreenDao(getActivity());
+        Log.i(TAG, "onCreate: " + DebugDB.getAddressLog());
         mChartManager = new LineChartManager(mContext, mChartView);
         pagerNumber = 4;
         map = new HashMap<>();
@@ -133,16 +141,20 @@ public class IndexFragment extends BaseFragment<IndexPresent> implements IndexCo
 
     @Override
     public void getWareHouse(List<Integer> storeId, List<String> warehouse) {
+        title.setText(warehouse.get(0));
         mStoreId = storeId.get(0);
         mStoreIdList = storeId;
         mWareHouseList = warehouse;
         mPresent.getRealTimeData(mStoreId);
         mPresent.getTrendData(TimeUtils.getNowDay(),TimeUtils.getYesterday(),DataTypeHelper.getDataTypes().get(0),mStoreId);
+        //将数据保存到本地数据库
+        mPresent.setGreenDao(storeId,warehouse);
     }
 
     @Override
     public void showWareHouse(int position,String warehouse) {
         mStoreId = mStoreIdList.get(position);
+        Log.i(TAG, "showWareHouse: " + mStoreId);
         title.setText(warehouse);
         mPresent.getRealTimeData(mStoreId);
     }

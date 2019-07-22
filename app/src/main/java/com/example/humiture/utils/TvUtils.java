@@ -49,11 +49,15 @@ public class TvUtils implements SurfaceHolder.Callback {
     private Context context;
     private SurfaceView m_osurfaceView = null;
 
-    public TvUtils(Context context, SurfaceView m_osurfaceView, MyPlaySurfaceView[] playView) {
+    public TvUtils(Context context, SurfaceView m_osurfaceView, MyPlaySurfaceView[] playView,String ip ,int port,String user,String psd) {
         this.m_osurfaceView = m_osurfaceView;
         this.context = context;
         this.playView = playView;
         this.m_osurfaceView.getHolder().addCallback(this);
+        this.ip = ip;
+        this.port = port;
+        this.user = user;
+        this.psd = psd;
     }
 
     public boolean initeSdk() {

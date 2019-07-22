@@ -8,6 +8,7 @@ import com.example.humiture.mvp.contract.DetailsContract;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.functions.Function;
 
 /**
  * Created by 许格.
@@ -20,6 +21,11 @@ public class DetailsModel implements DetailsContract.model {
 
     @Override
     public Observable<List<DetailsList.Data>> getDetailsList(int storeId, String type, long startTime, long endTime, int page) {
-        return mApi.getDetailsList(storeId, type, startTime, endTime, page).map(detailsList -> detailsList.getData()).compose(RetrofitClient.schedulersTransformer);
+        return mApi.getDetailsList(storeId, type, startTime, endTime, page).map(new Function<DetailsList, List<DetailsList.Data>>() {
+            @Override
+            public List<DetailsList.Data> apply(DetailsList detailsList) throws Exception {
+                return detailsList.getData();
+            }
+        }).compose(RetrofitClient.schedulersTransformer);
     }
 }

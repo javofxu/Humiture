@@ -1,9 +1,12 @@
 package com.example.humiture.mvp.model;
 
+import com.example.humiture.data.AllList;
 import com.example.humiture.data.StaticAlarmList;
 import com.example.humiture.http.ApiService;
 import com.example.humiture.http.RetrofitClient;
 import com.example.humiture.mvp.contract.StatisticContract;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
@@ -33,4 +36,6 @@ public class StatisticModel implements StatisticContract.Model {
             }
         }).compose(RetrofitClient.schedulersTransformer);
     }
+
+
 }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/operate_group_bg"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/margin_10"
-    android:layout_marginRight="@dimen/margin_10"
     android:layout_marginTop="@dimen/margin_10"
+    android:layout_marginRight="@dimen/margin_10"
     android:background="@mipmap/oper_no4">
 
     <ImageView
@@ -15,28 +15,32 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/margin_30"
-        android:src="@mipmap/oper_humidifier"/>
+        android:src="@mipmap/oper_humidifier" />
+
     <LinearLayout
         android:id="@+id/operate_group_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/margin_30"
         android:layout_toRightOf="@+id/operate_group_icon"
+        android:gravity="center"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="@dimen/margin_35">
+
             <TextView
                 android:id="@+id/operate_group_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:text="28.8"
                 android:textColor="@color/white"
-                android:text="28.8"/>
+                android:textSize="30sp" />
 
             <TextView
+                android:id="@+id/operate_group_symbols"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -45,55 +49,72 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_12" />
         </RelativeLayout>
+
         <TextView
+            android:id="@+id/operate_group_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_10"
-            android:textColor="@color/white"
-            android:text="@string/operate_hum"/>
+            android:text="@string/operate_hum"
+            android:textColor="@color/white" />
     </LinearLayout>
+
     <TextView
         android:id="@+id/operate_group_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="60sp"
-        android:textColor="@color/white"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/base"
         android:layout_toRightOf="@+id/operate_group_now"
-        android:text="/"/>
+        android:text="/"
+        android:textColor="@color/white"
+        android:textSize="60sp" />
+
     <LinearLayout
         android:id="@+id/operate_group_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/base"
-        android:layout_toRightOf="@+id/operate_group_line">
+        android:layout_toRightOf="@+id/operate_group_line"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/base"
+        android:orientation="vertical">
+
+        <com.example.humiture.ui.view.VerticalTextview
+            android:id="@+id/vertivalTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10">
+
+        </com.example.humiture.ui.view.VerticalTextview>
+
+        <com.example.humiture.ui.view.VerticalTextview
+            android:id="@+id/vertivalStateName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.example.humiture.ui.view.VerticalTextview>
+
         <TextView
             android:id="@+id/operate_group_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/operate_state"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_18"
-            android:text="@string/operate_state"/>
-        <TextView
-            android:id="@+id/operate_group_facility"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="@dimen/base"
-            android:text="1号设备"/>
+            android:textSize="16sp" />
+
     </LinearLayout>
+
     <TextView
+        android:id="@+id/operate_group_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/operate_group_facility"
-        android:textColor="@color/white"
-        android:layout_marginTop="@dimen/margin_10"
-        android:textSize="@dimen/text_10"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/margin_10"
         android:layout_marginRight="@dimen/margin_15"
-        android:text="@string/index_hum"/>
+        android:background="@drawable/operate_group_facility"
+        android:text="@string/index_hum"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_10" />
 </RelativeLayout>

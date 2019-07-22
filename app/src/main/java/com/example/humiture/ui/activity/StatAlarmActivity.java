@@ -35,7 +35,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-
+/**
+ *Time:
+ *Author:冰冰凉
+ *dec:  报警统计
+ */
 public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implements StatAlarmContract.View {
 
     @BindView(R2.id.alarm_list)
@@ -99,7 +103,8 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
                 break;
             case R.id.tv_alarm_search:
                 String search = alarm_search.getText();
-                ToastUtils.showToast(search);
+                //没有接口，现在还不能实现
+//                ToastUtils.showToast(search);
                 break;
             case R.id.alarm_sort:
                 //设置一个PopupWindow

@@ -1,6 +1,9 @@
 package com.example.humiture.mvp.contract;
 
+import android.app.Activity;
+
 import com.example.base.BaseView;
+import com.example.humiture.data.AllList;
 import com.example.humiture.data.StaticAlarmList;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieEntry;
@@ -33,6 +36,14 @@ public interface StatisticContract {
         void initTextView();
         void onSuccess(StaticAlarmList staticAlarmList);
         void onFail();
+        /**
+         * 库房显示
+         *
+         * @param warehouse 库房名称
+         */
+        void showWareHouse(String warehouse);
+
+
     }
 
     /**
@@ -42,6 +53,14 @@ public interface StatisticContract {
         void showPieChart(PieChart pieChart, List<PieEntry> pieList);
         //报警统计  首页
         void getStaticAlarm(String type,String date,String storeId);
+
+        /**
+         * 选择库房
+         *
+         * @param mActivity 绑定活动
+         * @param wareHouse 库房列表
+         */
+        void choseWareHouse(Activity mActivity, List<String> wareHouse);
     }
 
 }

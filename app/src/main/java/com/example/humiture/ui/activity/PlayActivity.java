@@ -65,8 +65,8 @@ public class PlayActivity extends BaseActivity {
     @BindView(R2.id.ll_bottom)
     LinearLayout ll_bottom;
     private TvUtils tvUtils;
-    private int num = 0;
-    private String title = null;
+    private int num = 0, port = 0;
+    private String title = null,ip = null,username = null,password = null;
     private boolean isBack = false;
     private int count = 0;
     private boolean isFull = false;
@@ -85,11 +85,15 @@ public class PlayActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-        tvUtils = new TvUtils(this, surfaceView, null);
         Intent intent = getIntent();
-        num = intent.getIntExtra("num", 0);
+        num = Integer.valueOf(intent.getStringExtra("channel"));
         title = intent.getStringExtra("title");
-        Log.i(TAG, "initView: " + num);
+        ip = intent.getStringExtra("ip");
+        port = Integer.valueOf(intent.getStringExtra("port"));
+        username = intent.getStringExtra("username");
+        password = intent.getStringExtra("password");
+        tvUtils = new TvUtils(this, surfaceView, null,ip,port,username,password);
+        Log.i(TAG, "initView: " + num + "---" + port);
         if (!tvUtils.initeSdk()) {
             this.finish();
             return;
@@ -204,7 +208,7 @@ public class PlayActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-        tvUtils = new TvUtils(this, surfaceView, null);
+        tvUtils = new TvUtils(this, surfaceView, null,ip,port,username,password);
         if (!tvUtils.initeSdk()) {
             this.finish();
             return;
