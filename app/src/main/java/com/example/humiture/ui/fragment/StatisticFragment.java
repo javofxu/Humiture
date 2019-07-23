@@ -138,7 +138,9 @@ public class StatisticFragment extends BaseFragment<StatisticPresent> implements
                 startActivityForResult(intent,1);
                 break;
             case R.id.stat_more:
-                skipAnotherActivity(StatAlarmActivity.class);
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("wareHouseId",wareHouseId);
+                skipAnotherActivity(bundle1,StatAlarmActivity.class);
                 break;
             case R.id.alarm:
                 skipAnotherActivity(MineInfoActivity.class);

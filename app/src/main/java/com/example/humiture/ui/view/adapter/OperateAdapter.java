@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -128,7 +129,12 @@ public class OperateAdapter extends RecyclerView.Adapter<OperateAdapter.ItemHold
             itemHolder.operateGroupIcon.setImageResource(R.mipmap.operate_dehumidifier);
         } else if (list.get(i).getName().equals("消毒机")) {
             //菌落
-            itemHolder.operateGroupData.setText(realData.getData().getColony());
+            //这里容易爆菌落为空
+            if (TextUtils.isEmpty(realData.getData().getColony())){
+                itemHolder.operateGroupData.setText("");
+            }else{
+                itemHolder.operateGroupData.setText(realData.getData().getColony());
+            }
             itemHolder.operateGroupSymbols.setText(R.string.dw_colony);
             itemHolder.operateGroupType.setText(R.string.operate_colony);
             itemHolder.group_bg.setBackgroundResource(mBackground.get(3));

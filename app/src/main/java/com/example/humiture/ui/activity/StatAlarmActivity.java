@@ -9,6 +9,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -61,6 +62,7 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
     private String resultTime = null;
     private String time = null;
     private String type = null;
+    private String wareHouseId = null;
 
     @Override
     protected int getLayoutId() {
@@ -76,7 +78,17 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
     @Override
     public void initData() {
         super.initData();
-        mPresent.getStaticAlarmList("1", "2019", "1");
+        //接收跳转过来的值
+        Intent intent = getIntent();
+        wareHouseId = intent.getStringExtra("wareHouseId");
+//        showToast(wareHouseId);
+        Log.i(TAG, "initData: " + wareHouseId);
+        if (TextUtils.isEmpty(wareHouseId)){
+            mPresent.getStaticAlarmList("1", "2019", "1");
+        }else{
+            mPresent.getStaticAlarmList("1", "2019", wareHouseId);
+        }
+
     }
 
     @Override
@@ -153,7 +165,8 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
                 Log.i(TAG, "onActivityResultDay: " + resultTime);
                 type = "3";
             }
-            mPresent.getStaticAlarmList(type, resultTime, "1");
+            //将库房传递过来，使用当前库房操作
+            mPresent.getStaticAlarmList(type, resultTime, wareHouseId);
         }
     }
 
@@ -208,93 +221,90 @@ public class StatAlarmActivity extends BaseActivity<StatAlarmPresenter> implemen
      * @param contentView
      */
     private void handleLogic(View contentView) {
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (customPopupWindow != null) {
-                    customPopupWindow.dismiss();
-                }
-                switch (v.getId()) {
-                    case R.id.sort_all:
-                        alarm_sort.setText(R.string.sort_all);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //全部环境
-                    case R.id.sort_environment:
-                        alarm_sort.setText(R.string.sort_environment);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //温度
-                    case R.id.sort_wendu:
-                        alarm_sort.setText(R.string.sort_wendu);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //湿度
-                    case R.id.sort_shidu:
-                        alarm_sort.setText(R.string.sort_shidu);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //PM2.5
-                    case R.id.sort_pm:
-                        alarm_sort.setText(R.string.sort_pm);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //TVOC
-                    case R.id.sort_tvoc:
-                        alarm_sort.setText(R.string.sort_tvoc);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //菌落
-                    case R.id.sort_junluo:
-                        alarm_sort.setText(R.string.sort_junluo);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //甲醛
-                    case R.id.sort_jiaquan:
-                        alarm_sort.setText(R.string.sort_jiaquan);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //EOC2
-                    case R.id.sort_eoc2:
-                        alarm_sort.setText(R.string.sort_eoc2);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //有害气体
-                    case R.id.sort_gas:
-                        alarm_sort.setText(R.string.sort_gas);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //全部设备
-                    case R.id.sort_dev_all:
-                        alarm_sort.setText(R.string.sort_dev_all);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //空调
-                    case R.id.sort_air:
-                        alarm_sort.setText(R.string.sort_air);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //恒湿机
-                    case R.id.sort_hengshi:
-                        alarm_sort.setText(R.string.sort_hengshi);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //消毒机
-                    case R.id.sort_xiaodu:
-                        alarm_sort.setText(R.string.sort_xiaodu);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //除湿机
-                    case R.id.sort_chushi:
-                        alarm_sort.setText(R.string.sort_chushi);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                    //加湿机
-                    case R.id.sort_jiashi:
-                        alarm_sort.setText(R.string.sort_jiashi);
-                        initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
-                        break;
-                }
+        View.OnClickListener listener = v -> {
+            if (customPopupWindow != null) {
+                customPopupWindow.dismiss();
+            }
+            switch (v.getId()) {
+                case R.id.sort_all:
+                    alarm_sort.setText(R.string.sort_all);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //全部环境
+                case R.id.sort_environment:
+                    alarm_sort.setText(R.string.sort_environment);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //温度
+                case R.id.sort_wendu:
+                    alarm_sort.setText(R.string.sort_wendu);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //湿度
+                case R.id.sort_shidu:
+                    alarm_sort.setText(R.string.sort_shidu);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //PM2.5
+                case R.id.sort_pm:
+                    alarm_sort.setText(R.string.sort_pm);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //TVOC
+                case R.id.sort_tvoc:
+                    alarm_sort.setText(R.string.sort_tvoc);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //菌落
+                case R.id.sort_junluo:
+                    alarm_sort.setText(R.string.sort_junluo);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //甲醛
+                case R.id.sort_jiaquan:
+                    alarm_sort.setText(R.string.sort_jiaquan);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //EOC2
+                case R.id.sort_eoc2:
+                    alarm_sort.setText(R.string.sort_eoc2);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //有害气体
+                case R.id.sort_gas:
+                    alarm_sort.setText(R.string.sort_gas);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //全部设备
+                case R.id.sort_dev_all:
+                    alarm_sort.setText(R.string.sort_dev_all);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //空调
+                case R.id.sort_air:
+                    alarm_sort.setText(R.string.sort_air);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //恒湿机
+                case R.id.sort_hengshi:
+                    alarm_sort.setText(R.string.sort_hengshi);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //消毒机
+                case R.id.sort_xiaodu:
+                    alarm_sort.setText(R.string.sort_xiaodu);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //除湿机
+                case R.id.sort_chushi:
+                    alarm_sort.setText(R.string.sort_chushi);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
+                //加湿机
+                case R.id.sort_jiashi:
+                    alarm_sort.setText(R.string.sort_jiashi);
+                    initTextView(drawable, R.mipmap.stat_classify_normal, alarm_sort);
+                    break;
             }
         };
         contentView.findViewById(R.id.sort_all).setOnClickListener(listener);
